@@ -6,8 +6,8 @@ import styled from 'styled-components'
 const StyledFormDiv = styled.div`
 display: flex;
 justify-content: center;
-width: 500px;
-height: 300px;
+width: 400px;
+height: 472px;
 color: white;
 /* margin: 0 auto; */
 /* margin: 0 auto; */
@@ -29,7 +29,13 @@ overflow: hidden; */
 `
 const StyledForm = styled.form`
 /* background-color: black; */
+
 `
+
+const SignUpButton = styled.label`
+margin: 10px;
+`
+
 const SignUpForm = ({authenticated, setAuthenticated}) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -72,39 +78,39 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
     <StyledFormDiv>
       <StyledForm onSubmit={onSignUp}>
         <div>
-          <label>User Name</label>
           <input
             type="text"
             name="username"
             onChange={updateUsername}
-            value={username}
+                value={username}
+                placeholder={"Username"}
           ></input>
         </div>
         <div>
-          <label>Email</label>
           <input
             type="text"
             name="email"
             onChange={updateEmail}
-            value={email}
+                value={email}
+                placeholder={"Email"}
           ></input>
         </div>
         <div>
-          <label>Password</label>
           <input
             type="password"
             name="password"
             onChange={updatePassword}
-            value={password}
+                value={password}
+                placeholder={"Password"}
           ></input>
         </div>
         <div>
-          <label>Repeat Password</label>
           <input
             type="password"
             name="repeat_password"
             onChange={updateRepeatPassword}
-            value={repeatPassword}
+                value={repeatPassword}
+                placeholder={"Confirm Password"}
             required={true}
           ></input>
         </div>
