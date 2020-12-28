@@ -68,7 +68,9 @@ const SignUpButton = styled.button`
 `
 
 const SignUpForm = ({authenticated, setAuthenticated}) => {
-  const [username, setUsername] = useState("");
+  // const [username, setUsername] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
@@ -76,15 +78,18 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const user = await signUp(username, email, password);
+      const user = await signUp(firstName, lastName, email, password);
       if (!user.errors) {
         setAuthenticated(true);
       }
     }
   };
 
-  const updateUsername = (e) => {
-    setUsername(e.target.value);
+  const updateFirstName = (e) => {
+    setFirstName(e.target.value);
+  };
+  const updateLastName = (e) => {
+    setLastName(e.target.value);
   };
 
   const updateEmail = (e) => {
@@ -105,52 +110,61 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
 
   return (
     <>
-    <BackgroundPhoto>
-    <StyledFormDiv>
+      <BackgroundPhoto>
+        <StyledFormDiv>
           <StyledForm onSubmit={onSignUp}>
-        <div>
-          <H1>Join Straba today, it's free.</H1>
-          <input
-            type="text"
-            name="username"
-            onChange={updateUsername}
-            value={username}
-            placeholder={"Username"}
-          ></input>
-        </div>
-        <div>
-          <input
-            type="text"
-            name="email"
-            onChange={updateEmail}
-            value={email}
-            placeholder={"Email"}
-          ></input>
-        </div>
-        <div>
-          <input
-            type="password"
-            name="password"
-            onChange={updatePassword}
-            value={password}
-            placeholder={"Password"}
-          ></input>
-        </div>
-        <div>
-          <input
-            type="password"
-            name="repeat_password"
-            onChange={updateRepeatPassword}
-            value={repeatPassword}
-            placeholder={"Confirm Password"}
-            required={true}
-          ></input>
-        </div>
-        <SignUpButton type="submit">Sign Up</SignUpButton>
-        </StyledForm>
+            <div>
+              <H1>Join Straba today, it's free.</H1>
+              <input
+                type="text"
+                name="first_name"
+                onChange={updateFirstName}
+                value={firstName}
+                placeholder={"First Name"}
+              ></input>
+            </div>
+            <div>
+              <input
+                type="text"
+                name="last_name"
+                onChange={updateLastName}
+                value={lastName}
+                placeholder={"Last Name"}
+              ></input>
+            </div>
+            <div>
+              <input
+                type="text"
+                name="email"
+                onChange={updateEmail}
+                value={email}
+                placeholder={"Email"}
+              ></input>
+            </div>
+            <div>
+              <input
+                type="password"
+                name="password"
+                onChange={updatePassword}
+                value={password}
+                placeholder={"Password"}
+              ></input>
+            </div>
+            <div>
+              <input
+                type="password"
+                name="repeat_password"
+                onChange={updateRepeatPassword}
+                value={repeatPassword}
+                placeholder={"Confirm Password"}
+                required={true}
+              ></input>
+            </div>
+            <SignUpButton type="submit">Sign Up</SignUpButton>
+          </StyledForm>
         </StyledFormDiv>
       </BackgroundPhoto>
-      </>
+    </>
   );
 };
 
