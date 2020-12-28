@@ -22,9 +22,9 @@ const NavBar = ({ setAuthenticated }) => {
             Sign Up
           </NavLink>
         </li>
-        {/* <li>
+        <li>
           <LogoutButton setAuthenticated={setAuthenticated} />
-        </li> */}
+        </li>
       </ul>
     </nav>
   );
