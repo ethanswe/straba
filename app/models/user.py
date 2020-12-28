@@ -8,13 +8,15 @@ class User(db.Model, UserMixin):
   id = db.Column(db.Integer, primary_key = True)
   first_name = db.Column(db.String(35), nullable = False)
   last_name = db.Column(db.String(35), nullable = False)
-  # username = db.Column(db.String(40), nullable = False, unique = True)
-  city = db.Column(db.String(85))
-  country = db.Column(db.String(75))
-  avatar = db.Column(db.Text)
   email = db.Column(db.String(255), nullable = False, unique = True)
   hashed_password = db.Column(db.String(255), nullable = False)
-
+  city = db.Column(db.String(255), nullable = False)
+  country = db.Column(db.String(255), nullable = False)
+  avatar = db.Column(db.String(255))
+  
+  activities = db.relationship('Activity', backref='user', lazy=True)
+  kudos = db.relationship('Kudos', backref='user', lazy=True)
+  comments = db.relationship('Comment', backref='user', lazy=True)
 
   @property
   def password(self):
