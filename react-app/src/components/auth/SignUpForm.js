@@ -6,6 +6,7 @@ import styled from 'styled-components'
 const StyledFormDiv = styled.div`
 display: flex;
 justify-content: center;
+border-radius: 25px;
 width: 200px;
 height: 170px;
 color: white;
@@ -104,7 +105,7 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
 
   return (
     <>
-      <BackgroundPhoto>
+    <BackgroundPhoto>
     <StyledFormDiv>
           <StyledForm onSubmit={onSignUp}>
         <div>
