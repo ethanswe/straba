@@ -6,8 +6,8 @@ import styled from 'styled-components'
 const StyledFormDiv = styled.div`
 display: flex;
 justify-content: center;
-width: 400px;
-height: 472px;
+width: 200px;
+height: 170px;
 color: white;
 /* margin: 0 auto; */
 /* margin: 0 auto; */
@@ -16,7 +16,12 @@ background-color: black;
 opacity: 85%;
 z-index: 1;
 `
-
+const H1 = styled.h1`
+display: flex;
+justify-content: center;
+align-items: center;
+font-size: 15px;
+`
 const BackgroundPhoto = styled.div`
 background-image: url('https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80'); 
 width: 100vw;
@@ -31,6 +36,7 @@ const StyledForm = styled.form`
 /* background-color: black; */
 
 `
+
 
 const SignUpButton = styled.button`
   background: #222;
@@ -49,6 +55,7 @@ const SignUpButton = styled.button`
   justify-content: center;
   cursor: pointer;
   padding-top: 5px;
+  margin: 0 auto;
 :hover{
   background: transparent;
   height: 35px;
@@ -97,16 +104,17 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
 
   return (
     <>
-    <BackgroundPhoto>
+      <BackgroundPhoto>
     <StyledFormDiv>
-      <StyledForm onSubmit={onSignUp}>
+          <StyledForm onSubmit={onSignUp}>
         <div>
+          <H1>Join Straba today, it's free.</H1>
           <input
             type="text"
             name="username"
             onChange={updateUsername}
-                value={username}
-                placeholder={"Username"}
+            value={username}
+            placeholder={"Username"}
           ></input>
         </div>
         <div>
@@ -114,8 +122,8 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
             type="text"
             name="email"
             onChange={updateEmail}
-                value={email}
-                placeholder={"Email"}
+            value={email}
+            placeholder={"Email"}
           ></input>
         </div>
         <div>
@@ -123,8 +131,8 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
             type="password"
             name="password"
             onChange={updatePassword}
-                value={password}
-                placeholder={"Password"}
+            value={password}
+            placeholder={"Password"}
           ></input>
         </div>
         <div>
@@ -132,8 +140,8 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
             type="password"
             name="repeat_password"
             onChange={updateRepeatPassword}
-                value={repeatPassword}
-                placeholder={"Confirm Password"}
+            value={repeatPassword}
+            placeholder={"Confirm Password"}
             required={true}
           ></input>
         </div>
