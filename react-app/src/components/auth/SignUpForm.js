@@ -32,8 +32,31 @@ const StyledForm = styled.form`
 
 `
 
-const SignUpButton = styled.label`
-margin: 10px;
+const SignUpButton = styled.button`
+  background: #222;
+  height: 35px;
+  min-width: 90px;
+  border: none;
+  border-radius: 10px;
+  color: #eee;
+  font-size: 20px;
+  font-family: 'Cookie', cursive;
+  position: relative;
+  transition: 1s;
+  -webkit-tap-highlight-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding-top: 5px;
+:hover{
+  background: transparent;
+  height: 35px;
+  min-width: 90px;
+  left: 0;
+  border-radius: 0;
+  border-bottom: 2px solid #eee;
+}
 `
 
 const SignUpForm = ({authenticated, setAuthenticated}) => {
@@ -114,7 +137,7 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
             required={true}
           ></input>
         </div>
-        <button type="submit">Sign Up</button>
+        <SignUpButton type="submit">Sign Up</SignUpButton>
         </StyledForm>
         </StyledFormDiv>
       </BackgroundPhoto>
