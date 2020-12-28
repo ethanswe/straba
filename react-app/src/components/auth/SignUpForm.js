@@ -5,9 +5,9 @@ import styled from 'styled-components'
 
 const StyledFormDiv = styled.div`
 display: flex;
-/* justify-content: center; */
+justify-content: center;
 width: 500px;
-height: 500px;
+height: 300px;
 color: white;
 /* margin: 0 auto; */
 /* margin: 0 auto; */
@@ -18,16 +18,14 @@ z-index: 1;
 `
 
 const BackgroundPhoto = styled.div`
-/* max-width: 1920px;
-max-height: 978px; */
-/* background-size: cover; */
 background-image: url('https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80'); 
 width: 100vw;
 height: 100vh;
 display: flex;
 align-items: center;
 justify-content: center;
-
+/* position: absolute;
+overflow: hidden; */
 `
 const StyledForm = styled.form`
 /* background-color: black; */
