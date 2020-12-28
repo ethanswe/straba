@@ -14,7 +14,8 @@ class User(db.Model, UserMixin):
   avatar = db.Column(db.String(255))
   
   activities = db.relationship('Activity', backref='user', lazy=True)
-
+  kudos = db.relationship('Kudos', backref='user', lazy=True)
+  comments = db.relationship('Comment', backref='user', lazy=True)
 
   @property
   def password(self):
@@ -36,15 +37,3 @@ class User(db.Model, UserMixin):
       "username": self.username,
       "email": self.email
     }
-
-
-# class Activity(db.Model):
-#   __tablename__ = 'activities'
-
-#   id = db.Column(db.Integer, primary_key = True)
-#   title = db.Column(db.String(255), nullable = False)
-#   description = db.Column(db.String(2000))
-#   distance = db.Column(db.Integer, nullable = False)
-#   time = db.Column(db.Integer, nullable = False)
-#   gpx_file = db.Column(db.String(255))
-#   user_id = db.Column(db.Integer, nullable = False, db.ForeignKey('user.id', ondelete="cascade"))
