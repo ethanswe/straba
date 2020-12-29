@@ -100,12 +100,12 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
             : "" }
           {authenticated ? 
           <>
-          <LogoutButton setAuthenticated={setAuthenticated} />
-          <NavLink to="/activities/new" exact={true} activeClassName="active">
-                <Buttons>
-                  New Activity
+            <LogoutButton setAuthenticated={setAuthenticated} />
+            <NavLink to="/activities/new" exact={true} activeClassName="active">
+              <Buttons>
+                New Activity
               </Buttons>
-          </NavLink>
+            </NavLink>
           </>
             : ""}
         </ul>
