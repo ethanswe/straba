@@ -14,7 +14,7 @@ def get_activities(user_id):
     try:
         activities = Activity.query.filter(Activity.user_id == user_id).all()
         activity_dicts = [activity.to_dict() for activity in activities]
-        activity_json = jsonify({'activities': normalize(activity_dicts)})
+        activity_json = jsonify({'activities': activity_dicts})
         return activity_json
     except SQLAlchemyError as e:
         error = str(e.__dict__['orig'])
@@ -28,7 +28,7 @@ def get_activities(user_id):
 def get_activity(activity_id):
     try:
         activity = Activity.query.filter(Activity.id == activity_id).first()
-        activity_json = jsonify({'activities': normalize(activity_id.to_dict())})
+        activity_json = jsonify({'activities': activity_id.to_dict()})
         return activity_json
     except SQLAlchemyError as e:
         error = str(e.__dict__['orig'])
@@ -51,7 +51,7 @@ def post_activity(user_id):
     try:
         db.session.add(activity)
         db.session.commit()
-        activity_json = jsonify({'activities': normalize(activity.to_dict())})
+        activity_json = jsonify({'activities': activity.to_dict()})
         return activity_json
     except SQLAlchemyError as e:
         error = str(e.__dict__['orig'])
