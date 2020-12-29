@@ -9,14 +9,14 @@ const Nav = styled.nav`
 /* justify-content: space-around; */
 max-height: 79px;
 border-bottom: solid 1px #f0f0f5;
+text-decoration: none;
 
 /* background-color: black; */
 
 `
 const NavContainer = styled.div`
 display: flex;
-/* justify-content: space-between; */
-/* flex-direction: row; */
+text-decoration: none;
 margin: 0 auto;
 `
 
