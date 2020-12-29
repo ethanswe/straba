@@ -4,8 +4,14 @@ import LogoutButton from './auth/LogoutButton';
 import styled from 'styled-components'
 
 const Nav = styled.nav`
+/* display: flex; */
+/* align-items: baseline; */
+/* justify-content: space-around; */
+max-height: 79px;
+border-bottom: solid 1px #f0f0f5;
 
-max-height: 80px;
+/* background-color: black; */
+
 `
 const NavContainer = styled.div`
 display: flex;
@@ -13,6 +19,41 @@ display: flex;
 /* flex-direction: row; */
 margin: 0 auto;
 `
+
+const Buttons = styled.button`
+  text-decoration: none;
+  background: #222;
+  height: 28px;
+  min-width: 80px;
+  border: none;
+  border-radius: 10px;
+  color: #eee;
+  font-size: 20px;
+  font-family: 'Cookie', cursive;
+  position: relative;
+  transition: 1s;
+  -webkit-tap-highlight-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  /* padding-top: 5px; */
+  margin: 0 auto;
+  margin-top: 2px;
+  margin-left: 70em;
+  margin-bottom: 0px;
+  text-decoration: none;
+:hover{
+  background: black;
+  height: 28px;
+  min-width: 90px;
+  left: 0;
+  border-radius: 0;
+  border-bottom: 2px solid #eee;
+  text-decoration: none;
+}
+`
+
 
 const Logo = styled.img.attrs({
     src: 'strabalogo.png'
@@ -28,28 +69,26 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
   return (
     <Nav>
       <NavContainer>
+        <NavLink to="/" exact={true} activeClassName="active">
+          <Logo />
+        </NavLink>
       <ul>
-        <li>
-          <NavLink to="/" exact={true} activeClassName="active">
-            Home
-          </NavLink>
-          </li>
           {!authenticated && currentPage !== '/login' ? 
         <>
-          <li>
-            <NavLink to="/login" exact={true} activeClassName="active">
-              Login
+              <NavLink to="/login" exact={true} activeClassName="active">
+                <Buttons>
+                  Login
+                </Buttons>
             </NavLink>
-          </li> 
         </>
             : ""}
           {!authenticated && currentPage !== '/sign-up' ? 
             <>
-          <li>
             <NavLink to="/sign-up" exact={true} activeClassName="active">
-              Sign Up
+                <Buttons>
+                  Sign Up
+                </Buttons>
             </NavLink>
-                </li>
             </>
             : "" }
           {authenticated ? 
@@ -58,7 +97,6 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
             </li>
             : ""}
         </ul>
-        <Logo />
         </NavContainer>
     </Nav>
   );
