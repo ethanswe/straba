@@ -9,7 +9,7 @@ justify-content: center;
 align-items: center;
 border-radius: 25px;
 width: 200px;
-height: 190px;
+height: 192px;
 color: white;
 /* margin: 0 auto; */
 /* margin: 0 auto; */
@@ -69,6 +69,7 @@ const SignUpButton = styled.button`
   justify-content: center;
   cursor: pointer;
   margin-left: 28px;
+  margin-top: 3px;
 :hover{
   background: transparent;
   height: 35px;

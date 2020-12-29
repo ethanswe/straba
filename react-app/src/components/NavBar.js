@@ -41,6 +41,7 @@ const Buttons = styled.button`
   margin: 0 auto;
   margin-top: 2px;
   margin-left: 70em;
+  /* margin-right: 0px; */
   margin-bottom: 0px;
   text-decoration: none;
 :hover{
