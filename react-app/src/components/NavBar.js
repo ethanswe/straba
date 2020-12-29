@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, useHistory } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import styled from 'styled-components'
 
@@ -23,9 +23,8 @@ margin: 0 auto;
 /* border: 1px solid blue; */
 `
 const NavBar = ({ authenticated, setAuthenticated }) => {
-  let history = useHistory();
-  const currentPage = history.location.pathname
-  console.log('this is the current page:', currentPage);
+  let location = useLocation();
+  const currentPage = location.pathname;
   return (
     <Nav>
       <NavContainer>
@@ -35,7 +34,7 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
             Home
           </NavLink>
           </li>
-          {!authenticated && currentPage === '/sign-up' ? 
+          {!authenticated && currentPage !== '/login' ? 
         <>
           <li>
             <NavLink to="/login" exact={true} activeClassName="active">
@@ -44,7 +43,7 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
           </li> 
         </>
             : ""}
-          {!authenticated && currentPage === '/login' ? 
+          {!authenticated && currentPage !== '/sign-up' ? 
             <>
           <li>
             <NavLink to="/sign-up" exact={true} activeClassName="active">
