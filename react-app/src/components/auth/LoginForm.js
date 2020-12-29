@@ -1,6 +1,69 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { login } from "../../services/auth";
+import styled from 'styled-components'
+
+const StyledFormDiv = styled.div`
+display: flex;
+justify-content: center;
+border-radius: 25px;
+width: 200px;
+height: 180px;
+color: white;
+/* margin: 0 auto; */
+/* margin: 0 auto; */
+flex-direction: row;
+background-color: black;
+opacity: 85%;
+z-index: 1;
+`
+
+const BackgroundPhoto = styled.div`
+background-image: url('https://images.pexels.com/photos/3621185/pexels-photo-3621185.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'); 
+width: 100vw;
+height: 100vh;
+background-size: cover;
+display: flex;
+align-items: center;
+justify-content: center;
+/* position: absolute;
+overflow: hidden;  */
+/* background-repeat:no-repeat; */
+/* background-size: cover; */
+`
+const StyledForm = styled.form`
+/* background-color: black; */
+margin-left: 10px;
+`
+
+
+const LogInButton = styled.button`
+  background: #222;
+  height: 35px;
+  min-width: 90px;
+  border: none;
+  border-radius: 10px;
+  color: #eee;
+  font-size: 20px;
+  font-family: 'Cookie', cursive;
+  position: relative;
+  transition: 1s;
+  -webkit-tap-highlight-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding-top: 5px;
+  margin: 0 auto;
+:hover{
+  background: transparent;
+  height: 35px;
+  min-width: 90px;
+  left: 0;
+  border-radius: 0;
+  border-bottom: 2px solid #eee;
+}
+`
 
 const LoginForm = ({ authenticated, setAuthenticated }) => {
   const [errors, setErrors] = useState([]);
@@ -30,34 +93,40 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
   }
 
   return (
-    <form onSubmit={onLogin}>
-      <div>
-        {errors.map((error) => (
-          <div>{error}</div>
-        ))}
-      </div>
-      <div>
-        <label htmlFor="email">Email</label>
-        <input
-          name="email"
-          type="text"
-          placeholder="Email"
-          value={email}
-          onChange={updateEmail}
-        />
-      </div>
-      <div>
-        <label htmlFor="password">Password</label>
-        <input
-          name="password"
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={updatePassword}
-        />
-        <button type="submit">Login</button>
-      </div>
-    </form>
+    <>
+    <BackgroundPhoto>
+      <StyledFormDiv>
+        <StyledForm onSubmit={onLogin}>
+          <div>
+            {errors.map((error) => (
+              <div>{error}</div>
+            ))}
+          </div>
+          <div>
+            <label htmlFor="email">Email</label>
+            <input
+              name="email"
+              type="text"
+              placeholder="Email"
+              value={email}
+              onChange={updateEmail}
+            />
+          </div>
+          <div>
+            <label htmlFor="password">Password</label>
+            <input
+              name="password"
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={updatePassword}
+            />
+            <LogInButton type="submit">Login</LogInButton>
+          </div>
+          </StyledForm>
+        </StyledFormDiv>
+    </BackgroundPhoto>
+    </>
   );
 };
 
