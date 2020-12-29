@@ -8,10 +8,29 @@ activity_routes = Blueprint('activities', __name__)
 
 # GET all activities for a specific user and whom they follow
 #activity.user_id == user.id and activity.user_id == 
+@activity_routes.route('/')
+# @login_required
+def activities():
+    try:
+        activities = Activity.query.all()
+        activity_dicts = [activity.to_dict() for activity in activities]
+        activity_json = jsonify({'activities': activity_dicts})
+        return activity_json
+    except SQLAlchemyError as e:
+        error = str(e.__dict__['orig'])
+        print(error)
+        return {'errors': ['An error occurred while retrieving the data']}, 500
+    # activities_list = Activity.query.all()
+    # activities = []
+
+    # for activity in activities_list:
+    #     activities.append({'title': activity.title, 'description': activity.description})
+
+    # return jsonify({'activities': activities})
 
 # GET all activities for a specific user
 @activity_routes.route('/users/<int:user_id>/activities', methods=['GET'])
-@login_required
+# @login_required
 def get_activities(user_id):
     try:
         activities = Activity.query.filter(Activity.user_id == user_id).all()
@@ -25,12 +44,12 @@ def get_activities(user_id):
 
 
 # GET a specific activity
-@activity_routes.route('/activities/<int:activity_id>', methods=['GET'])
-@login_required
+@activity_routes.route('/<int:activity_id>', methods=['GET'])
+# @login_required
 def get_activity(activity_id):
     try:
         activity = Activity.query.filter(Activity.id == activity_id).first()
-        activity_json = jsonify({'activities': activity_id.to_dict()})
+        activity_json = jsonify({'activities': activity.to_dict()})
         return activity_json
     except SQLAlchemyError as e:
         error = str(e.__dict__['orig'])
@@ -40,7 +59,7 @@ def get_activity(activity_id):
 
 # POST a new activity for a specific user
 @activity_routes.route('/users/<int:user_id>/activities', methods=['POST'])
-@login_required
+# @login_required
 def post_activity(user_id):
     data = request.json
     activity = Activity(
@@ -49,22 +68,16 @@ def post_activity(user_id):
         description=data['description'],
         distance=data['distance'],
         time=data['time'],
-        gpx_file=data['gpx_file'],
-    try:
-        db.session.add(activity)
-        db.session.commit()
-        activity_json = jsonify({'activities': activity.to_dict()})
-        return activity_json
-    except SQLAlchemyError as e:
-        error = str(e.__dict__['orig'])
-        print(error)
-        db.session.rollback()
-        return {'errors': ['An error occurred while creating data']}, 500
+        gpx_file=data['gpx_file'])
+    db.session.add(activity)
+    db.session.commit()
+    return 'Done', 201
+    
 
 
 # DELETE an activity
-@activity_routes.route('/activities/<int:activity_id>', methods=['DELETE'])
-@login_required
+@activity_routes.route('/<int:activity_id>', methods=['DELETE'])
+# @login_required
 def activity(activity_id):
     delete_activity = Activity.query.get(activity_id)
     if delete_activity:
