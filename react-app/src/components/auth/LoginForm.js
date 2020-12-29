@@ -61,6 +61,7 @@ const LogInButton = styled.button`
   cursor: pointer;
   padding-top: 5px;
   margin: 0 auto;
+  margin-top: 5px;
 :hover{
   background: transparent;
   height: 35px;
@@ -68,6 +69,19 @@ const LogInButton = styled.button`
   left: 0;
   border-radius: 0;
   border-bottom: 2px solid #eee;
+}
+`
+
+const LogInInput = styled.input`
+:focus{
+  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+  background-color: black;
+  background: transparent;
+  transition: 0.5s;
+  color: white;
+  /* padding: 3px 0px 3px 3px; */
+  /* margin: 5px 1px 3px 0px; */
+  /* border: 1px solid rgba(81, 203, 238, 1); */
 }
 `
 
@@ -110,7 +124,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
           </div>
             <div>
               <H1>Welcome Back!</H1>
-            <input
+            <LogInInput
               name="email"
               type="text"
               placeholder="Email"
@@ -119,7 +133,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
             />
           </div>
           <div>
-            <input
+            <LogInInput
               name="password"
               type="password"
               placeholder="Password"
