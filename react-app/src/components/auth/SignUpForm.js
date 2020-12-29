@@ -8,7 +8,7 @@ display: flex;
 justify-content: center;
 border-radius: 25px;
 width: 200px;
-height: 170px;
+height: 180px;
 color: white;
 /* margin: 0 auto; */
 /* margin: 0 auto; */
@@ -27,6 +27,7 @@ const BackgroundPhoto = styled.div`
 background-image: url('https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80'); 
 width: 100vw;
 height: 100vh;
+background-size: cover;
 display: flex;
 align-items: center;
 justify-content: center;
@@ -35,7 +36,7 @@ overflow: hidden; */
 `
 const StyledForm = styled.form`
 /* background-color: black; */
-
+margin-left: 10px;
 `
 
 
@@ -71,6 +72,8 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
   // const [username, setUsername] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [city, setCity] = useState("");
+  const [country, setCountry] =useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
@@ -78,7 +81,7 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const user = await signUp(firstName, lastName, email, password);
+      const user = await signUp(firstName, lastName, city, country, email, password);
       if (!user.errors) {
         setAuthenticated(true);
       }
@@ -88,9 +91,18 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
   const updateFirstName = (e) => {
     setFirstName(e.target.value);
   };
+
   const updateLastName = (e) => {
     setLastName(e.target.value);
   };
+
+  const updateCity = (e) => {
+    setCity(e.target.value);
+  }
+
+  const updateCountry = (e) => {
+    setCountry(e.target.value);
+  }
 
   const updateEmail = (e) => {
     setEmail(e.target.value);
@@ -130,6 +142,24 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
                 onChange={updateLastName}
                 value={lastName}
                 placeholder={"Last Name"}
+              ></input>
+            </div>
+            <div>
+              <input
+                type="text"
+                name="city"
+                onChange={updateCity}
+                value={city}
+                placeholder={"City"}
+              ></input>
+            </div>
+            <div>
+              <input
+                type="text"
+                name="country"
+                onChange={updateCountry}
+                value={country}
+                placeholder={"Country"}
               ></input>
             </div>
             <div>
