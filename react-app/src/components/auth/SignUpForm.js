@@ -20,6 +20,7 @@ z-index: 1;
 const H1 = styled.h1`
 display: flex;
 justify-content: center;
+/* font-family: 'Staatliches', cursive; */
 align-items: center;
 font-size: 15px;
 `
@@ -39,6 +40,15 @@ const StyledForm = styled.form`
 margin-left: 10px;
 `
 
+const SignUpInput = styled.input`
+:focus{
+  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+  background-color: black;
+  background: transparent;
+  transition: 0.5s;
+  color: white;
+}
+`
 
 const SignUpButton = styled.button`
   background: #222;
@@ -58,6 +68,7 @@ const SignUpButton = styled.button`
   cursor: pointer;
   padding-top: 5px;
   margin: 0 auto;
+  margin-top: 5px;
 :hover{
   background: transparent;
   height: 35px;
@@ -127,25 +138,25 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
           <StyledForm onSubmit={onSignUp}>
             <div>
               <H1>Join Straba today, it's free.</H1>
-              <input
+              <SignUpInput
                 type="text"
                 name="first_name"
                 onChange={updateFirstName}
                 value={firstName}
                 placeholder={"First Name"}
-              ></input>
+              ></SignUpInput>
             </div>
             <div>
-              <input
+              <SignUpInput
                 type="text"
                 name="last_name"
                 onChange={updateLastName}
                 value={lastName}
                 placeholder={"Last Name"}
-              ></input>
+              ></SignUpInput>
             </div>
             <div>
-              <input
+              <SignUpInput
                 type="text"
                 name="city"
                 onChange={updateCity}
@@ -169,26 +180,26 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
                 onChange={updateEmail}
                 value={email}
                 placeholder={"Email"}
-              ></input>
+              ></SignUpInput>
             </div>
             <div>
-              <input
+              <SignUpInput
                 type="password"
                 name="password"
                 onChange={updatePassword}
                 value={password}
                 placeholder={"Password"}
-              ></input>
+              ></SignUpInput>
             </div>
             <div>
-              <input
+              <SignUpInput
                 type="password"
                 name="repeat_password"
                 onChange={updateRepeatPassword}
                 value={repeatPassword}
                 placeholder={"Confirm Password"}
                 required={true}
-              ></input>
+              ></SignUpInput>
             </div>
             <SignUpButton type="submit">Sign Up</SignUpButton>
           </StyledForm>
