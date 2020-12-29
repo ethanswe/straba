@@ -1,12 +1,13 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
 from app.models import Activity, User, db
-from app.utils import normalize
 from sqlalchemy.exc import SQLAlchemyError
 
 
 activity_routes = Blueprint('activities', __name__)
 
+# GET all activities for a specific user and whom they follow
+#activity.user_id == user.id and activity.user_id == 
 
 # GET all activities for a specific user
 @activity_routes.route('/users/<int:user_id>/activities', methods=['GET'])
@@ -15,7 +16,7 @@ def get_activities(user_id):
     try:
         activities = Activity.query.filter(Activity.user_id == user_id).all()
         activity_dicts = [activity.to_dict() for activity in activities]
-        activity_json = jsonify({'activities': normalize(activity_dicts)})
+        activity_json = jsonify({'activities': activity_dicts})
         return activity_json
     except SQLAlchemyError as e:
         error = str(e.__dict__['orig'])
@@ -29,7 +30,7 @@ def get_activities(user_id):
 def get_activity(activity_id):
     try:
         activity = Activity.query.filter(Activity.id == activity_id).first()
-        activity_json = jsonify({'activities': normalize(activity_id.to_dict())})
+        activity_json = jsonify({'activities': activity_id.to_dict()})
         return activity_json
     except SQLAlchemyError as e:
         error = str(e.__dict__['orig'])
@@ -52,7 +53,7 @@ def post_activity(user_id):
     try:
         db.session.add(activity)
         db.session.commit()
-        activity_json = jsonify({'activities': normalize(activity.to_dict())})
+        activity_json = jsonify({'activities': activity.to_dict()})
         return activity_json
     except SQLAlchemyError as e:
         error = str(e.__dict__['orig'])
