@@ -6,6 +6,8 @@ from sqlalchemy.exc import SQLAlchemyError
 
 activity_routes = Blueprint('activities', __name__)
 
+# GET all activities for a specific user and whom they follow
+#activity.user_id == user.id and activity.user_id == 
 
 # GET all activities for a specific user
 @activity_routes.route('/users/<int:user_id>/activities', methods=['GET'])
