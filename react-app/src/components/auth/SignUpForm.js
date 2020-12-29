@@ -163,19 +163,19 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
                 onChange={updateCity}
                 value={city}
                 placeholder={"City"}
-              ></input>
+              ></SignUpInput>
             </div>
             <div>
-              <input
+              <SignUpInput
                 type="text"
                 name="country"
                 onChange={updateCountry}
                 value={country}
                 placeholder={"Country"}
-              ></input>
+              ></SignUpInput>
             </div>
             <div>
-              <input
+              <SignUpInput
                 type="text"
                 name="email"
                 onChange={updateEmail}
