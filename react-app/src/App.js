@@ -8,6 +8,7 @@ import UsersList from "./components/UsersList";
 import User from "./components/User";
 import { authenticate } from "./services/auth";
 import { CreateActivityForm } from "./components/create-activity/CreateActivityForm";
+import HomePage from "./components/HomePage";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -49,7 +50,7 @@ function App() {
         <CreateActivityForm />
       </ProtectedRoute>
       <Route path="/" exact={true} authenticated={authenticated}>
-        <h1>My Home Page</h1>
+        <HomePage/>
       </Route>
     </BrowserRouter>
   );

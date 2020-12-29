@@ -7,7 +7,6 @@ from sqlalchemy.exc import SQLAlchemyError
 activity_routes = Blueprint('activities', __name__)
 
 # GET all activities for a specific user and whom they follow
-#activity.user_id == user.id and activity.user_id == 
 @activity_routes.route('/')
 # @login_required
 def activities():
@@ -20,13 +19,6 @@ def activities():
         error = str(e.__dict__['orig'])
         print(error)
         return {'errors': ['An error occurred while retrieving the data']}, 500
-    # activities_list = Activity.query.all()
-    # activities = []
-
-    # for activity in activities_list:
-    #     activities.append({'title': activity.title, 'description': activity.description})
-
-    # return jsonify({'activities': activities})
 
 # GET all activities for a specific user
 @activity_routes.route('/users/<int:user_id>', methods=['GET'])
