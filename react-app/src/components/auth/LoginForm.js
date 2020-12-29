@@ -8,7 +8,7 @@ display: flex;
 justify-content: center;
 border-radius: 25px;
 width: 200px;
-height: 180px;
+height: 120px;
 color: white;
 /* margin: 0 auto; */
 /* margin: 0 auto; */
@@ -16,6 +16,12 @@ flex-direction: row;
 background-color: black;
 opacity: 85%;
 z-index: 1;
+`
+const H1 = styled.h1`
+display: flex;
+justify-content: center;
+align-items: center;
+font-size: 15px;
 `
 
 const BackgroundPhoto = styled.div`
@@ -102,8 +108,8 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
               <div>{error}</div>
             ))}
           </div>
-          <div>
-            <label htmlFor="email">Email</label>
+            <div>
+              <H1>Welcome Back!</H1>
             <input
               name="email"
               type="text"
@@ -113,7 +119,6 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
             />
           </div>
           <div>
-            <label htmlFor="password">Password</label>
             <input
               name="password"
               type="password"
