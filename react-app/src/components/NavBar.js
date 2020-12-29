@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import styled from 'styled-components'
+import { CreateActivityForm } from './create-activity/CreateActivityForm';
 
 const Nav = styled.nav`
 
@@ -39,9 +40,14 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
         </>
             : ""}
           {authenticated ? 
+          <>
         <li>
           <LogoutButton setAuthenticated={setAuthenticated} />
             </li>
+            <li>
+            <CreateActivityForm />
+              </li>
+              </>
             : ""}
         </ul>
         </NavContainer>
