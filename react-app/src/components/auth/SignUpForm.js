@@ -6,9 +6,10 @@ import styled from 'styled-components'
 const StyledFormDiv = styled.div`
 display: flex;
 justify-content: center;
+align-items: center;
 border-radius: 25px;
 width: 200px;
-height: 180px;
+height: 235px;
 color: white;
 /* margin: 0 auto; */
 /* margin: 0 auto; */
@@ -37,7 +38,8 @@ overflow: hidden; */
 `
 const StyledForm = styled.form`
 /* background-color: black; */
-margin-left: 10px;
+margin-left: 31px;
+/* margin: 0 auto; */
 `
 
 const SignUpInput = styled.input`
@@ -52,7 +54,7 @@ const SignUpInput = styled.input`
 
 const SignUpButton = styled.button`
   background: #222;
-  height: 35px;
+  height: 25px;
   min-width: 90px;
   border: none;
   border-radius: 10px;
@@ -66,9 +68,8 @@ const SignUpButton = styled.button`
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  padding-top: 5px;
-  margin: 0 auto;
-  margin-top: 5px;
+  margin-left: 28px;
+  margin-top: 3px;
 :hover{
   background: transparent;
   height: 35px;
@@ -162,19 +163,19 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
                 onChange={updateCity}
                 value={city}
                 placeholder={"City"}
-              ></input>
+              ></SignUpInput>
             </div>
             <div>
-              <input
+              <SignUpInput
                 type="text"
                 name="country"
                 onChange={updateCountry}
                 value={country}
                 placeholder={"Country"}
-              ></input>
+              ></SignUpInput>
             </div>
             <div>
-              <input
+              <SignUpInput
                 type="text"
                 name="email"
                 onChange={updateEmail}
