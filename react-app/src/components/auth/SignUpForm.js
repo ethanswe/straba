@@ -9,7 +9,7 @@ justify-content: center;
 align-items: center;
 border-radius: 25px;
 width: 200px;
-height: 192px;
+height: 235px;
 color: white;
 /* margin: 0 auto; */
 /* margin: 0 auto; */
