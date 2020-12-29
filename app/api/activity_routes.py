@@ -7,7 +7,6 @@ from sqlalchemy.exc import SQLAlchemyError
 activity_routes = Blueprint('activities', __name__)
 
 # GET all activities for a specific user and whom they follow
-#activity.user_id == user.id and activity.user_id == 
 @activity_routes.route('/')
 # @login_required
 def activities():
@@ -20,16 +19,9 @@ def activities():
         error = str(e.__dict__['orig'])
         print(error)
         return {'errors': ['An error occurred while retrieving the data']}, 500
-    # activities_list = Activity.query.all()
-    # activities = []
-
-    # for activity in activities_list:
-    #     activities.append({'title': activity.title, 'description': activity.description})
-
-    # return jsonify({'activities': activities})
 
 # GET all activities for a specific user
-@activity_routes.route('/users/<int:user_id>/activities', methods=['GET'])
+@activity_routes.route('/users/<int:user_id>', methods=['GET'])
 # @login_required
 def get_activities(user_id):
     try:
@@ -58,16 +50,17 @@ def get_activity(activity_id):
 
 
 # POST a new activity for a specific user
-@activity_routes.route('/users/<int:user_id>/activities', methods=['POST'])
+@activity_routes.route('/new/<int:user_id>', methods=['POST'])
 # @login_required
 def post_activity(user_id):
     data = request.json
+    print(data)
     activity = Activity(
         user_id=user_id,
         title=data['title'],
         description=data['description'],
-        distance=data['distance'],
-        time=data['time'],
+        distance=float(data['distance']),
+        time=float(data['time']),
         gpx_file=data['gpx_file'])
     db.session.add(activity)
     db.session.commit()

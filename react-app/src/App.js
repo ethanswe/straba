@@ -7,6 +7,7 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
 import { authenticate } from "./services/auth";
+import { CreateActivityForm } from "./components/create-activity/CreateActivityForm";
 import HomePage from "./components/HomePage";
 
 function App() {
@@ -44,6 +45,9 @@ function App() {
       </ProtectedRoute>
       <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
         <User />
+      </ProtectedRoute>
+      <ProtectedRoute path="/activities/new" exact={true} authenticated={authenticated}>
+        <CreateActivityForm />
       </ProtectedRoute>
       <Route path="/" exact={true} authenticated={authenticated}>
         <HomePage/>
