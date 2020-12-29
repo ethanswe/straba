@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation, Redirect } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import styled from 'styled-components'
 import { CreateActivityForm } from './create-activity/CreateActivityForm';
@@ -68,6 +68,11 @@ margin: 0 auto;
 const NavBar = ({ authenticated, setAuthenticated }) => {
   let location = useLocation();
   const currentPage = location.pathname;
+  console.log(authenticated);
+
+  const onClick = () => {
+    return <Redirect to='/activities/new' />;
+  }
   return (
     <Nav>
       <NavContainer>
@@ -95,13 +100,13 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
             : "" }
           {authenticated ? 
           <>
-        <li>
           <LogoutButton setAuthenticated={setAuthenticated} />
-            </li>
-            <li>
-            <CreateActivityForm />
-              </li>
-              </>
+          <NavLink to="/activities/new" exact={true} activeClassName="active">
+                <Buttons>
+                  New Activity
+              </Buttons>
+          </NavLink>
+          </>
             : ""}
         </ul>
         </NavContainer>

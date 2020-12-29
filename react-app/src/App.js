@@ -30,7 +30,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar setAuthenticated={setAuthenticated} />
+      <NavBar setAuthenticated={setAuthenticated} authenticated={authenticated}/>
       <Route path="/login" exact={true}>
         <LoginForm
           authenticated={authenticated}
@@ -49,7 +49,7 @@ function App() {
       <ProtectedRoute path="/activities/new" exact={true} authenticated={authenticated}>
         <CreateActivityForm />
       </ProtectedRoute>
-      <Route path="/" exact={true} authenticated={authenticated}>
+      <Route path="/" exact={true} authenticated={authenticated} >
         <HomePage/>
       </Route>
     </BrowserRouter>
