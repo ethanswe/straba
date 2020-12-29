@@ -29,7 +29,7 @@ def activities():
     # return jsonify({'activities': activities})
 
 # GET all activities for a specific user
-@activity_routes.route('/users/<int:user_id>/activities', methods=['GET'])
+@activity_routes.route('/users/<int:user_id>', methods=['GET'])
 # @login_required
 def get_activities(user_id):
     try:
