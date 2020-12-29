@@ -8,7 +8,7 @@ display: flex;
 justify-content: center;
 border-radius: 25px;
 width: 200px;
-height: 170px;
+height: 180px;
 color: white;
 /* margin: 0 auto; */
 /* margin: 0 auto; */
@@ -27,6 +27,7 @@ const BackgroundPhoto = styled.div`
 background-image: url('https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80'); 
 width: 100vw;
 height: 100vh;
+background-size: cover;
 display: flex;
 align-items: center;
 justify-content: center;
@@ -35,7 +36,7 @@ overflow: hidden; */
 `
 const StyledForm = styled.form`
 /* background-color: black; */
-
+margin-left: 10px;
 `
 
 
