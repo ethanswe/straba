@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import styled from 'styled-components'
 
@@ -9,12 +9,23 @@ max-height: 80px;
 `
 const NavContainer = styled.div`
 display: flex;
-justify-content: space-between;
-flex-direction: row;
+/* justify-content: space-between; */
+/* flex-direction: row; */
+margin: 0 auto;
 `
 
+const Logo = styled.img.attrs({
+    src: 'strabalogo.png'
+})`
+width: 80px;
+height: 80px;
+margin: 0 auto;
+/* border: 1px solid blue; */
+`
 const NavBar = ({ authenticated, setAuthenticated }) => {
-
+  let history = useHistory();
+  const currentPage = history.location.pathname
+  console.log('this is the current page:', currentPage);
   return (
     <Nav>
       <NavContainer>
@@ -24,26 +35,31 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
             Home
           </NavLink>
           </li>
-          {!authenticated ? 
+          {!authenticated && currentPage === '/sign-up' ? 
         <>
           <li>
             <NavLink to="/login" exact={true} activeClassName="active">
               Login
             </NavLink>
           </li> 
+        </>
+            : ""}
+          {!authenticated && currentPage === '/login' ? 
+            <>
           <li>
             <NavLink to="/sign-up" exact={true} activeClassName="active">
               Sign Up
             </NavLink>
                 </li>
-        </>
-            : ""}
+            </>
+            : "" }
           {authenticated ? 
         <li>
           <LogoutButton setAuthenticated={setAuthenticated} />
             </li>
             : ""}
         </ul>
+        <Logo />
         </NavContainer>
     </Nav>
   );
