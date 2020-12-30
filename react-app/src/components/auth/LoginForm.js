@@ -7,8 +7,8 @@ const StyledFormDiv = styled.div`
 display: flex;
 justify-content: center;
 border-radius: 25px;
-width: 200px;
-height: 120px;
+width: 225px;
+height: 100px;
 color: white;
 flex-direction: row;
 background-color: black;
@@ -32,7 +32,7 @@ align-items: center;
 justify-content: center;
 `
 const StyledForm = styled.form`
-margin-left: 10px;
+
 `
 
 
@@ -66,6 +66,7 @@ const LogInButton = styled.button`
 `
 
 const LogInInput = styled.input`
+width: 200px;
 :focus{
   box-shadow: 0 0 5px rgba(81, 203, 238, 1);
   background-color: black;
@@ -100,7 +101,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
   };
 
   if (authenticated) {
-    return <Redirect to="/" />;
+    return <Redirect to="/feed" />;
   }
 
   return (

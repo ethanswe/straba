@@ -49,8 +49,8 @@ function App() {
       <ProtectedRoute path="/activities/new" exact={true} authenticated={authenticated}>
         <CreateActivityForm />
       </ProtectedRoute>
-      <Route path="/" exact={true} authenticated={authenticated} >
-        <HomePage/>
+      <Route path="/" exact={true}  >
+        <HomePage setAuthenticated={setAuthenticated} authenticated={authenticated}/>
       </Route>
     </BrowserRouter>
   );
