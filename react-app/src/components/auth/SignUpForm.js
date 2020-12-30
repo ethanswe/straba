@@ -8,7 +8,7 @@ display: flex;
 justify-content: center;
 align-items: center;
 border-radius: 25px;
-width: 200px;
+width: 280px;
 height: 235px;
 color: white;
 /* margin: 0 auto; */
@@ -38,11 +38,15 @@ overflow: hidden; */
 `
 const StyledForm = styled.form`
 /* background-color: black; */
-margin-left: 31px;
+/* margin-left: 31px; */
 /* margin: 0 auto; */
+
 `
 
+
+
 const SignUpInput = styled.input`
+width: 200px;
 :focus{
   box-shadow: 0 0 5px rgba(81, 203, 238, 1);
   background-color: black;
@@ -68,7 +72,7 @@ const SignUpButton = styled.button`
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  margin-left: 28px;
+  margin-left: 60px;
   margin-top: 3px;
 :hover{
   background: transparent;

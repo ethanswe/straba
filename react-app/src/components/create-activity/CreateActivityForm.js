@@ -31,6 +31,10 @@ margin-top: 150px;
 position: absolute;
 `
 
+const TestInput = styled.input`
+/* width: px; */
+`
+
 export const CreateActivityForm = () => {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
@@ -44,7 +48,7 @@ export const CreateActivityForm = () => {
                 <Container>
                     <Form>
                         <Form.Field>
-                            <Input 
+                            <TestInput 
                             placeholder="Title" 
                             value={title} 
                             onChange={e => setTitle(e.target.value)}
