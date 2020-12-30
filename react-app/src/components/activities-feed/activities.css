@@ -18,7 +18,7 @@
   
   .newsSummary{
     /* border: 2px solid red; */
-  
+    font-weight: lighter;
     grid-column: 1/3;
     grid-row: 2/3;
   }

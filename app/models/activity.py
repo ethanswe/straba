@@ -11,9 +11,11 @@ class Activity(db.Model):
   time = db.Column(db.Float, nullable = False)
   gpx_file = db.Column(db.String(255))
   user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable = False)
+  createdAt = db.Column(db.DateTime, server_default=db.func.now())
   
   kudos = db.relationship('Kudos', backref='activity', lazy=True)
   comments = db.relationship('Comment', backref='activity', lazy=True)
+  user = db.relationship("User", back_populates="activities")
 
   def to_dict(self):
         return {
@@ -23,5 +25,19 @@ class Activity(db.Model):
             'distance': self.distance,
             'time': self.time,
             'gpx_file': self.gpx_file,
+            'createdAt': self.createdAt,
             'user_id': self.user_id
+        }
+  
+  def to_user_dict(self):
+        return {
+            'id': self.id,
+            'title': self.title,
+            'description': self.description,
+            'distance': self.distance,
+            'time': self.time,
+            'gpx_file': self.gpx_file,
+            'createdAt': self.createdAt,
+            'user_id': self.user_id,
+            "user": self.user.to_dict()
         }
