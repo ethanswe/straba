@@ -1,14 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react'
 import { NavLink, useLocation, Redirect } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import styled from 'styled-components'
 import { CreateActivityForm } from './create-activity/CreateActivityForm';
 
 const Nav = styled.nav`
-/* display: flex; */
-/* align-items: baseline; */
-/* justify-content: space-around; */
-max-height: 79px;
+max-height: 80px;
 border-bottom: solid 1px #f0f0f5;
 text-decoration: none;
 
@@ -17,6 +14,9 @@ text-decoration: none;
 `
 const NavContainer = styled.div`
 display: flex;
+justify-content: space-between;
+align-items: center;
+flex-direction: row;
 text-decoration: none;
 margin: 0 auto;
 `
@@ -29,21 +29,14 @@ const Buttons = styled.button`
   border: none;
   border-radius: 10px;
   color: #eee;
-  font-size: 20px;
+  font-size: 15px;
   font-family: 'Cookie', cursive;
   position: relative;
   transition: 1s;
   -webkit-tap-highlight-color: transparent;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   cursor: pointer;
-  /* padding-top: 5px; */
-  margin: 0 auto;
-  margin-top: 2px;
-  margin-left: 70em;
-  /* margin-right: 0px; */
   margin-bottom: 0px;
+  margin-left: 10px;
   text-decoration: none;
 :hover{
   background: black;
@@ -58,21 +51,18 @@ const Buttons = styled.button`
 
 
 const Logo = styled.img.attrs({
-    src: 'strabalogo.png'
+      src: 'strabalogo.png'
 })`
 width: 80px;
 height: 80px;
 margin: 0 auto;
-/* border: 1px solid blue; */
+display: flex;
 `
 const NavBar = ({ authenticated, setAuthenticated }) => {
   let location = useLocation();
   const currentPage = location.pathname;
-  console.log(authenticated);
 
-  const onClick = () => {
-    return <Redirect to='/activities/new' />;
-  }
+  const userId = localStorage.getItem('userId')
   return (
     <Nav>
       <NavContainer>
@@ -100,12 +90,17 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
             : "" }
           {authenticated ? 
           <>
-            <LogoutButton setAuthenticated={setAuthenticated} />
             <NavLink to="/activities/new" exact={true} activeClassName="active">
               <Buttons>
                 New Activity
               </Buttons>
-            </NavLink>
+              </NavLink>
+              <NavLink to={`users/${userId}`} exact={true}>
+                <Buttons>
+                  Profile
+                </Buttons>
+              </NavLink>
+            <LogoutButton setAuthenticated={setAuthenticated} />
           </>
             : ""}
         </ul>

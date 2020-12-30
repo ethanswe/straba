@@ -78,8 +78,8 @@ justify-content: center;
 export const CreateActivityForm = () => {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
-    const [distance_string, setDistance] = useState(0);
-    const [time_string, setTime] = useState(0);
+    const [distance_string, setDistance] = useState("");
+    const [time_string, setTime] = useState("");
     const [gpx_file, setGPX_file] = useState(null);
     const [user_id, setUser_Id] = useState(1);
     const history = useHistory();

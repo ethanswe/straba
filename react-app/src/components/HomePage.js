@@ -34,8 +34,10 @@ justify-content: center;
 z-index: -10;
 position: absolute;
 `
-const HomePage = () => {
-
+const HomePage = ({ authenticated, setAuthenticated }) => {
+    if (authenticated) {
+        return <Redirect to="/feed" />;
+    }
     return (
       
         <>
