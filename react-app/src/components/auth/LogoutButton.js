@@ -12,7 +12,7 @@ const Buttons = styled.button`
   border-radius: 10px;
   color: #eee;
   font-size: 15px;
-  font-family: 'Cookie', cursive;
+  font-family: 'Fugaz One', cursive;
   position: relative;
   transition: 1s;
   -webkit-tap-highlight-color: transparent;

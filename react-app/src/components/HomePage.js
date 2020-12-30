@@ -5,12 +5,13 @@ import styled from 'styled-components'
 import { ActivityFeed } from './activities-feed/Activities';
 
 const Header = styled.div`
-font-size: 40px;
+font-size: 35px;
 display: flex;
 align-items: center;
 justify-content: center;
 margin-top: 60px;
 position: relative;
+font-family: 'Fugaz One', cursive;
 z-index: 10;
 `
 
