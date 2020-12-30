@@ -45,7 +45,8 @@ const HomePage = ({ authenticated, setAuthenticated }) => {
         <>
         <>
             <BackgroundImage />
-            <Header>The #1 app for runners and cyclists</Header>
+                <Header>The #1 app for runners and cyclists</Header>
+                <Header2>Sign up or login to continue</Header2>
             <div className='activity-feed'>
             <ActivityFeed />
             </div>
