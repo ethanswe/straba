@@ -14,6 +14,7 @@ class Activity(db.Model):
   
   kudos = db.relationship('Kudos', backref='activity', lazy=True)
   comments = db.relationship('Comment', backref='activity', lazy=True)
+  user = db.relationship("User", back_populates="activities")
 
   def to_dict(self):
         return {
@@ -24,4 +25,16 @@ class Activity(db.Model):
             'time': self.time,
             'gpx_file': self.gpx_file,
             'user_id': self.user_id
+        }
+  
+  def to_user_dict(self):
+        return {
+            'id': self.id,
+            'title': self.title,
+            'description': self.description,
+            'distance': self.distance,
+            'time': self.time,
+            'gpx_file': self.gpx_file,
+            'user_id': self.user_id,
+            "user": self.user.to_dict()
         }

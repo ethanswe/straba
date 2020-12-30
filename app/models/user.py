@@ -14,7 +14,7 @@ class User(db.Model, UserMixin):
   country = db.Column(db.String(255), nullable = False)
   avatar = db.Column(db.String(255))
   
-  activities = db.relationship('Activity', backref='user', lazy=True)
+  activities = db.relationship('Activity', back_populates='user', lazy=True)
   kudos = db.relationship('Kudos', backref='user', lazy=True)
   comments = db.relationship('Comment', backref='user', lazy=True)
   following = db.relationship('Following', backref='user', lazy=True)
@@ -42,4 +42,16 @@ class User(db.Model, UserMixin):
       "country": self.country,
       "avatar": self.avatar,
       "email": self.email
+    }
+
+  def to_activity_dict(self):
+    return {
+      "id": self.id,
+      "first_name": self.first_name,
+      "last_name": self.last_name,
+      "city": self.city,
+      "country": self.country,
+      "avatar": self.avatar,
+      "email": self.email,
+      "activities": [activity.to_dict() for activity in self.activities]
     }
