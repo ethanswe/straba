@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { NavLink } from 'react-router-dom';
 import { List, Header } from 'semantic-ui-react'
 import './activities.css';
 import logo from './strabalogo.png';
@@ -47,9 +48,14 @@ export const ActivityFeed = ()=> {
               return (
                 <div className='newsContainer' key={activity.id}>
                     <div className='newsTitle'>
-                      {activity.title} 
+                      <NavLink to={`/activities/${activity.id}`}>
+                      {activity.title}
+                      </NavLink>
+                      
                       <div>
-                      {activity.user.first_name} {activity.user.last_name} 
+                      <NavLink to={`/users/${activity.user.id}`}>
+                      {activity.user.first_name} {activity.user.last_name}
+                      </NavLink> 
                       </div>
                     
                     <div className='newsSummary'>
