@@ -51,7 +51,7 @@ const Buttons = styled.button`
 
 
 const Logo = styled.img.attrs({
-      src: 'strabalogo.png'
+    src: '../../strabalogo.png'
 })`
 width: 80px;
 height: 80px;
