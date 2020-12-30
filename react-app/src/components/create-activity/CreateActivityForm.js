@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Form, Input, TextArea, Button } from 'semantic-ui-react'
 import styled from 'styled-components'
+import { Redirect, useHistory } from "react-router-dom";
 
 const BackgroundImg = styled.div`
 background-image: url('https://images.pexels.com/photos/2729899/pexels-photo-2729899.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'); 
@@ -60,7 +61,7 @@ margin-top: 150px;
 const Header = styled.h3`
 margin: 0 auto;
 display: flex;
-justify-content: center;
+/* justify-content: center; */
 `
 
 const StyledTextArea = styled.textarea`
@@ -81,6 +82,7 @@ export const CreateActivityForm = () => {
     const [time_string, setTime] = useState(0);
     const [gpx_file, setGPX_file] = useState(null);
     const [user_id, setUser_Id] = useState(1);
+    const history = useHistory();
     return (
         <>
             <BackgroundImg />
@@ -143,7 +145,8 @@ export const CreateActivityForm = () => {
                                     body: JSON.stringify(activity)
                                 })
                                 if (res.ok){
-                                    console.log('response worked')
+                                    alert('Your Activity Has Been Recorded!');
+                                    history.push('/feed')
                                 } else {
                                     console.log(res)
                                     console.log('POST failed.')
