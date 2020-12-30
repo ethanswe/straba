@@ -11,7 +11,7 @@ activity_routes = Blueprint('activities', __name__)
 # @login_required
 def activities():
     try:
-        activities = Activity.query.all()
+        activities = Activity.query.order_by(Activity.createdAt.desc()).all()
         print(activities)
         activity_dicts = [activity.to_user_dict() for activity in activities]
         # filter by following and date descending max 15 (.all().order_by(Activity.created_date.desc()))

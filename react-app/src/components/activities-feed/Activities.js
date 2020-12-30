@@ -47,18 +47,23 @@ export const ActivityFeed = ()=> {
               return (
                 <div className='newsContainer' key={activity.id}>
                     <div className='newsTitle'>
-                      {activity.title}
+                      {activity.title} 
                       <div>
-                      {activity.user.first_name} {activity.user.last_name}
+                      {activity.user.first_name} {activity.user.last_name} 
+                      </div>
+                    
+                    <div className='newsSummary'>
+                    <div>
+                      {activity.createdAt}
                       </div>
                       {activity.description}
                     </div>
-                    <div className='newsSummary'>
-                    <div>
+                    </div>
+                    <div className='newsImg'>
                      <img height='50px' width='50px' src={logo} alt='activity pic'></img>
                      </div>
                     
-                    </div>
+                    
                     
                  </div>
               )
