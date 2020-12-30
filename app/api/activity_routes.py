@@ -11,8 +11,10 @@ activity_routes = Blueprint('activities', __name__)
 # @login_required
 def activities():
     try:
-        activities = Activity.query.all()
-        activity_dicts = [activity.to_dict() for activity in activities]
+        activities = Activity.query.order_by(Activity.createdAt.desc()).all()
+        print(activities)
+        activity_dicts = [activity.to_user_dict() for activity in activities]
+        # filter by following and date descending max 15 (.all().order_by(Activity.created_date.desc()))
         activity_json = jsonify({'activities': activity_dicts})
         return activity_json
     except SQLAlchemyError as e:
@@ -42,6 +44,7 @@ def get_activity(activity_id):
     try:
         activity = Activity.query.filter(Activity.id == activity_id).first()
         activity_json = jsonify({'activities': activity.to_dict()})
+        # pull kudos and comments
         return activity_json
     except SQLAlchemyError as e:
         error = str(e.__dict__['orig'])

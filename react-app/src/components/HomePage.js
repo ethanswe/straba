@@ -34,15 +34,10 @@ justify-content: center;
 z-index: -10;
 position: absolute;
 `
-const HomePage = ({ authenticated, setAuthenticated }) => {
-
-  if (authenticated) {
-    return <Redirect to="/feed" />;
-  }
-
+const HomePage = () => {
 
     return (
-        <>
+      
         <>
             <BackgroundImage />
             <Header>The #1 app for runners and cyclists</Header>
@@ -50,7 +45,7 @@ const HomePage = ({ authenticated, setAuthenticated }) => {
             <ActivityFeed />
             </div>
             </>
-        </>
+      
     )
 }
 

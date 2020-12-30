@@ -134,7 +134,7 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
   };
 
   if (authenticated) {
-    return <Redirect to="/feed" />;
+    return <Redirect to="/" />;
   }
 
   return (
