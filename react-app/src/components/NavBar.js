@@ -23,6 +23,7 @@ margin: 0 auto;
 
 const Buttons = styled.button`
   text-decoration: none;
+  font-family: 'Fugaz One', cursive;
   background: #222;
   height: 28px;
   min-width: 80px;
@@ -30,7 +31,7 @@ const Buttons = styled.button`
   border-radius: 10px;
   color: #eee;
   font-size: 15px;
-  font-family: 'Cookie', cursive;
+  /* font-family: 'Cookie', cursive; */
   position: relative;
   transition: 1s;
   -webkit-tap-highlight-color: transparent;

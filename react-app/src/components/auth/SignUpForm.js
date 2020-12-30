@@ -21,6 +21,7 @@ z-index: 1;
 const H1 = styled.h1`
 display: flex;
 justify-content: center;
+font-family: 'Fugaz One', cursive;
 /* font-family: 'Staatliches', cursive; */
 align-items: center;
 font-size: 15px;
@@ -64,7 +65,7 @@ const SignUpButton = styled.button`
   border-radius: 10px;
   color: #eee;
   font-size: 20px;
-  font-family: 'Cookie', cursive;
+  font-family: 'Fugaz One', cursive;
   position: relative;
   transition: 1s;
   -webkit-tap-highlight-color: transparent;
