@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Form, Input, TextArea, Button } from 'semantic-ui-react'
 import styled from 'styled-components'
+import { Redirect, useHistory } from "react-router-dom";
 
 const BackgroundImg = styled.div`
 background-image: url('https://images.pexels.com/photos/2729899/pexels-photo-2729899.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'); 
@@ -14,13 +15,40 @@ background-size: cover;
 position: absolute;
 `
 
+const SubmitButton = styled.button`
+  background: #222;
+  height: 25px;
+  min-width: 90px;
+  border: none;
+  border-radius: 10px;
+  color: #eee;
+  font-size: 20px;
+  font-family: 'Cookie', cursive;
+  position: relative;
+  transition: 1s;
+  -webkit-tap-highlight-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-top: 3px;
+:hover{
+  background: transparent;
+  height: 35px;
+  min-width: 90px;
+  left: 0;
+  border-radius: 0;
+  border-bottom: 2px solid #eee;
+}
+`
+
 const Container = styled.div`
 display: flex;
 justify-content: center;
 align-items: center;
 border-radius: 25px;
-width: 200px;
-height: 235px;
+width: 300px;
+height: 400px;
 color: white;
 margin: 0 auto;
 flex-direction: row;
@@ -28,7 +56,23 @@ background-color: black;
 opacity: 85%;
 z-index: 1;
 margin-top: 150px;
-position: absolute;
+`
+
+const Header = styled.h3`
+margin: 0 auto;
+display: flex;
+/* justify-content: center; */
+`
+
+const StyledTextArea = styled.textarea`
+width: 250px;
+height: 200px;
+`
+const TestInput = styled.input`
+width: 136.71px;
+display: flex;
+justify-content: center;
+
 `
 
 export const CreateActivityForm = () => {
@@ -38,27 +82,29 @@ export const CreateActivityForm = () => {
     const [time_string, setTime] = useState(0);
     const [gpx_file, setGPX_file] = useState(null);
     const [user_id, setUser_Id] = useState(1);
+    const history = useHistory();
     return (
         <>
             <BackgroundImg />
-                <Container>
-                    <Form>
+            <Container>
+                <Form>
+                    <Header>Create A New Activity:</Header>
                         <Form.Field>
-                            <Input 
+                            <TestInput 
                             placeholder="Title" 
                             value={title} 
                             onChange={e => setTitle(e.target.value)}
                             />
                         </Form.Field>
                         <Form.Field>
-                            <TextArea 
+                            <StyledTextArea 
                             placeholder="Describe your activity." 
                             value={description}
                             onChange={(e)=> setDescription(e.target.value)}
                             />
                         </Form.Field>
                         <Form.Field>
-                            <Input
+                            <TestInput
                             label={{ basic: true, content: 'miles' }}
                             labelPosition='right'
                             placeholder='Distance'
@@ -67,7 +113,7 @@ export const CreateActivityForm = () => {
                             />
                         </Form.Field>
                         <Form.Field>
-                            <Input
+                            <TestInput
                             label={{ basic: true, content: 'minutes' }}
                             labelPosition='right'
                             placeholder='Time'
@@ -76,14 +122,14 @@ export const CreateActivityForm = () => {
                             />
                         </Form.Field>
                         <Form.Field>
-                            <Input 
+                            <TestInput 
                             placeholder="GPX File" 
                             value={gpx_file} 
                             onChange={e => setGPX_file(e.target.value)}
                             />
                         </Form.Field>
                         <Form.Field>
-                            <Button onClick = {async () => {
+                            <SubmitButton onClick = {async () => {
                                 const time = parseFloat(time_string).toFixed(2)
                                 const distance = parseFloat(distance_string).toFixed(2)
                                 console.log(time)
@@ -99,14 +145,15 @@ export const CreateActivityForm = () => {
                                     body: JSON.stringify(activity)
                                 })
                                 if (res.ok){
-                                    console.log('response worked')
+                                    alert('Your Activity Has Been Recorded!');
+                                    history.push('/feed')
                                 } else {
                                     console.log(res)
                                     console.log('POST failed.')
                                 }
                             }}>
                                 Submit
-                            </Button>
+                            </SubmitButton>
                         </Form.Field>
                     </Form>
             </Container>
