@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Form, Input, TextArea, Button } from 'semantic-ui-react'
+import { ActivityFeed } from '../activities-feed/Activities';
 
 export const CreateActivityForm = () => {
     const [title, setTitle] = useState("");
@@ -9,6 +10,7 @@ export const CreateActivityForm = () => {
     const [gpx_file, setGPX_file] = useState(null);
     const [user_id, setUser_Id] = useState(1);
     return (
+        <>
         <Form>
             <Form.Field>
                 <Input 
@@ -76,5 +78,7 @@ export const CreateActivityForm = () => {
                 </Button>
             </Form.Field>
         </Form>
+        <ActivityFeed />
+        </>
     )
 }
