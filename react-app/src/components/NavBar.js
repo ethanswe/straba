@@ -62,7 +62,8 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
   let location = useLocation();
   const currentPage = location.pathname;
 
-  const userId = localStorage.getItem('userId')
+  const userId = localStorage.getItem('userId');
+  console.log(userId)
   return (
     <Nav>
       <NavContainer>
@@ -94,12 +95,12 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
               <Buttons>
                 New Activity
               </Buttons>
-              </NavLink>
-              <NavLink to={`users/${userId}`} exact={true}>
-                <Buttons>
-                  Profile
-                </Buttons>
-              </NavLink>
+            </NavLink>
+            <NavLink to={`/users/${userId}`} exact={true} activeClassName="active">
+              <Buttons>
+                Profile
+              </Buttons>
+            </NavLink>
             <LogoutButton setAuthenticated={setAuthenticated} />
           </>
             : ""}
