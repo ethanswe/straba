@@ -26,16 +26,14 @@ function User() {
       setUser(user);
       const response2 = await fetch(`/api/following/users/${userId}`)
       const data = await response2.json();
-      console.log(data)
-      setFollowingNum(data.followingLen)
-      setFollowersNum(data.followersLen)
-      const response3 = await fetch(`/api/following/${userId}&${currentUserId}`)
+      setFollowingNum(data.following.length)
+      setFollowersNum(data.followers.length)
+      const response3 = await fetch(`/api/following/${userId}/${currentUserId}`)
       const data2 = await response3.json()
-      console.log(data2)
       setFollows(data2.follows)
-      console.log(follows)
+
     })();
-  }, [userId]);
+  }, [userId, follows]);
 
   if (!user) {
     return null;
@@ -77,7 +75,6 @@ function User() {
       const data = await response.json();
       setFollows(false);
     }
-    console.log(follows)
   }
 
   let content;
@@ -93,7 +90,22 @@ function User() {
     return;
   }
 
+  let follow;
+  const followButton = () => {
+    if (currentUserId === userId) {
+      follow = <></>
+    } else {
+      follow = <div>{follows ? (
+        <h4 onClick={handleFollowing}>Following</h4>
+      ) : (
+          <h4 onClick={handleFollowing}>Follow</h4>
+        )
+      }</div>
+    }
+  }
+
   fillingContent()
+  followButton()
 
   return (
     <div className='userContainer'>
@@ -102,12 +114,7 @@ function User() {
         <div className='usersName'>
           <strong>{user.first_name} {user.last_name}</strong>
         </div>
-        {follows ? (
-          <h4 onClick={handleFollowing}>Following</h4>
-        ) : (
-          <h4 onClick={handleFollowing}>Follow</h4>
-        )
-       }
+       {follow}
       </div>
       <div className='activitiesContainer'>
         <div className='usersActivities'>

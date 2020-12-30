@@ -16,29 +16,34 @@ function FollowingComp() {
             const response = await fetch(`/api/following/users/${userId}`)
             const data = await response.json();
             if (data.followers.length > 0){
-                setFollowers(data[followers])
+                setFollowers(data.followers)
             }
             if (data.following.length > 0) {
                 setFollowing(data[following])
             }
         })();
-        
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     let followContent;
     let followersContent;
 
-    if (followers[0].message) {
-        followersContent = <div>{followers[0].message}</div>
-    } else {
-        followersContent = <ul>{followers.map((person) => <li>{person.first_name} {person.last_name}</li>)}</ul>
+    const followingContent = () => {
+        if (followers[0]["message"]) {
+            followersContent = <div>{followers[0].message}</div>
+        } else {
+            followersContent = <ul>{followers.map((person) => <li key={person.id}>{person.first_name} {person.last_name}</li>)}</ul>
+        }
+        if (following[0]["message"]) {
+            followContent = <div>{following[0].message}</div>
+        } else {
+            followContent = <ul>{following.map((person) => <li key={person.id}>{person.first_name} {person.last_name}</li>)}</ul>
+        }
+
     }
-    if (following[0].message) {
-        followContent = <div>{following[0].message}</div>
-    } else {
-        followContent = <ul>{following.map((person) => <li>{person.first_name} {person.last_name}</li>)}</ul>
-    }
+
+    followingContent()
 
     return (
         <>
