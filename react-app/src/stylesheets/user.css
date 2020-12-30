@@ -1,0 +1,150 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.userContainer {
+    padding: 0px 450px 0 350px;
+    padding-top: 15px;
+}
+
+.userInfo {
+    /* background-color: aqua; */
+    padding-left: 20px;
+}
+
+.userInfo img {
+    width: 170px;
+    height: 170px;
+}
+
+.usersName {
+    font-size: 2em;
+}
+
+.activitiesContainer {
+    display: flex;
+    height: 150px;
+    /* background-color: red; */
+    justify-content: flex-end;
+}
+
+.usersActivities {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    /* background-color: green; */
+    font-size: 15px;
+    color: gray;
+    margin-right: 70px;
+}
+
+.usersActivities strong {
+    font-size: 5em;
+    color: black;
+}
+
+.usersActivities h6 {
+    justify-items: flex-end;
+    justify-content: flex-end;
+    font-weight: thin;
+    font-size: large;
+    /* background-color: blue; */
+}
+
+.mainContainer {
+    /* background-color: burlywood; */
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+}
+
+.mainContainer h3 {
+    /* background-color: blue; */
+    padding: 8px 10px;
+    font-weight: 200;
+}
+
+.tab {
+    margin-top: 5px;
+}
+
+.tab:hover {
+    cursor: pointer;
+    transition-duration: 300ms;
+    background-color: rgba(240, 240, 240, 1);
+}
+
+.activeTab {
+    z-index: 10;
+    border-left: solid thin lightgray;
+    border-top: solid thick orange;
+    border-right: solid thin lightgray;
+    border-bottom: solid thick white;
+    border-bottom-left-radius: 5%;
+    border-bottom-right-radius: 5%;
+}
+
+.content {
+    z-index: -1;
+    position: absolute;
+    margin-top: 46px;
+    border-top: solid thin lightgray;
+    padding-top: 30px;
+    width: 40%;
+}
+
+.lowerBody {
+    display: flex;
+    flex-direction: row;
+    align-content: space-between;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+
+/* rightside for main */
+
+.socialStats {
+    margin-top: 46px;
+    width: 40vw;
+    margin-left: 40px;
+    border-top: solid thin lightgray;
+    padding: 20px 0 40px 0;
+}
+
+.followingCounts {
+    display: flex;
+    padding: 25px 0;
+}
+
+.followingCounts .a {
+    padding-left: 15px;
+}
+
+.followingCounts h6 {
+    color: gray;
+    font-size: 15px;
+    font-weight: 100;
+}
+
+.followingCounts h4 {
+    color: rgb(14, 139, 255);
+    font-size: 24px;
+    font-weight: 100;
+}
+
+.followingCounts h4:hover {
+    cursor: pointer;
+}
+
+.myStats {
+    /* background-color: lightgreen; */
+    margin-top: 30px;
+    border-top: solid thin lightgray
+}
+
+.myStats h2 {
+    padding: 35px 0;
+}
