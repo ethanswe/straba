@@ -24,26 +24,7 @@ export const ActivityFeed = ()=> {
       }
     return (
       <>
-            {/* <List>
-                {activities.map(activity =>{
-                   return(
-                        <List.Item key={activity.title}>
-                            <Header>
-                                {activity.title}
-                            </Header>
-                            <Header>
-                                {activity.description}
-                            </Header>
-                            <Header>
-                                {activity.distance} miles
-                            </Header>
-                            <Header>
-                                {activity.time} minutes
-                            </Header>
-                        </List.Item>
-                   )
-                })}
-            </List> */}
+
             {activities.map(activity =>{
               return (
                 <div className='newsContainer' key={activity.id}>
@@ -56,6 +37,20 @@ export const ActivityFeed = ()=> {
                       <NavLink to={`/users/${activity.user.id}`}>
                       {activity.user.first_name} {activity.user.last_name}
                       </NavLink> 
+                      <div className='runstats-container'>
+                        <div>
+                          Distance: 
+                          {activity.distance} miles
+                        </div>
+                        <div>
+                          Time: 
+                          {activity.time > 60 ? (activity.time / 60).toFixed(2) + ' hours': activity.time + ' minutes'} 
+                        </div>
+                        <div>
+                          Pace: 
+                          {parseFloat(activity.time / activity.distance).toFixed(2)} minutes/mile
+                        </div>
+                      </div>
                       </div>
                     
                     <div className='newsSummary'>

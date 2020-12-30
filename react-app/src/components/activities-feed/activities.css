@@ -34,3 +34,7 @@
   .newsLink{
     color: green;
   }
+
+  .runstats-container{
+    display: flex;
+  }
