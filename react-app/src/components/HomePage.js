@@ -9,11 +9,19 @@ font-size: 40px;
 display: flex;
 align-items: center;
 justify-content: center;
-margin-top: 90px;
+margin-top: 60px;
 position: relative;
 z-index: 10;
 `
-
+const Header2 = styled.div`
+font-size: 25px;
+display: flex;
+align-items: center;
+justify-content: center;
+margin-top: 10px;
+position: relative;
+z-index: 10;
+`
 
 const BackgroundImage = styled.div`
 background-image: url('https://images.pexels.com/photos/1081031/pexels-photo-1081031.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
