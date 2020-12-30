@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation, Redirect } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import styled from 'styled-components'
 import { ActivityFeed } from './activities-feed/Activities';
@@ -34,9 +34,11 @@ justify-content: center;
 z-index: -10;
 position: absolute;
 `
-const HomePage = () => {
+const HomePage = ({ authenticated, setAuthenticated }) => {
 
-
+  if (authenticated) {
+    return <Redirect to="/feed" />;
+  }
 
 
     return (
