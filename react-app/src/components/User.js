@@ -7,12 +7,14 @@ import '../stylesheets/user.css'
 function User() {
   const [user, setUser] = useState({});
   const [overview, setOverview] = useState(true);
+  const [follows, setFollows] = useState(false);
   const [followers, setFollowers] = useState(false);
   const [followingNum, setFollowingNum] = useState(0);
   const [followersNum, setFollowersNum] = useState(0);
   // Notice we use useParams here instead of getting the params
   // From props.
   const { userId }  = useParams();
+  const currentUserId = localStorage.getItem('userId')
 
   useEffect(() => {
     if (!userId) {
@@ -22,10 +24,16 @@ function User() {
       const response = await fetch(`/api/users/${userId}`);
       const user = await response.json();
       setUser(user);
-      const response2 = await fetch(`/api/following/${userId}`)
+      const response2 = await fetch(`/api/following/users/${userId}`)
       const data = await response2.json();
+      console.log(data)
       setFollowingNum(data.followingLen)
       setFollowersNum(data.followersLen)
+      const response3 = await fetch(`/api/following/${userId}&${currentUserId}`)
+      const data2 = await response3.json()
+      console.log(data2)
+      setFollows(data2.follows)
+      console.log(follows)
     })();
   }, [userId]);
 
@@ -43,8 +51,36 @@ function User() {
     setFollowers(true)
   }
 
-  let content;
+  const handleFollowing = async () => {
+    if (follows === false) {
+      const response = await fetch(`/api/following/${userId}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          'userId': currentUserId
+        }),
+      });
+      const data = await response.json();
+      setFollows(true);
+    } else {
+      const response = await fetch(`/api/following/${userId}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          'userId': currentUserId
+        }),
+      });
+      const data = await response.json();
+      setFollows(false);
+    }
+    console.log(follows)
+  }
 
+  let content;
   const fillingContent = () => {
     switch (true) {
       case followers:
@@ -66,6 +102,12 @@ function User() {
         <div className='usersName'>
           <strong>{user.first_name} {user.last_name}</strong>
         </div>
+        {follows ? (
+          <h4 onClick={handleFollowing}>Following</h4>
+        ) : (
+          <h4 onClick={handleFollowing}>Follow</h4>
+        )
+       }
       </div>
       <div className='activitiesContainer'>
         <div className='usersActivities'>

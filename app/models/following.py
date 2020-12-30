@@ -7,3 +7,11 @@ class Following(db.Model):
   id = db.Column(db.Integer, primary_key = True)
   user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable = False)
   followed_user_id = db.Column(db.Integer, nullable = False)
+
+
+  def to_dict(self):
+      return {
+        'id': self.id,
+        'user_id': self.user_id,
+        'followed_user_id': self.followed_user_id
+      }

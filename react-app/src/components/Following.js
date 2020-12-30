@@ -13,7 +13,7 @@ function FollowingComp() {
             return
         }
         (async () => {
-            const response = await fetch(`/api/following/${userId}`)
+            const response = await fetch(`/api/following/users/${userId}`)
             const data = await response.json();
             if (data.followers.length > 0){
                 setFollowers(data[followers])
