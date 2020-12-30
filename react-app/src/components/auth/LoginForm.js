@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import { login } from "../../services/auth";
 import styled from 'styled-components'
 
@@ -10,8 +10,6 @@ border-radius: 25px;
 width: 200px;
 height: 120px;
 color: white;
-/* margin: 0 auto; */
-/* margin: 0 auto; */
 flex-direction: row;
 background-color: black;
 opacity: 85%;
@@ -32,13 +30,8 @@ background-size: cover;
 display: flex;
 align-items: center;
 justify-content: center;
-/* position: absolute;
-overflow: hidden;  */
-/* background-repeat:no-repeat; */
-/* background-size: cover; */
 `
 const StyledForm = styled.form`
-/* background-color: black; */
 margin-left: 10px;
 `
 
@@ -79,9 +72,6 @@ const LogInInput = styled.input`
   background: transparent;
   transition: 0.5s;
   color: white;
-  /* padding: 3px 0px 3px 3px; */
-  /* margin: 5px 1px 3px 0px; */
-  /* border: 1px solid rgba(81, 203, 238, 1); */
 }
 `
 
