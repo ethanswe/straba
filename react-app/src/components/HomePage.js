@@ -43,7 +43,6 @@ const HomePage = () => {
         <>
             <BackgroundImage />
                 <Header>The #1 app for runners and cyclists</Header>
-                <Header2>Sign up or login above</Header2>
             </>
         </>
     )
