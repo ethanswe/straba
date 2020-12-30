@@ -42,6 +42,7 @@ const LogoutButton = ({setAuthenticated}) => {
   const onLogout = async (e) => {
     await logout();
     setAuthenticated(false);
+    localStorage.removeItem('userId');
     return <Redirect to="/" />;
   };
 

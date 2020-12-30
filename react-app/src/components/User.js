@@ -8,6 +8,8 @@ function User() {
   const [user, setUser] = useState({});
   const [overview, setOverview] = useState(true);
   const [followers, setFollowers] = useState(false);
+  const [followingNum, setFollowingNum] = useState(0);
+  const [followersNum, setFollowersNum] = useState(0);
   // Notice we use useParams here instead of getting the params
   // From props.
   const { userId }  = useParams();
@@ -20,6 +22,10 @@ function User() {
       const response = await fetch(`/api/users/${userId}`);
       const user = await response.json();
       setUser(user);
+      const response2 = await fetch(`/api/following/${userId}`)
+      const data = await response2.json();
+      setFollowingNum(data.followingLen)
+      setFollowersNum(data.followersLen)
     })();
   }, [userId]);
 
@@ -99,11 +105,11 @@ function User() {
           <div className='followingCounts'>
             <div>
               <h6>Following</h6>
-              <h4 onClick={handleFollowers}>0</h4>
+              <h4 onClick={handleFollowers}>{followingNum}</h4>
             </div>
             <div className='a'>
               <h6>Followers</h6>
-              <h4 onClick={handleFollowers}>0</h4>
+              <h4 onClick={handleFollowers}>{followersNum}</h4>
             </div>
           </div>
           <div className='myStats'>
