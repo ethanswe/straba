@@ -43,7 +43,7 @@ def get_activities(user_id):
 def get_activity(activity_id):
     try:
         activity = Activity.query.filter(Activity.id == activity_id).first()
-        activity_json = jsonify({'activities': activity.to_dict()})
+        activity_json = jsonify({'activities': activity.to_user_dict()})
         # pull kudos and comments
         return activity_json
     except SQLAlchemyError as e:
