@@ -5,6 +5,7 @@ from sqlalchemy.exc import SQLAlchemyError
 
 following_routes = Blueprint('following', __name__)
 
+
 # GET all followers and followings for a user
 @following_routes.route('/<int:user_id>')
 def following(user_id):
@@ -25,6 +26,7 @@ def following(user_id):
         print(error)
         return {'errors': ['An error occurred while retrieving the data']}, 500
 
+
 # POST a new follow
 @following_routes.route('/<int:user_id>', methods=["POST"])
 def post_following(user_id):
@@ -36,3 +38,16 @@ def post_following(user_id):
     db.session.add(follow)
     db.session.commit()
     return 'Done', 201
+
+
+# DELETE a follow
+@following_routes.route('/<int:user_id>', methods=["DELETE"])
+def delete_following(user_id):
+    data = request.json
+    delete_follow = Following.query.filter(Following.followed_user_id == user_id, Following.user_id == data['userId'])
+    if delete_follow:
+        db.session.delete(delete_follow)
+        db.session.commit()
+        return {'message': 'Unfollowed'}
+    else:
+        return {'errors': ['Error with unfollowing.']}, 404

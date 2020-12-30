@@ -32,12 +32,12 @@ function FollowingComp() {
     if (followers[0].message) {
         followersContent = <div>{followers[0].message}</div>
     } else {
-        followersContent = <div>{followers.map((person) => <div>{person.first_name} {person.last_name}</div>)}</div>
+        followersContent = <ul>{followers.map((person) => <li>{person.first_name} {person.last_name}</li>)}</ul>
     }
     if (following[0].message) {
         followContent = <div>{following[0].message}</div>
     } else {
-        followContent = <div>{following.map((person) => <div>{person.first_name} {person.last_name}</div>)}</div>
+        followContent = <ul>{following.map((person) => <li>{person.first_name} {person.last_name}</li>)}</ul>
     }
 
     return (
