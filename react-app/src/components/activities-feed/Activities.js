@@ -18,6 +18,7 @@ z-index: -10;
 position: fixed;
 left: 0;
 opacity: 50%;
+overflow-y: hidden;
 `
 
 const CenterContainer = styled.div`
@@ -25,8 +26,15 @@ display: flex;
 margin: 0 auto;
 justify-content: center;
 max-width: 650px;
-z-index: 10;
+z-index: 1;
+overflow: auto;
+margin-top: 10px;
+border-radius: 5px;
 
+`
+
+const StyledDiv = styled.div`
+margin-bottom: 5px;
 `
 
 
@@ -54,18 +62,18 @@ export const ActivityFeed = ()=> {
         {activities.map(activity => {
               return (
                 <CenterContainer>
-                <div className='newsContainer1'>
+                <StyledDiv className='newsContainer1'>
                     <div className='newsTitle1'>
                       
                     <NavLink to={`/users/${activity.user.id}`}>
                       {activity.user.first_name} {activity.user.last_name}
-                      </NavLink>  - Run
+                      </NavLink>  
                     </div>
 
-                    <div className='social1'>
+                    <StyledInfo className='social1'>
                       
                      # Kudos   # Comments
-                    </div>
+                    </StyledInfo>
 
                     <div className='avatarTitle1'>
                         <img height='50px' width='50px' src={logo} alt='activity pic'></img>  
@@ -97,7 +105,7 @@ export const ActivityFeed = ()=> {
                     </div>
 
 
-                  </div> 
+                  </StyledDiv> 
                 </CenterContainer>
               )
         })}

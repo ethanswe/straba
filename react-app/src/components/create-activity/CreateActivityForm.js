@@ -8,10 +8,6 @@ background-image: url('https://images.pexels.com/photos/2729899/pexels-photo-272
 width: 100vw;
 height: 91vh;
 background-size: cover;
-/* display: flex; */
-/* align-items: center; */
-/* justify-content: center; */
-/* z-index: -10; */
 position: absolute;
 `
 
@@ -62,7 +58,6 @@ const Header = styled.h3`
 margin: 0 auto;
 display: flex;
 font-family: 'Fugaz One', cursive;
-/* justify-content: center; */
 `
 
 const StyledTextArea = styled.textarea`

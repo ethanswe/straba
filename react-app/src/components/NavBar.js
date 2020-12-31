@@ -11,9 +11,10 @@ text-decoration: none;
 position: -webkit-sticky; /* Safari */
 position: sticky;
 top: 0;
-z-index: 100;
+z-index: 25;
+background-color: white;
 /* overflow: hide; */
-
+/* background-color: black; */
 `
 const NavContainer = styled.div`
 display: flex;
@@ -22,7 +23,6 @@ align-items: center;
 flex-direction: row;
 text-decoration: none;
 margin: 0 auto;
-z-index: 100;
 `
 
 const Buttons = styled.button`
