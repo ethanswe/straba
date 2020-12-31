@@ -4,6 +4,7 @@ import { List, Header } from 'semantic-ui-react'
 import './activities.css';
 import logo from './strabalogo.png';
 import styled from 'styled-components'
+import { Kudos } from './Kudos';
 
 const CenterContainer = styled.div`
 display: flex;
@@ -45,7 +46,8 @@ export const ActivityFeed = ()=> {
 
                     <div className='social1'>
                       
-                     # Kudos   # Comments
+                     
+                      <span> <Kudos activity={activity}/> # Kudos   # Comments </span>
                     </div>
 
                     <div className='avatarTitle1'>
@@ -74,7 +76,7 @@ export const ActivityFeed = ()=> {
             
 
                     <div className='map1'>
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d41533406.428697795!2d73.8664217!3d50.5528081!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2skr!4v1609370759819!5m2!1sen!2skr" width='100%' height='100%'></iframe>
+                        <iframe src="https://www.google.com/maps/d/embed?mid=1_Nd9y4jr4qGFY1y3aKu_6eCxOjd3HAeq" width='100%' height='100%'></iframe>
                     </div>
 
 
