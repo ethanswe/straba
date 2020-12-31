@@ -23,7 +23,7 @@ const SubmitButton = styled.button`
   border-radius: 10px;
   color: #eee;
   font-size: 20px;
-  font-family: 'Cookie', cursive;
+font-family: 'Fugaz One', cursive;
   position: relative;
   transition: 1s;
   -webkit-tap-highlight-color: transparent;
@@ -34,7 +34,7 @@ const SubmitButton = styled.button`
   margin-top: 3px;
 :hover{
   background: transparent;
-  height: 35px;
+  height: 30px;
   min-width: 90px;
   left: 0;
   border-radius: 0;
@@ -61,6 +61,7 @@ margin-top: 150px;
 const Header = styled.h3`
 margin: 0 auto;
 display: flex;
+font-family: 'Fugaz One', cursive;
 /* justify-content: center; */
 `
 
