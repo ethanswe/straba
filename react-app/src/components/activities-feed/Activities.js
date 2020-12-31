@@ -4,6 +4,7 @@ import { List, Header } from 'semantic-ui-react'
 import './activities.css';
 import logo from './strabalogo.png';
 import styled from 'styled-components'
+import AboutUs from '../about-us-feed/AboutUs';
 
 
 const BackgroundPhoto = styled.div`
@@ -58,6 +59,7 @@ justify-content: space-between;
 `
 
 
+
 const ActivityInfo = styled.div`
 display: flex;
 justify-content: space-between;
@@ -90,10 +92,42 @@ const ActivityDiv = styled.div`
 margin-bottom: 4px;
 `
 
+const Kudos = styled.div`
+background-color: white;
+max-width: 650px;
+margin: 0 auto;
+height: 30px;
+/* display: flex; */
+/* justify-content: center; */
+/* align-items: center; */
+`
+const KudosImg = styled.div`
+background-image: url('https://lh3.googleusercontent.com/proxy/OiqlUE1iAcPEccwy6Y5biS8eARro-Bh6BW-JCsTGs69HFjLU9ekoOGGn_auQFPKTb4GTYGBmT4oRmiCitC8gAf-O2hBBnDAs_EkY1FhWIcVbM9vA7a-JXThcMl2nLQ93ZNQIfHtWTYV3PHiwuh2ve_nz0DMe6vRjOawF');
+width: 30px;
+height: 30px;
+/* background-color: black; */
+background-size: cover;
+/* display: flex;
+align-items: center;
+justify-content: center; */
+
+`
+
+const AboutUsDiv = styled.div`
+margin-right: 0 auto;
+
+`
+
+
 export const ActivityFeed = () => {
     const [loaded, setLoaded] = useState(false);
     const [activities, setActivities] = useState({});
 
+  let count = 0; 
+  const onClick = () => {
+    count += 1;
+    console.log(count)
+  }
     useEffect(() => {
       fetch('/api/activities').then(res =>
         res.json().then(data => {
@@ -112,7 +146,8 @@ export const ActivityFeed = () => {
       <>
       <BackgroundPhoto/>
         {activities.map(activity => {
-              return (
+          return (
+                <>
                 <CenterContainer>
                 <StyledDiv className='newsContainer1'>
                     <UserDiv className='newsTitle1'>
@@ -124,7 +159,7 @@ export const ActivityFeed = () => {
 
                     <KudosDiv className='social1'>
                       
-                     # Kudos:   <br /> # Comments:
+                     # Kudos: {count}  <br /> # Comments:
                     </KudosDiv>
 
                     <ActivityInfo className='avatarTitle1'>
@@ -162,7 +197,12 @@ export const ActivityFeed = () => {
 
 
                   </StyledDiv> 
-                </CenterContainer>
+              </CenterContainer>
+              <Kudos>
+                <KudosImg onClick={onClick}>
+                </KudosImg>
+              </Kudos>
+              </>
               )
         })}
         </>
