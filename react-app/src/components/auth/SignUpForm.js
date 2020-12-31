@@ -29,7 +29,7 @@ font-size: 15px;
 const BackgroundPhoto = styled.div`
 background-image: url('https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80'); 
 width: 100vw;
-height: 100vh;
+height: 91vh;
 background-size: cover;
 display: flex;
 align-items: center;

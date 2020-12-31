@@ -3,7 +3,14 @@ import { NavLink } from 'react-router-dom';
 import { List, Header } from 'semantic-ui-react'
 import './activities.css';
 import logo from './strabalogo.png';
+import styled from 'styled-components'
 
+const CenterContainer = styled.div`
+display: flex;
+margin: 0 auto;
+justify-content: center;
+max-width: 600px;
+`
 
 export const ActivityFeed = ()=> {
     const [loaded, setLoaded] = useState(false);
@@ -27,6 +34,7 @@ export const ActivityFeed = ()=> {
 
             {activities.map(activity =>{
               return (
+                <CenterContainer>
                 <div className='newsContainer1'>
                     <div className='newsTitle1'>
                       
@@ -70,7 +78,8 @@ export const ActivityFeed = ()=> {
                     </div>
 
 
-                </div> 
+                  </div> 
+                </CenterContainer>
               )
             })}
         </>
