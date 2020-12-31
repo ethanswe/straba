@@ -29,14 +29,42 @@ max-width: 650px;
 z-index: 1;
 overflow: auto;
 margin-top: 10px;
-border-radius: 5px;
+border-radius: 8px;
 
 `
 
 const StyledDiv = styled.div`
 margin-bottom: 5px;
+background-color: white;
+
 `
 
+const StyledInfo = styled.div`
+
+`
+
+const KudosDiv = styled.div`
+margin: 5px;
+display: flex;
+justify-content: space-between;
+
+`
+
+const UserDiv = styled.div`
+margin: 5px;
+margin-left: 10px;
+display: flex;
+justify-content: space-between;
+`
+
+
+const ActivityInfo = styled.div`
+display: flex;
+justify-content: space-between;
+align-items: flex-end;
+margin-left: 10px;
+margin: 5px;
+`
 
 export const ActivityFeed = ()=> {
     const [loaded, setLoaded] = useState(false);
@@ -63,25 +91,25 @@ export const ActivityFeed = ()=> {
               return (
                 <CenterContainer>
                 <StyledDiv className='newsContainer1'>
-                    <div className='newsTitle1'>
+                    <UserDiv className='newsTitle1'>
                       
                     <NavLink to={`/users/${activity.user.id}`}>
                       {activity.user.first_name} {activity.user.last_name}
                       </NavLink>  
-                    </div>
+                    </UserDiv>
 
-                    <StyledInfo className='social1'>
+                    <KudosDiv className='social1'>
                       
                      # Kudos   # Comments
-                    </StyledInfo>
+                    </KudosDiv>
 
-                    <div className='avatarTitle1'>
+                    <ActivityInfo className='avatarTitle1'>
                         <img height='50px' width='50px' src={logo} alt='activity pic'></img>  
                         {activity.createdAt} 
                         <NavLink to={`/activities/${activity.id}`}>
                       {activity.title}
                       </NavLink>
-                    </div>
+                    </ActivityInfo>
 
                     <div className='runstats-container1'>
                         <div>

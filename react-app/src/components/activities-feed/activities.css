@@ -13,14 +13,15 @@ body {
     font-family: 'Fugaz One', cursive;
 }
 .newsTitle1{
-  border: 2px solid black;
+  /* border: 2px solid black; */
+  border-radius: 5px;
   font-weight: bold;
   grid-column: 1/2;
   grid-row: 1/2;
 }
 
 .social1{
-  border: 2px solid black;
+  /* border: 2px solid black; */
   font-weight: bold;
   grid-column: 2/3;
   grid-row: 1/2;
@@ -28,7 +29,7 @@ body {
 
 
 .newsImg1{
-  border: 2px solid black;
+  /* border: 2px solid black; */
   height: 50px;
   width:  50px;
   grid-column: 1/2;
@@ -44,21 +45,21 @@ body {
 }
 
 .avatarTitle1 {
-  border: 2px solid black;
+  /* border: 2px solid black; */
   font-weight: bold;
   grid-column: 1/2;
   grid-row: 2/3;
 }
 
 .runstats-container1 {
-  border: 2px solid black;
+  /* border: 2px solid black; */
   font-weight: bold;
   grid-column: 2/3;
   grid-row: 2/3;
 }
 
 .map1 {
-  border: 2px solid black;
+  /* border: 2px solid black; */
   font-weight: bold;
   grid-column: 1/3;
   grid-row: 3/3;

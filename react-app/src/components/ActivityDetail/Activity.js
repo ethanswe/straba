@@ -25,6 +25,7 @@ left: 0;
 opacity: 50%;
 `
 
+
 export const Activity = ()=> {
     const [loaded, setLoaded] = useState(false);
     const [activities, setActivities] = useState({});
@@ -49,9 +50,10 @@ export const Activity = ()=> {
            <CenterContainer>
                 <div className='newsContainer'>
                     <div className='newsTitle'>
-                      
-                      {activities.user.first_name} {activities.user.last_name}
-                    </div>
+                      <div>
+                {activities.user.first_name} {activities.user.last_name}
+                  </div>
+                </div>
 
                     <div className='social'>
                       
