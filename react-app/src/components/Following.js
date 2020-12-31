@@ -17,14 +17,16 @@ function FollowingComp() {
             const data = await response.json();
             if (data.followers.length > 0){
                 setFollowers(data.followers)
+                console.log(followers)
             }
             if (data.following.length > 0) {
                 setFollowing(data[following])
+                console.log(following)
             }
         })();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [followers])
 
     let followContent;
     let followersContent;
@@ -40,7 +42,7 @@ function FollowingComp() {
         } else {
             followContent = <ul>{following.map((person) => <li key={person.id}>{person.first_name} {person.last_name}</li>)}</ul>
         }
-
+        return;
     }
 
     followingContent()

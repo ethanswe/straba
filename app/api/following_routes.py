@@ -54,7 +54,7 @@ def post_following(user_id):
     )
     db.session.add(follow)
     db.session.commit()
-    return {'message': 'Done'}, 2
+    return {'message': 'Done'}, 201
 
 
 # DELETE a follow
