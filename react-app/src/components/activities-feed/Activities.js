@@ -52,7 +52,7 @@ justify-content: space-between;
 
 const UserDiv = styled.div`
 margin: 5px;
-margin-left: 10px;
+margin-left: 5px;
 display: flex;
 justify-content: space-between;
 `
@@ -66,7 +66,31 @@ margin-left: 10px;
 margin: 5px;
 `
 
-export const ActivityFeed = ()=> {
+const ActivityStats = styled.div`
+display: flex;
+justify-content: space-between;
+align-items: flex-end;
+margin-left: 10px;
+margin: 5px;
+`
+
+const ActivityStatsDiv = styled.div`
+margin: 5px;
+`
+
+const ImgDiv = styled.div`
+margin-right: 50px;
+`
+
+const DateDiv = styled.div`
+margin-bottom: 2px;
+`
+
+const ActivityDiv = styled.div`
+margin-bottom: 4px;
+`
+
+export const ActivityFeed = () => {
     const [loaded, setLoaded] = useState(false);
     const [activities, setActivities] = useState({});
 
@@ -100,31 +124,35 @@ export const ActivityFeed = ()=> {
 
                     <KudosDiv className='social1'>
                       
-                     # Kudos   # Comments
+                     # Kudos:   <br /> # Comments:
                     </KudosDiv>
 
                     <ActivityInfo className='avatarTitle1'>
+                      <ImgDiv>
                         <img height='50px' width='50px' src={logo} alt='activity pic'></img>  
+                      </ImgDiv>
+                      <DateDiv>
                         {activity.createdAt} 
+                      </DateDiv>
+                      <ActivityDiv>
                         <NavLink to={`/activities/${activity.id}`}>
                       {activity.title}
-                      </NavLink>
+                        </NavLink>
+                      </ActivityDiv>
                     </ActivityInfo>
 
-                    <div className='runstats-container1'>
-                        <div>
-                          Distance: 
-                          {activity.distance} miles
-                        </div>
-                        <div>
+                    <ActivityStats className='runstats-container1'>
+                        <ActivityStatsDiv>
+                          Distance: {activity.distance} miles
+                        </ActivityStatsDiv>
+                        <ActivityStatsDiv>
                           Time: 
                           {activity.time > 60 ? (activity.time / 60).toFixed(2) + ' hours': activity.time + ' minutes'} 
-                        </div>
-                        <div>
-                          Pace: 
-                          {parseFloat(activity.time / activity.distance).toFixed(2)} minutes/mile
-                        </div>
-                    </div>
+                        </ActivityStatsDiv>
+                        <ActivityStatsDiv>
+                          Pace: {parseFloat(activity.time / activity.distance).toFixed(2)} minutes/mile
+                        </ActivityStatsDiv>
+                    </ActivityStats>
 
             
 
