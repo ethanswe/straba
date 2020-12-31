@@ -1,24 +1,27 @@
 .newsContainer1{
-  border-bottom: 10px solid greenyellow;
-  padding: 6px;
+
   display: grid;
   grid-template-columns:  50% 50% ;
   grid-template-rows: 10% 20% 70%;
-  grid-gap: 5px;
+  /* grid-gap: 5px; */
   max-width: 800px;
   height: 400px;
   position: relative;
 }
 
+body {
+    font-family: 'Fugaz One', cursive;
+}
 .newsTitle1{
-  border: 2px solid red;
+  /* border: 2px solid black; */
+  border-radius: 5px;
   font-weight: bold;
   grid-column: 1/2;
   grid-row: 1/2;
 }
 
 .social1{
-  border: 2px solid red;
+  /* border: 2px solid black; */
   font-weight: bold;
   grid-column: 2/3;
   grid-row: 1/2;
@@ -26,7 +29,7 @@
 
 
 .newsImg1{
-  border: 2px solid red;
+  /* border: 2px solid black; */
   height: 50px;
   width:  50px;
   grid-column: 1/2;
@@ -34,7 +37,7 @@
 }
 
 .newsLink1{
-  color: green;
+  /* color: green; */
 }
 
 .runstats-container1{
@@ -42,21 +45,21 @@
 }
 
 .avatarTitle1 {
-  border: 2px solid red;
+  /* border: 2px solid black; */
   font-weight: bold;
   grid-column: 1/2;
   grid-row: 2/3;
 }
 
 .runstats-container1 {
-  border: 2px solid red;
+  /* border: 2px solid black; */
   font-weight: bold;
   grid-column: 2/3;
   grid-row: 2/3;
 }
 
 .map1 {
-  border: 2px solid red;
+  /* border: 2px solid black; */
   font-weight: bold;
   grid-column: 1/3;
   grid-row: 3/3;
