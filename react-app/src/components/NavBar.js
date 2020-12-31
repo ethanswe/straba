@@ -8,7 +8,9 @@ const Nav = styled.nav`
 max-height: 80px;
 border-bottom: solid 1px #f0f0f5;
 text-decoration: none;
-
+position: -webkit-sticky; /* Safari */
+position: sticky;
+top: 0;
 /* background-color: black; */
 
 `

@@ -7,7 +7,7 @@ import styled from 'styled-components'
 
 
 const BackgroundPhoto = styled.div`
-background-image: url('https://images.pexels.com/photos/3403293/pexels-photo-3403293.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'); 
+background-image: url('https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'); 
 width: 100vw;
 height: 100vh;
 background-size: cover;
