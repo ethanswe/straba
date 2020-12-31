@@ -27,17 +27,28 @@ export const ActivityFeed = ()=> {
 
             {activities.map(activity =>{
               return (
-                <div className='newsContainer' key={activity.id}>
-                    <div className='newsTitle'>
-                      <NavLink to={`/activities/${activity.id}`}>
+                <div className='newsContainer1'>
+                    <div className='newsTitle1'>
+                      
+                    <NavLink to={`/users/${activity.user.id}`}>
+                      {activity.user.first_name} {activity.user.last_name}
+                      </NavLink>  - Run
+                    </div>
+
+                    <div className='social1'>
+                      
+                     # Kudos   # Comments
+                    </div>
+
+                    <div className='avatarTitle1'>
+                        <img height='50px' width='50px' src={logo} alt='activity pic'></img>  
+                        {activity.createdAt} 
+                        <NavLink to={`/activities/${activity.id}`}>
                       {activity.title}
                       </NavLink>
-                      
-                      <div>
-                      <NavLink to={`/users/${activity.user.id}`}>
-                      {activity.user.first_name} {activity.user.last_name}
-                      </NavLink> 
-                      <div className='runstats-container'>
+                    </div>
+
+                    <div className='runstats-container1'>
                         <div>
                           Distance: 
                           {activity.distance} miles
@@ -50,23 +61,16 @@ export const ActivityFeed = ()=> {
                           Pace: 
                           {parseFloat(activity.time / activity.distance).toFixed(2)} minutes/mile
                         </div>
-                      </div>
-                      </div>
-                    
-                    <div className='newsSummary'>
-                    <div>
-                      {activity.createdAt}
-                      </div>
-                      {activity.description}
                     </div>
+
+            
+
+                    <div className='map1'>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d41533406.428697795!2d73.8664217!3d50.5528081!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2skr!4v1609370759819!5m2!1sen!2skr" width='100%' height='100%'></iframe>
                     </div>
-                    <div className='newsImg'>
-                     <img height='50px' width='50px' src={logo} alt='activity pic'></img>
-                     </div>
-                    
-                    
-                    
-                 </div>
+
+
+                </div> 
               )
             })}
         </>

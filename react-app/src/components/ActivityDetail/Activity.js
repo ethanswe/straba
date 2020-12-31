@@ -72,41 +72,7 @@ export const Activity = ()=> {
                         Comments:
                     </div>
 
-                </div>
-
-
-
-                      {/* <div className='runstats-container'>
-                        <div>
-                          Distance: 
-                          {activities.distance} miles
-                        </div>
-                        <div>
-                          Time: 
-                          {activities.time > 60 ? (activities.time / 60).toFixed(2) + ' hours': activities.time + ' minutes'} 
-                        </div>
-                        <div>
-                          Pace: 
-                          {parseFloat(activities.time / activities.distance).toFixed(2)} minutes/mile
-                        </div>
-                    </div>
-
-
-                    <div className='newsSummary'>
-                    <div>
-                      {activities.createdAt}
-                      </div>
-                      <div>
-                      {activities.description}
-                    </div>
-                    </div>
-                    </div>
-                    <div className='newsImg'>
-                     <img height='50px' width='50px' src={logo} alt='activity pic'></img>
-                     </div> */}
-                    
-                    
-               
+                </div>              
         </>
     
     )
