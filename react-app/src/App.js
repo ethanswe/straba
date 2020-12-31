@@ -9,6 +9,9 @@ import User from "./components/User";
 import { authenticate } from "./services/auth";
 import { CreateActivityForm } from "./components/create-activity/CreateActivityForm";
 import HomePage from "./components/HomePage";
+import { Activity } from "./components/ActivityDetail/Activity";
+import { ActivityFeed } from "./components/activities-feed/Activities";
+
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -43,8 +46,14 @@ function App() {
       <ProtectedRoute path="/users" exact={true} authenticated={authenticated}>
         <UsersList/>
       </ProtectedRoute>
+      <ProtectedRoute path="/feed" exact={true} authenticated={authenticated}>
+        <ActivityFeed/>
+      </ProtectedRoute>
       <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
         <User />
+      </ProtectedRoute>
+      <ProtectedRoute path="/activities/:activityId" exact={true} authenticated={authenticated}>
+        <Activity />
       </ProtectedRoute>
       <ProtectedRoute path="/activities/new" exact={true} authenticated={authenticated}>
         <CreateActivityForm />

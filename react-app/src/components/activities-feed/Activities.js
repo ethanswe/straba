@@ -1,8 +1,16 @@
 import React, { useState, useEffect } from 'react'
+import { NavLink } from 'react-router-dom';
 import { List, Header } from 'semantic-ui-react'
 import './activities.css';
 import logo from './strabalogo.png';
+import styled from 'styled-components'
 
+const CenterContainer = styled.div`
+display: flex;
+margin: 0 auto;
+justify-content: center;
+max-width: 600px;
+`
 
 export const ActivityFeed = ()=> {
     const [loaded, setLoaded] = useState(false);
@@ -23,49 +31,55 @@ export const ActivityFeed = ()=> {
       }
     return (
       <>
-            {/* <List>
-                {activities.map(activity =>{
-                   return(
-                        <List.Item key={activity.title}>
-                            <Header>
-                                {activity.title}
-                            </Header>
-                            <Header>
-                                {activity.description}
-                            </Header>
-                            <Header>
-                                {activity.distance} miles
-                            </Header>
-                            <Header>
-                                {activity.time} minutes
-                            </Header>
-                        </List.Item>
-                   )
-                })}
-            </List> */}
+
             {activities.map(activity =>{
               return (
-                <div className='newsContainer' key={activity.id}>
-                    <div className='newsTitle'>
-                      {activity.title} 
-                      <div>
-                      {activity.user.first_name} {activity.user.last_name} 
-                      </div>
-                    
-                    <div className='newsSummary'>
-                    <div>
-                      {activity.createdAt}
-                      </div>
-                      {activity.description}
+                <CenterContainer>
+                <div className='newsContainer1'>
+                    <div className='newsTitle1'>
+                      
+                    <NavLink to={`/users/${activity.user.id}`}>
+                      {activity.user.first_name} {activity.user.last_name}
+                      </NavLink>  - Run
                     </div>
+
+                    <div className='social1'>
+                      
+                     # Kudos   # Comments
                     </div>
-                    <div className='newsImg'>
-                     <img height='50px' width='50px' src={logo} alt='activity pic'></img>
-                     </div>
-                    
-                    
-                    
-                 </div>
+
+                    <div className='avatarTitle1'>
+                        <img height='50px' width='50px' src={logo} alt='activity pic'></img>  
+                        {activity.createdAt} 
+                        <NavLink to={`/activities/${activity.id}`}>
+                      {activity.title}
+                      </NavLink>
+                    </div>
+
+                    <div className='runstats-container1'>
+                        <div>
+                          Distance: 
+                          {activity.distance} miles
+                        </div>
+                        <div>
+                          Time: 
+                          {activity.time > 60 ? (activity.time / 60).toFixed(2) + ' hours': activity.time + ' minutes'} 
+                        </div>
+                        <div>
+                          Pace: 
+                          {parseFloat(activity.time / activity.distance).toFixed(2)} minutes/mile
+                        </div>
+                    </div>
+
+            
+
+                    <div className='map1'>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d41533406.428697795!2d73.8664217!3d50.5528081!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2skr!4v1609370759819!5m2!1sen!2skr" width='100%' height='100%'></iframe>
+                    </div>
+
+
+                  </div> 
+                </CenterContainer>
               )
             })}
         </>
