@@ -1,8 +1,29 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from "react-router-dom";
-
+import styled from 'styled-components'
 import './activity.css';
 import logo from '../activities-feed/strabalogo.png';
+
+const CenterContainer = styled.div`
+display: flex;
+margin: 0 auto;
+justify-content: center;
+max-width: 650px;
+z-index: 10;
+`
+const BackgroundPhoto = styled.div`
+background-image: url('https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'); 
+width: 100vw;
+height: 100vh;
+background-size: cover;
+/* display: flex;
+align-items: center;
+justify-content: center; */
+z-index: -10;
+position: fixed;
+left: 0;
+opacity: 50%;
+`
 
 
 export const Activity = ()=> {
@@ -25,12 +46,14 @@ export const Activity = ()=> {
       }
     return (
       <>
-           
+        <BackgroundPhoto/>
+           <CenterContainer>
                 <div className='newsContainer'>
                     <div className='newsTitle'>
-                      
-                      {activities.user.first_name} {activities.user.last_name} - Run
-                    </div>
+                      <div>
+                {activities.user.first_name} {activities.user.last_name}
+                  </div>
+                </div>
 
                     <div className='social'>
                       
@@ -72,7 +95,8 @@ export const Activity = ()=> {
                         Comments:
                     </div>
 
-                </div>              
+            </div>
+          </CenterContainer>
         </>
     
     )

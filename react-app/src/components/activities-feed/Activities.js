@@ -5,11 +5,65 @@ import './activities.css';
 import logo from './strabalogo.png';
 import styled from 'styled-components'
 
+
+const BackgroundPhoto = styled.div`
+background-image: url('https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'); 
+width: 100vw;
+height: 100vh;
+background-size: cover;
+/* display: flex;
+align-items: center;
+justify-content: center; */
+z-index: -10;
+position: fixed;
+left: 0;
+opacity: 50%;
+overflow-y: hidden;
+`
+
 const CenterContainer = styled.div`
 display: flex;
 margin: 0 auto;
 justify-content: center;
-max-width: 600px;
+max-width: 650px;
+z-index: 1;
+overflow: auto;
+margin-top: 10px;
+border-radius: 8px;
+
+`
+
+const StyledDiv = styled.div`
+margin-bottom: 5px;
+background-color: white;
+
+`
+
+const StyledInfo = styled.div`
+
+`
+
+const KudosDiv = styled.div`
+margin: 5px;
+display: flex;
+justify-content: space-between;
+
+`
+
+const UserDiv = styled.div`
+margin: 5px;
+margin-left: 10px;
+display: flex;
+justify-content: space-between;
+`
+
+
+const ActivityInfo = styled.div`
+display: flex;
+justify-content: space-between;
+align-items: flex-end;
+margin-left: 10px;
+margin: 5px;
 `
 
 export const ActivityFeed = ()=> {
@@ -28,33 +82,34 @@ export const ActivityFeed = ()=> {
     }, [])
     if (!loaded) {
         return null;
-      }
+    }
+
     return (
       <>
-
-            {activities.map(activity =>{
+      <BackgroundPhoto/>
+        {activities.map(activity => {
               return (
                 <CenterContainer>
-                <div className='newsContainer1'>
-                    <div className='newsTitle1'>
+                <StyledDiv className='newsContainer1'>
+                    <UserDiv className='newsTitle1'>
                       
                     <NavLink to={`/users/${activity.user.id}`}>
                       {activity.user.first_name} {activity.user.last_name}
-                      </NavLink>  - Run
-                    </div>
+                      </NavLink>  
+                    </UserDiv>
 
-                    <div className='social1'>
+                    <KudosDiv className='social1'>
                       
                      # Kudos   # Comments
-                    </div>
+                    </KudosDiv>
 
-                    <div className='avatarTitle1'>
+                    <ActivityInfo className='avatarTitle1'>
                         <img height='50px' width='50px' src={logo} alt='activity pic'></img>  
                         {activity.createdAt} 
                         <NavLink to={`/activities/${activity.id}`}>
                       {activity.title}
                       </NavLink>
-                    </div>
+                    </ActivityInfo>
 
                     <div className='runstats-container1'>
                         <div>
@@ -78,10 +133,10 @@ export const ActivityFeed = ()=> {
                     </div>
 
 
-                  </div> 
+                  </StyledDiv> 
                 </CenterContainer>
               )
-            })}
+        })}
         </>
     
     )

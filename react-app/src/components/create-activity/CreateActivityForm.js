@@ -6,12 +6,8 @@ import { Redirect, useHistory } from "react-router-dom";
 const BackgroundImg = styled.div`
 background-image: url('https://images.pexels.com/photos/2729899/pexels-photo-2729899.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'); 
 width: 100vw;
-height: 100vh;
+height: 91vh;
 background-size: cover;
-/* display: flex; */
-/* align-items: center; */
-/* justify-content: center; */
-/* z-index: -10; */
 position: absolute;
 `
 
@@ -62,7 +58,6 @@ const Header = styled.h3`
 margin: 0 auto;
 display: flex;
 font-family: 'Fugaz One', cursive;
-/* justify-content: center; */
 `
 
 const StyledTextArea = styled.textarea`

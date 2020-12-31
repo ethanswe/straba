@@ -8,9 +8,13 @@ const Nav = styled.nav`
 max-height: 80px;
 border-bottom: solid 1px #f0f0f5;
 text-decoration: none;
-
+position: -webkit-sticky; /* Safari */
+position: sticky;
+top: 0;
+z-index: 25;
+background-color: white;
+/* overflow: hide; */
 /* background-color: black; */
-
 `
 const NavContainer = styled.div`
 display: flex;
@@ -64,7 +68,6 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
   const currentPage = location.pathname;
 
   const userId = localStorage.getItem('userId');
-  console.log(userId)
   return (
     <Nav>
       <NavContainer>
