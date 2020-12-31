@@ -10,6 +10,7 @@ import { authenticate } from "./services/auth";
 import { CreateActivityForm } from "./components/create-activity/CreateActivityForm";
 import HomePage from "./components/HomePage";
 import { Activity } from "./components/ActivityDetail/Activity";
+import { ActivityFeed } from "./components/activities-feed/Activities";
 
 
 function App() {
@@ -44,6 +45,9 @@ function App() {
       </Route>
       <ProtectedRoute path="/users" exact={true} authenticated={authenticated}>
         <UsersList/>
+      </ProtectedRoute>
+      <ProtectedRoute path="/feed" exact={true} authenticated={authenticated}>
+        <ActivityFeed/>
       </ProtectedRoute>
       <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
         <User />

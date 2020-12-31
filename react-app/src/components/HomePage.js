@@ -2,7 +2,6 @@ import React from 'react';
 import { NavLink, useLocation, Redirect } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import styled from 'styled-components'
-import { ActivityFeed } from './activities-feed/Activities';
 
 const Header = styled.div`
 font-size: 35px;
@@ -35,9 +34,6 @@ const HomePage = ({ authenticated, setAuthenticated }) => {
         <>
             <BackgroundImage />
             <Header>The #1 app for runners and cyclists</Header>
-            <div className='activity-feed'>
-            <ActivityFeed />
-            </div>
             </>
       
     )
