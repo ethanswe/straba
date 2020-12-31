@@ -5,21 +5,13 @@ import styled from 'styled-components'
 import { ActivityFeed } from './activities-feed/Activities';
 
 const Header = styled.div`
-font-size: 40px;
+font-size: 35px;
 display: flex;
 align-items: center;
 justify-content: center;
 margin-top: 60px;
 position: relative;
-z-index: 10;
-`
-const Header2 = styled.div`
-font-size: 25px;
-display: flex;
-align-items: center;
-justify-content: center;
-margin-top: 10px;
-position: relative;
+font-family: 'Fugaz One', cursive;
 z-index: 10;
 `
 
@@ -34,8 +26,10 @@ justify-content: center;
 z-index: -10;
 position: absolute;
 `
-const HomePage = () => {
-
+const HomePage = ({ authenticated, setAuthenticated }) => {
+    if (authenticated) {
+        return <Redirect to="/feed" />;
+    }
     return (
       
         <>

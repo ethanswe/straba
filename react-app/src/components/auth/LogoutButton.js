@@ -11,20 +11,16 @@ const Buttons = styled.button`
   border: none;
   border-radius: 10px;
   color: #eee;
-  font-size: 20px;
-  font-family: 'Cookie', cursive;
+  font-size: 15px;
+  font-family: 'Fugaz One', cursive;
   position: relative;
   transition: 1s;
   -webkit-tap-highlight-color: transparent;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   cursor: pointer;
-  /* padding-top: 5px; */
   margin: 0 auto;
   margin-top: 2px;
-  margin-left: 70em;
-  /* margin-right: 0px; */
+  margin-left: 10px;
+  margin-right: 10px;
   margin-bottom: 0px;
   text-decoration: none;
 :hover{
