@@ -5,12 +5,30 @@ import './activities.css';
 import logo from './strabalogo.png';
 import styled from 'styled-components'
 
+
+const BackgroundPhoto = styled.div`
+background-image: url('https://images.pexels.com/photos/3403293/pexels-photo-3403293.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'); 
+width: 100vw;
+height: 100vh;
+background-size: cover;
+/* display: flex;
+align-items: center;
+justify-content: center; */
+z-index: -10;
+position: fixed;
+left: 0;
+opacity: 50%;
+`
+
 const CenterContainer = styled.div`
 display: flex;
 margin: 0 auto;
 justify-content: center;
-max-width: 600px;
+max-width: 650px;
+z-index: 10;
+
 `
+
 
 export const ActivityFeed = ()=> {
     const [loaded, setLoaded] = useState(false);
@@ -28,11 +46,12 @@ export const ActivityFeed = ()=> {
     }, [])
     if (!loaded) {
         return null;
-      }
+    }
+
     return (
       <>
-
-            {activities.map(activity =>{
+      <BackgroundPhoto/>
+        {activities.map(activity => {
               return (
                 <CenterContainer>
                 <div className='newsContainer1'>
@@ -81,7 +100,7 @@ export const ActivityFeed = ()=> {
                   </div> 
                 </CenterContainer>
               )
-            })}
+        })}
         </>
     
     )
