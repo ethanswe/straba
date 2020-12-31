@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import Following from '../Following/Following'
-import UserActivities from '../User-Activites/user-activities'
-import profile from "./Profile.png"
-import './user.css'
+import Following from '../Following/Following';
+import UserActivitiesCount from '../User-Activities-Count/user-activities-count';
+import UserActivities from '../User-Activities/user-activities';
+import profile from "./Profile.png";
+import './user.css';
 
 function User() {
   const [user, setUser] = useState({});
@@ -81,15 +82,11 @@ function User() {
   let content;
   const fillingContent = () => {
     switch (true) {
-      case overview:
-        // content = <Overview />
-        content = <h4>ANOTHER TEST</h4>
-        break
       case followers:
         content = <Following />
         break;
       default:
-        content = <h4>ANOTHER TEST</h4>;
+        content = <UserActivities />;
         break;
     }
     return;
@@ -124,10 +121,10 @@ function User() {
       <div className='activitiesContainer'>
         <div className='usersActivities'>
           {/* Last 4 Weeks <strong>0</strong> <h6>Total Activities</h6> */}
-          <UserActivities />
+          <UserActivitiesCount />
         </div>
         <div className='calendar'>
-          this is a test
+          
         </div>
       </div>
       <div className='lowerBody'>

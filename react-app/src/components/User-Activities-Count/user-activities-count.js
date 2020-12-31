@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-function UserActivities() {
+function UserActivitiesCount() {
     const [activities, setActivities] = useState(0);
     const { userId } = useParams();
 
@@ -12,18 +12,16 @@ function UserActivities() {
         (async () => {
             const response = await fetch(`/api/activities/users/${userId}`);
             const data = await response.json()
-            console.log(data)
-            setActivities(data.length)
+            setActivities(data.activities.length)
         })();
-        console.log("HERE")
-        console.log(activities)
-    }, [userId, activities])
+        
+    }, [userId])
 
     return (
-        <div>
-            <div>this{activities}</div>
-        </div>
+        <>
+            <strong>{activities}</strong><h6>Total Activities</h6>
+        </>
     )
 }
 
-export default UserActivities;
+export default UserActivitiesCount;
