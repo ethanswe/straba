@@ -9,7 +9,7 @@ display: flex;
 margin: 0 auto;
 justify-content: center;
 align-items: center;
-max-width: 650px;
+max-width: 700px;
 z-index: 10;
 background-color: white;
 border-radius:25px;
