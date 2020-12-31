@@ -8,9 +8,14 @@ const CenterContainer = styled.div`
 display: flex;
 margin: 0 auto;
 justify-content: center;
+align-items: center;
 max-width: 650px;
 z-index: 10;
+background-color: white;
+border-radius:25px;
+margin-top: 50px;
 `
+
 const BackgroundPhoto = styled.div`
 background-image: url('https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'); 
 width: 100vw;
@@ -25,6 +30,60 @@ left: 0;
 opacity: 50%;
 `
 
+const StyledDiv = styled.div`
+margin-bottom: 5px;
+background-color: white;
+`
+
+const UserDiv = styled.div`
+margin: 5px;
+margin-left: 5px;
+display: flex;
+justify-content: space-between;
+`
+
+
+const ActivityInfo = styled.div`
+display: flex;
+justify-content: space-between;
+align-items: flex-end;
+margin-left: 10px;
+margin: 5px;
+`
+
+const KudosDiv = styled.div`
+margin: 5px;
+display: flex;
+justify-content: space-between;
+
+`
+
+const ActivityStats = styled.div`
+display: flex;
+justify-content: space-between;
+align-items: flex-end;
+margin-left: 10px;
+margin: 5px;
+`
+
+const Map = styled.div`
+
+`
+const ActivityStatsDiv = styled.div`
+margin: 5px;
+`
+
+const ImgDiv = styled.div`
+margin-right: 50px;
+`
+
+const DateDiv = styled.div`
+margin-bottom: 2px;
+`
+
+const ActivityDiv = styled.div`
+margin-bottom: 4px;
+`
 
 export const Activity = ()=> {
     const [loaded, setLoaded] = useState(false);
@@ -48,38 +107,42 @@ export const Activity = ()=> {
       <>
         <BackgroundPhoto/>
            <CenterContainer>
-                <div className='newsContainer'>
-                    <div className='newsTitle'>
-                      <div>
+                <StyledDiv className='newsContainer'>
+                    <UserDiv className='newsTitle'>
                 {activities.user.first_name} {activities.user.last_name}
-                  </div>
-                </div>
+                </UserDiv>
 
-                    <div className='social'>
+                    <KudosDiv className='social'>
                       
                      # Kudos   # Comments
-                    </div>
+                    </KudosDiv>
 
-                    <div className='avatarTitle'>
-                        <img height='50px' width='50px' src={logo} alt='activity pic'></img>  
-                        {activities.createdAt} 
-                        {activities.title} 
-                    </div>
+            <ActivityInfo className='avatarTitle'>
+              <ImgDiv>
+                <img height='50px' width='50px' src={logo} alt='activity pic'></img>  
+              </ImgDiv>
+              <DateDiv>
+                {activities.createdAt} 
+              </DateDiv>
+              <ActivityDiv>
+                {activities.title} 
+              </ActivityDiv>
+                    </ActivityInfo>
 
-                    <div className='runstats-container'>
-                        <div>
+                    <ActivityStats className='runstats-container'>
+                        <ActivityStatsDiv>
                           Distance: 
                           {activities.distance} miles
-                        </div>
-                        <div>
+                        </ActivityStatsDiv>
+                        <ActivityStatsDiv>
                           Time: 
                           {activities.time > 60 ? (activities.time / 60).toFixed(2) + ' hours': activities.time + ' minutes'} 
-                        </div>
-                        <div>
+                        </ActivityStatsDiv>
+                        <ActivityStatsDiv>
                           Pace: 
                           {parseFloat(activities.time / activities.distance).toFixed(2)} minutes/mile
-                        </div>
-                    </div>
+                        </ActivityStatsDiv>
+                    </ActivityStats>
 
                     <div className='newsSummary'>
                       <div>
@@ -87,15 +150,15 @@ export const Activity = ()=> {
                         </div>
                     </div>
 
-                    <div className='map'>
+                    <Map className='map'>
                         <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d41533406.428697795!2d73.8664217!3d50.5528081!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2skr!4v1609370759819!5m2!1sen!2skr" width='100%' height='100%'></iframe>
-                    </div>
+                    </Map>
 
                     <div className='comments'>
                         Comments:
                     </div>
 
-            </div>
+            </StyledDiv>
           </CenterContainer>
         </>
     
