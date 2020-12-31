@@ -3,7 +3,7 @@ import { List, Header } from 'semantic-ui-react'
 
 
 
-export const UserOverview = ()=> {
+export const UserGlance = ()=> {
     const [loaded, setLoaded] = useState(false);
     const [user, setUser] = useState({});
 
