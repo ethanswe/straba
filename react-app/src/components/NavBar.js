@@ -11,7 +11,8 @@ text-decoration: none;
 position: -webkit-sticky; /* Safari */
 position: sticky;
 top: 0;
-/* background-color: black; */
+z-index: 100;
+/* overflow: hide; */
 
 `
 const NavContainer = styled.div`
@@ -21,6 +22,7 @@ align-items: center;
 flex-direction: row;
 text-decoration: none;
 margin: 0 auto;
+z-index: 100;
 `
 
 const Buttons = styled.button`
@@ -66,7 +68,6 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
   const currentPage = location.pathname;
 
   const userId = localStorage.getItem('userId');
-  console.log(userId)
   return (
     <Nav>
       <NavContainer>
