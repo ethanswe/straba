@@ -29,13 +29,13 @@ def check_following(user_id, curr_user):
 @following_routes.route('/users/<int:user_id>')
 def following(user_id):
     try:
-        follows = Following.query.filter(Following.followed_user_id == user_id).all()
+        followed = Following.query.filter(Following.followed_user_id == user_id).all()
         followers = Following.query.filter(Following.user_id == user_id).all()
-        follows_dict = [person.to_dict() for person in follows]
+        follows_dict = [person.to_dict() for person in followed]
         followers_dict = [person.to_dict() for person in followers]
         following_json = jsonify({
-            'followers': followers_dict,
-            'following': follows_dict,
+            'followed': follows_dict,
+            'following': followers_dict,
         })
         return following_json
     except SQLAlchemyError as e:

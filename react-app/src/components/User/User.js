@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import Following from './Following'
-import profile from "../images/Profile.png"
-import '../stylesheets/user.css'
+import Following from '../Following/Following'
+import UserActivities from '../User-Activites/user-activities'
+import profile from "./Profile.png"
+import './user.css'
 
 function User() {
   const [user, setUser] = useState({});
@@ -27,13 +28,13 @@ function User() {
       const response2 = await fetch(`/api/following/users/${userId}`)
       const data = await response2.json();
       setFollowingNum(data.following.length)
-      setFollowersNum(data.followers.length)
+      setFollowersNum(data.followed.length)
       const response3 = await fetch(`/api/following/${userId}/${currentUserId}`)
       const data2 = await response3.json()
       setFollows(data2.follows)
 
     })();
-  }, [userId, follows]);
+  }, [userId, follows, currentUserId]);
 
   if (!user) {
     return null;
@@ -60,7 +61,7 @@ function User() {
           'userId': currentUserId
         }),
       });
-      const data = await response.json();
+      await response.json();
       setFollows(true);
     } else {
       const response = await fetch(`/api/following/${userId}`, {
@@ -72,7 +73,7 @@ function User() {
           'userId': currentUserId
         }),
       });
-      const data = await response.json();
+      await response.json();
       setFollows(false);
     }
   }
@@ -80,6 +81,10 @@ function User() {
   let content;
   const fillingContent = () => {
     switch (true) {
+      case overview:
+        // content = <Overview />
+        content = <h4>ANOTHER TEST</h4>
+        break
       case followers:
         content = <Following />
         break;
@@ -93,10 +98,10 @@ function User() {
   let follow;
   const followButton = () => {
     if (currentUserId === userId) {
-      follow = <></>
+      follow = <div></div>
     } else {
       follow = <div>{follows ? (
-        <h4 onClick={handleFollowing}>Following</h4>
+        <h4 onClick={handleFollowing}>Unfollow</h4>
       ) : (
           <h4 onClick={handleFollowing}>Follow</h4>
         )
@@ -118,7 +123,8 @@ function User() {
       </div>
       <div className='activitiesContainer'>
         <div className='usersActivities'>
-          Last 4 Weeks <strong>0</strong> <h6>Total Activities</h6>
+          {/* Last 4 Weeks <strong>0</strong> <h6>Total Activities</h6> */}
+          <UserActivities />
         </div>
         <div className='calendar'>
           this is a test
