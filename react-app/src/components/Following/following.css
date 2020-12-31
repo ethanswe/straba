@@ -1,0 +1,44 @@
+.followContainer {
+    background-color: green;
+    display: flex;
+    height: 100vh;
+}
+
+.followContainer li {
+    list-style-type: none;
+    padding: 10px 20px;
+}
+
+.followersC {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: indianred;
+    width: 50%;
+}
+
+.followContainer h3 {
+    font-weight: 500;
+    font-size: 2em;
+    text-decoration: underline;
+}
+
+.followingC {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: red;
+    width: 50%;
+}
+
+.message {
+    font-size: 1.4em;
+    padding: 20px;
+}
+
+li {
+    font-size: 22px;
+    text-decoration: none;
+    color: orange;
+    cursor: pointer;
+}

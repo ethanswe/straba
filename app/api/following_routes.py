@@ -6,19 +6,36 @@ from sqlalchemy.exc import SQLAlchemyError
 following_routes = Blueprint('following', __name__)
 
 
+
+# GET to check if the currentUser follows another user
+@following_routes.route('/<int:user_id>/<int:curr_user>')
+def check_following(user_id, curr_user):
+    try:
+        follows = Following.query.filter(
+            Following.user_id == curr_user,
+            Following.followed_user_id == user_id
+        ).first()
+        print(follows)
+        if follows:
+            return {'follows': True}
+        return {'follows':False}
+    except SQLAlchemyError as e:
+        error = str(e.__dict__['orig'])
+        print(error)
+        return {'errors': ['An error occurred while retrieving the data']}, 500
+
+
 # GET all followers and followings for a user
-@following_routes.route('/<int:user_id>')
+@following_routes.route('/users/<int:user_id>')
 def following(user_id):
     try:
-        follows = Following.query.filter(Following.followed_user_id == user_id).all()
+        followed = Following.query.filter(Following.followed_user_id == user_id).all()
         followers = Following.query.filter(Following.user_id == user_id).all()
-        follows_dict = [follows.to_dict() for person in follows]
-        followers_dict = [followers.to_dict() for person in followers]
+        follows_dict = [person.to_dict() for person in followed]
+        followers_dict = [person.to_dict() for person in followers]
         following_json = jsonify({
-            'followers': followers_dict,
-            'following': follows_dict,
-            'followersLen': len(followers_dict),
-            'followingLen': len(follows_dict)
+            'followed': follows_dict,
+            'following': followers_dict,
         })
         return following_json
     except SQLAlchemyError as e:
@@ -32,19 +49,19 @@ def following(user_id):
 def post_following(user_id):
     data = request.json
     follow = Following(
-        user_id=user_id,
-        followed_user_id=data['userId']
+        user_id=data['userId'],
+        followed_user_id=user_id
     )
     db.session.add(follow)
     db.session.commit()
-    return 'Done', 201
+    return {'message': 'Done'}, 201
 
 
 # DELETE a follow
 @following_routes.route('/<int:user_id>', methods=["DELETE"])
 def delete_following(user_id):
     data = request.json
-    delete_follow = Following.query.filter(Following.followed_user_id == user_id, Following.user_id == data['userId'])
+    delete_follow = Following.query.filter(Following.followed_user_id == user_id, Following.user_id == data['userId']).first()
     if delete_follow:
         db.session.delete(delete_follow)
         db.session.commit()

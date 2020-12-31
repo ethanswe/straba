@@ -1,0 +1,34 @@
+.overviewContainer {
+    display: flex;
+}
+
+.overviewC {
+    /* background-color: orange; */
+    height: 180px;
+    width: 100%;
+    cursor: pointer;
+    /* transition-duration: 500ms; */
+    border-radius: 5px;
+}
+
+.overviewC:hover {
+    border: solid thin rgba(210, 210, 210, 1);
+    /* background-color: rgba(240, 240, 240, 1); */
+}
+
+.overviewC h1 {
+    padding: 20px;
+}
+
+.overviewC div {
+    padding: 5px 20px;
+}
+
+.overviewC h6 {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 12px;
+    width: 100%;
+    padding-right: 30px;
+    /* background-color: blue; */
+}
