@@ -32,17 +32,13 @@ font-family: 'Fugaz One', cursive;
 
 const Container = styled.div`
 display: flex;
+margin: 0 auto;
 justify-content: center;
 align-items: center;
-border-radius: 25px;
-width: 500px;
-height: 300px;
-color: white;
-margin: 0 auto;
-flex-direction: row;
-background-color: black;
-opacity: 85%;
-z-index: 1;
+max-width: 700px;
+z-index: 10;
+background-color: white;
+border-radius:25px;
 margin-top: 10px;
 `
 
@@ -58,7 +54,7 @@ height: 200px;
 `
 
 
-export const CommentForm = ({activities})=> { 
+export const CommentForm = ({activities, onNewMovie})=> { 
     const [text, setText] = useState('')
     const [loaded, setLoaded] = useState(false);
     // if (activities){
@@ -85,7 +81,10 @@ export const CommentForm = ({activities})=> {
                             <SubmitButton onClick = {async () => {
                                 let activity_id = activities.id
                                 let user_id = 1
-                                  await createComment(user_id, text, activity_id);
+                                console.log('Comment' + text, activity_id, user_id)
+                                  await createComment(text, user_id, activity_id);
+                                  onNewMovie(text, user_id, activity_id)
+                                  setText('')
                                 }}>
                                 Submit
                             </SubmitButton>

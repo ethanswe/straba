@@ -6,12 +6,12 @@ comment_routes = Blueprint('comments', __name__)
 
 
 @comment_routes.route('/create', methods=['POST'])
-def createComment(user_id, text, activity_id):
+def createComment():
     data = request.json
     print(data)
     comment = Comment(
-        user_id=user_id,
         text=data['text'],
+        user_id=data['user_id'],
         activity_id=data['activity_id'])
     db.session.add(comment)
     db.session.commit()

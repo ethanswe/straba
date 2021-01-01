@@ -90,6 +90,8 @@ export const Activity = ()=> {
     const [loaded, setLoaded] = useState(false);
     const [activities, setActivities] = useState({});
     const [comments, setComments] = useState({});
+    const [kudos, setKudos] = useState(0);
+
 
     const { activityId }  = useParams();
 
@@ -121,6 +123,22 @@ export const Activity = ()=> {
       })()
     }, [activityId])
 
+    //fetch the kudos for the particular activity
+    useEffect(() => {
+      if(!activityId) {
+          return
+      }
+      (async () => {
+          // console.log("Inside useEffect: " + activity_Id)
+      const response = await fetch(`/api/kudos/${activityId}`)
+      const data = await response.json() 
+      console.log(data)
+      setKudos(data.kudos.length)
+
+        setLoaded(true)
+      })()
+    }, [activityId])
+
 
     if (!loaded) {
         return null;
@@ -139,7 +157,7 @@ export const Activity = ()=> {
 
                     <KudosDiv className='social'>
                       
-                     # Kudos   # Comments
+                     {kudos} Kudos   {comments.length} Comments 
                     </KudosDiv>
 
             <ActivityInfo className='avatarTitle'>
@@ -190,11 +208,13 @@ export const Activity = ()=> {
                           </div>
                           )}
                     </div>
-                        <CommentForm activities={activities} />
-                   
+                        
+                   <CommentForm activities={activities} />
 
             </StyledDiv>
+            
           </CenterContainer>
+          
         </>
     
     )
