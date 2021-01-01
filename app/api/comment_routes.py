@@ -6,7 +6,7 @@ comment_routes = Blueprint('comments', __name__)
 
 
 @comment_routes.route('/create', methods=['POST'])
-def createComment():
+def createComment(user_id, text, activity_id):
     data = request.json
     print(data)
     comment = Comment(

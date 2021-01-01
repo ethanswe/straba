@@ -68,7 +68,6 @@ const TestInput = styled.input`
 width: 136.71px;
 display: flex;
 justify-content: center;
-
 `
 
 export const CreateActivityForm = () => {

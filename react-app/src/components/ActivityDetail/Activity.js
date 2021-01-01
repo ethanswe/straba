@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import styled from 'styled-components'
 import './activity.css';
 import logo from '../activities-feed/strabalogo.png';
+import { CommentForm } from './CommentForm';
 
 const CenterContainer = styled.div`
 display: flex;
@@ -88,21 +89,45 @@ margin-bottom: 4px;
 export const Activity = ()=> {
     const [loaded, setLoaded] = useState(false);
     const [activities, setActivities] = useState({});
+    const [comments, setComments] = useState({});
+
     const { activityId }  = useParams();
 
+    //fetch the activity data
     useEffect(() => {
-      fetch(`/api/activities/${activityId}`).then(res =>
-        res.json().then(data => {
-            setActivities(data.activities)
-            
-            setLoaded(true);
-            console.log(data)
-        })
-        )
-    }, [])
+      if(!activityId) {
+        return
+    }
+    (async () => { 
+      const response = await fetch(`/api/activities/${activityId}`)
+      const data = await response.json()
+      setActivities(data.activities)
+      console.log(data)
+        })()
+    }, [activityId])
+    //fetch the comments for the particular activity
+    useEffect(() => {
+      if(!activityId) {
+          return
+      }
+      (async () => {
+          // console.log("Inside useEffect: " + activity_Id)
+      const response = await fetch(`/api/comments/activity/${activityId}`)
+      const data = await response.json() 
+      console.log(data)
+      setComments(data.comments)
+
+        setLoaded(true)
+      })()
+    }, [activityId])
+
+
     if (!loaded) {
         return null;
       }
+
+
+    
     return (
       <>
         <BackgroundPhoto/>
@@ -155,8 +180,18 @@ export const Activity = ()=> {
                     </div>
 
                     <div className='comments'>
-                        Comments:
+                        Comments: 
+                        {comments.map(comment =>
+                          <div key={comment.id}>
+                            <div>
+                              {comment.user.first_name} {comment.user.last_name} - {comment.createdAt}
+                            </div>
+                            <div>{comment.text}</div>                           
+                          </div>
+                          )}
                     </div>
+                        <CommentForm activities={activities} />
+                   
 
             </StyledDiv>
           </CenterContainer>
