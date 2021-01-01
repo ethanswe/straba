@@ -39,7 +39,7 @@ def deleteKudos():
 
 
 # This route will return the number of kudos for a user
-@kudos_routes.route('/<int:activity_Id>', methods=['GET'])
+@kudos_routes.route('/<int:activity_id>', methods=['GET'])
 def getActivityKudos(activity_id):
     kudos = Kudos.query.filter(Kudos.activity_id == activity_id).all()
     if kudos_routes:

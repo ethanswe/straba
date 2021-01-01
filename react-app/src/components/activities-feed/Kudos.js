@@ -5,28 +5,35 @@ import blankLike from '../activities-feed/like.png';
 
 export const Kudos = ({activity})=> {
     const [loaded, setLoaded] = useState(false);
-    const [activities, setActivities] = useState({});
-    // const activity_Id  = activity.id;
-    // useEffect(() => {
-    //     const getPostLikes = async (activity_Id) => {
-    //     fetch(`/api/kudos/1`).then(res =>
-    //       res.json().then(data => {
-    //           setActivities(data)
+    const [kudos, setKudos] = useState(0);
+    // console.log(activity.id)
+    const activity_Id  = activity.id
+
+    useEffect(() => {
+        if(!activity_Id) {
+            return
+        }
+        (async () => {
+            // console.log("Inside useEffect: " + activity_Id)
+        const response = await fetch(`/api/kudos/${activity_Id}`)
+        const data = await response.json() 
+        console.log(data)
+        setKudos(data.kudos.length)
               
-    //           setLoaded(true);
-    //           console.log(data)
-    //       })
-    //       )
-    //     }
-    //     getPostLikes();
-    //   }, [])
-    //   if (!loaded) {
-    //     return null;
-    //   }
+        setLoaded(true);
+        
+          
+          
+        })()
+      }, [])
+
+      if (!loaded) {
+        return null;
+      }
     return (
         <div>
             <img height='20px' width='20px' src={blankLike} alt='blanklike'></img>
-            {activities.activity_id}
+            {kudos}
         </div>
     )
 }
