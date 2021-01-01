@@ -4,6 +4,9 @@ import styled from 'styled-components'
 import './activity.css';
 import logo from '../activities-feed/strabalogo.png';
 import { CommentForm } from './CommentForm';
+import commentIcon from '../activities-feed/comment.png';
+import blankLike from '../activities-feed/like.png';
+
 
 const CenterContainer = styled.div`
 display: flex;
@@ -157,7 +160,16 @@ export const Activity = ()=> {
 
                     <KudosDiv className='social'>
                       
-                     {kudos} Kudos   {comments.length} Comments 
+                    Kudos: 
+                    <div>
+                      <img height='20px' width='20px' src={blankLike} alt='blanklike'></img>
+                      {kudos}
+                    </div>    
+                    Comments: 
+                    <div>
+                      <img height='20px' width='20px' src={commentIcon} alt='commentIcon'></img>
+                        {comments.length}
+                       </div>
                     </KudosDiv>
 
             <ActivityInfo className='avatarTitle'>
