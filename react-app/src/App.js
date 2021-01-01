@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/NavBar";
@@ -58,6 +58,7 @@ function App() {
       <ProtectedRoute path="/activities/new" exact={true} authenticated={authenticated}>
         <CreateActivityForm />
       </ProtectedRoute>
+      
       <Route path="/" exact={true}  >
         <HomePage setAuthenticated={setAuthenticated} authenticated={authenticated}/>
       </Route>

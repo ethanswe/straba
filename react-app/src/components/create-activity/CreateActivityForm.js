@@ -76,8 +76,8 @@ export const CreateActivityForm = () => {
     const [distance_string, setDistance] = useState("");
     const [time_string, setTime] = useState("");
     const [gpx_file, setGPX_file] = useState(null);
-    const [user_id, setUser_Id] = useState(1);
     const history = useHistory();
+    const user_id = localStorage.getItem('userId')  
     return (
         <>
             <BackgroundImg />

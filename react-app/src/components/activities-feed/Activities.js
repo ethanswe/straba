@@ -162,9 +162,10 @@ export const ActivityFeed = () => {
                       
                     
                     Kudos: <KudosGet activity={activity}/> 
-                    Comments: <CommentsGet activity={activity} />
+                    Comments: <NavLink to={`/activities/${activity.id}`}>
+                      <CommentsGet activity={activity} />
+                      </NavLink>
                     </KudosDiv>
-
                     <ActivityInfo className='avatarTitle1'>
                       <ImgDiv>
                         <img height='50px' width='50px' src={logo} alt='activity pic'></img>  

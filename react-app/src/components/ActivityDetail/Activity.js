@@ -6,6 +6,8 @@ import logo from '../activities-feed/strabalogo.png';
 import { CommentForm } from './CommentForm';
 import commentIcon from '../activities-feed/comment.png';
 import blankLike from '../activities-feed/like.png';
+import CircularProgress from '@material-ui/core/CircularProgress';
+
 
 
 const CenterContainer = styled.div`
@@ -106,8 +108,7 @@ export const Activity = ()=> {
     (async () => { 
       const response = await fetch(`/api/activities/${activityId}`)
       const data = await response.json()
-      setActivities(data.activities)
-      console.log(data)
+      await setActivities(data.activities)
         })()
     }, [activityId])
     //fetch the comments for the particular activity
@@ -120,9 +121,9 @@ export const Activity = ()=> {
       const response = await fetch(`/api/comments/activity/${activityId}`)
       const data = await response.json() 
       console.log(data)
-      setComments(data.comments)
-
-        setLoaded(true)
+      await setComments(data.comments)
+      setLoaded(true)
+        
       })()
     }, [activityId])
 
@@ -136,15 +137,28 @@ export const Activity = ()=> {
       const response = await fetch(`/api/kudos/${activityId}`)
       const data = await response.json() 
       console.log(data)
-      setKudos(data.kudos.length)
+      await setKudos(data.kudos.length)
 
-        setLoaded(true)
       })()
     }, [activityId])
 
 
-    if (!loaded) {
-        return null;
+    if (!loaded ) {
+      return (
+        <>
+        {/* <BackgroundPhoto/>
+           <CenterContainer>
+           <StyledDiv className='newsContainer'>
+        <main className="centered middled">
+          <div>
+            <b>Fetching activity data...</b>
+          <CircularProgress />
+          </div>
+          </main>
+          </StyledDiv>
+          </CenterContainer> */}
+        </>
+        )
       }
 
 
@@ -212,7 +226,7 @@ export const Activity = ()=> {
                     <div className='comments'>
                         Comments: 
                         {comments.map(comment =>
-                          <div key={comment.id}>
+                          <div  key={comment.id}>
                             <div>
                               {comment.user.first_name} {comment.user.last_name} - {comment.createdAt}
                             </div>
@@ -221,12 +235,12 @@ export const Activity = ()=> {
                           )}
                     </div>
                         
-                   <CommentForm activities={activities} />
+                   
 
             </StyledDiv>
             
           </CenterContainer>
-          
+          <CommentForm activities={activities} />
         </>
     
     )

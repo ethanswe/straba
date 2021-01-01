@@ -54,16 +54,11 @@ height: 200px;
 `
 
 
-export const CommentForm = ({activities, onNewMovie})=> { 
+export const CommentForm = ({activities})=> { 
     const [text, setText] = useState('')
-    const [loaded, setLoaded] = useState(false);
-    // if (activities){
-    //     setLoaded(true)
-    // }
+    const user_id = localStorage.getItem('userId')  
 
-    // if (!loaded) {
-    //     return null;
-    //   }
+   
    
     return (
         <Container>
@@ -80,10 +75,10 @@ export const CommentForm = ({activities, onNewMovie})=> {
                         <Form.Field>
                             <SubmitButton onClick = {async () => {
                                 let activity_id = activities.id
-                                let user_id = 1
+                        
                                 console.log('Comment' + text, activity_id, user_id)
                                   await createComment(text, user_id, activity_id);
-                                  onNewMovie(text, user_id, activity_id)
+                                  
                                   setText('')
                                 }}>
                                 Submit
