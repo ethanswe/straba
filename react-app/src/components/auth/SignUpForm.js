@@ -11,8 +11,6 @@ border-radius: 25px;
 width: 280px;
 height: 235px;
 color: white;
-/* margin: 0 auto; */
-/* margin: 0 auto; */
 flex-direction: row;
 background-color: black;
 opacity: 85%;
@@ -22,7 +20,6 @@ const H1 = styled.h1`
 display: flex;
 justify-content: center;
 font-family: 'Fugaz One', cursive;
-/* font-family: 'Staatliches', cursive; */
 align-items: center;
 font-size: 15px;
 `
@@ -34,8 +31,6 @@ background-size: cover;
 display: flex;
 align-items: center;
 justify-content: center;
-/* position: absolute;
-overflow: hidden; */
 `
 const StyledForm = styled.form`
 /* background-color: black; */

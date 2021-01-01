@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import blankLike from '../activities-feed/like.png';
 
 
-export const Kudos = ({activity})=> {
+export const KudosGet = ({activity})=> {
     const [loaded, setLoaded] = useState(false);
     const [kudos, setKudos] = useState(0);
     // console.log(activity.id)

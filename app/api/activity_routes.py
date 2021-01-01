@@ -34,7 +34,7 @@ def get_activities(user_id):
     except SQLAlchemyError as e:
         error = str(e.__dict__['orig'])
         print(error)
-        return {'errors': ['An error occurred while retrieving the data']}, 500
+        return {'errors': ['hit An error occurred while retrieving the data']}, 500
 
 
 # GET a specific activity

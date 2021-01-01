@@ -1,18 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import Following from './Following'
-import profile from "../images/Profile.png"
-import '../stylesheets/user.css'
+import Following from '../Following/Following';
+import UserActivitiesCount from '../User-Activities-Count/user-activities-count';
+import UserActivities from '../User-Activities/user-activities';
+import profile from "./Profile.png";
+import './user.css';
 
 function User() {
   const [user, setUser] = useState({});
   const [overview, setOverview] = useState(true);
+  const [follows, setFollows] = useState(false);
   const [followers, setFollowers] = useState(false);
   const [followingNum, setFollowingNum] = useState(0);
   const [followersNum, setFollowersNum] = useState(0);
   // Notice we use useParams here instead of getting the params
   // From props.
   const { userId }  = useParams();
+  const currentUserId = localStorage.getItem('userId')
 
   useEffect(() => {
     if (!userId) {
@@ -22,12 +26,16 @@ function User() {
       const response = await fetch(`/api/users/${userId}`);
       const user = await response.json();
       setUser(user);
-      const response2 = await fetch(`/api/following/${userId}`)
+      const response2 = await fetch(`/api/following/users/${userId}`)
       const data = await response2.json();
-      setFollowingNum(data.followingLen)
-      setFollowersNum(data.followersLen)
+      setFollowingNum(data.following.length)
+      setFollowersNum(data.followed.length)
+      const response3 = await fetch(`/api/following/${userId}/${currentUserId}`)
+      const data2 = await response3.json()
+      setFollows(data2.follows)
+
     })();
-  }, [userId]);
+  }, [userId, follows, currentUserId]);
 
   if (!user) {
     return null;
@@ -43,21 +51,63 @@ function User() {
     setFollowers(true)
   }
 
-  let content;
+  const handleFollowing = async () => {
+    if (follows === false) {
+      const response = await fetch(`/api/following/${userId}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          'userId': currentUserId
+        }),
+      });
+      await response.json();
+      setFollows(true);
+    } else {
+      const response = await fetch(`/api/following/${userId}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          'userId': currentUserId
+        }),
+      });
+      await response.json();
+      setFollows(false);
+    }
+  }
 
+  let content;
   const fillingContent = () => {
     switch (true) {
       case followers:
         content = <Following />
         break;
       default:
-        content = <h4>ANOTHER TEST</h4>;
+        content = <UserActivities />;
         break;
     }
     return;
   }
 
+  let follow;
+  const followButton = () => {
+    if (currentUserId === userId) {
+      follow = <div></div>
+    } else {
+      follow = <div>{follows ? (
+        <h4 onClick={handleFollowing}>Unfollow</h4>
+      ) : (
+          <h4 onClick={handleFollowing}>Follow</h4>
+        )
+      }</div>
+    }
+  }
+
   fillingContent()
+  followButton()
 
   return (
     <div className='userContainer'>
@@ -66,13 +116,15 @@ function User() {
         <div className='usersName'>
           <strong>{user.first_name} {user.last_name}</strong>
         </div>
+       {follow}
       </div>
       <div className='activitiesContainer'>
         <div className='usersActivities'>
-          Last 4 Weeks <strong>0</strong> <h6>Total Activities</h6>
+          {/* Last 4 Weeks <strong>0</strong> <h6>Total Activities</h6> */}
+          <UserActivitiesCount />
         </div>
         <div className='calendar'>
-          this is a test
+          
         </div>
       </div>
       <div className='lowerBody'>
