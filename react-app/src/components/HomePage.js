@@ -9,7 +9,7 @@ font-size: 35px;
 display: flex;
 align-items: center;
 justify-content: center;
-margin-top: 60px;
+margin-top: 15px;
 position: relative;
 font-family: 'Fugaz One', cursive;
 z-index: 10;

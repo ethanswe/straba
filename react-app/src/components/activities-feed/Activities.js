@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { NavLink } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 import { List, Header } from 'semantic-ui-react'
 import './activities.css';
 import logo from './strabalogo.png';
@@ -118,16 +118,24 @@ justify-content: center; */
 
 const AboutUsDiv = styled.div`
 margin-right: 0 auto;
+
 `
 
-const MapDiv = styled.div`
-border-radius: 25px;
-`
 
 export const ActivityFeed = () => {
     const [loaded, setLoaded] = useState(false);
-  const [activities, setActivities] = useState({});
+    const [activities, setActivities] = useState({});
+    const [count, setCount] = useState(0);
+
+  const { activityId } = useParams();
   
+  const onClick = () => {
+    fetch(`/api/kudos/activity/${activityId}`).then(res => {
+      res.json().then(data => {
+        console.log(data)
+      })
+    })
+  }
     useEffect(() => {
       fetch('/api/activities').then(res =>
         res.json().then(data => {
@@ -159,10 +167,6 @@ export const ActivityFeed = () => {
                     </UserDiv>
 
                     <KudosDiv className='social1'>
-                      
-                     
-                      
-                    
                     Kudos: <KudosGet activity={activity}/> 
                     Comments: <NavLink to={`/activities/${activity.id}`}>
                       <CommentsGet activity={activity} />

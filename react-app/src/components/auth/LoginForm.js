@@ -8,7 +8,7 @@ display: flex;
 justify-content: center;
 border-radius: 25px;
 width: 225px;
-height: 100px;
+height: 120px;
 color: white;
 flex-direction: row;
 background-color: black;
