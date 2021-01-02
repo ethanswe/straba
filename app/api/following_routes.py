@@ -6,6 +6,12 @@ from sqlalchemy.exc import SQLAlchemyError
 following_routes = Blueprint('following', __name__)
 
 
+def fetchingUser(person):
+    print(person)
+    id = person["followed_user_id"]
+    user = User.query.get(id)
+    return user.to_dict()
+
 
 # GET to check if the currentUser follows another user
 @following_routes.route('/<int:user_id>/<int:curr_user>')
@@ -33,9 +39,11 @@ def following(user_id):
         followers = Following.query.filter(Following.user_id == user_id).all()
         follows_dict = [person.to_dict() for person in followed]
         followers_dict = [person.to_dict() for person in followers]
+        followed_users = list(map(fetchingUser, followers_dict))
         following_json = jsonify({
             'followed': follows_dict,
             'following': followers_dict,
+            'following_users': followed_users
         })
         return following_json
     except SQLAlchemyError as e:

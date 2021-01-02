@@ -1,7 +1,6 @@
 .followContainer {
-    background-color: green;
     display: flex;
-    height: 100vh;
+    height: 600px;
 }
 
 .followContainer li {
@@ -15,6 +14,7 @@
     align-items: center;
     background-color: indianred;
     width: 50%;
+    overflow: scroll;
 }
 
 .followContainer h3 {
@@ -29,6 +29,7 @@
     align-items: center;
     background-color: red;
     width: 50%;
+    overflow: scroll;
 }
 
 .message {

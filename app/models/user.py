@@ -17,7 +17,7 @@ class User(db.Model, UserMixin):
   activities = db.relationship('Activity', back_populates='user', lazy=True)
   kudos = db.relationship('Kudos', backref='user', lazy=True)
   comments = db.relationship('Comment', backref='user', lazy=True)
-  following = db.relationship('Following', backref='user', lazy=True)
+  following = db.relationship('Following', back_populates='user', lazy=True)
 
   @property
   def password(self):

@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import Following from '../Following/Following';
 import UserActivitiesCount from '../User-Activities-Count/user-activities-count';
 import UserActivities from '../User-Activities/user-activities';
+import UserMyStats from '../User-MyStats/user-my-stats';
 import profile from "./Profile.png";
 import './user.css';
 
@@ -166,6 +167,7 @@ function User() {
           </div>
           <div className='myStats'>
             <h2>My Stats</h2>
+            <UserMyStats />
           </div>
         </div>
       </div> 
