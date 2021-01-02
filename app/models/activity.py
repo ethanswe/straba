@@ -13,8 +13,8 @@ class Activity(db.Model):
   user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable = False)
   createdAt = db.Column(db.DateTime, server_default=db.func.now())
   
-  kudos = db.relationship('Kudos', backref='activity', lazy=True)
-  comments = db.relationship('Comment', backref='activity', lazy=True)
+  kudos = db.relationship('Kudos', back_populates='activity', lazy=True)
+  comments = db.relationship('Comment', back_populates='activity', lazy=True)
   user = db.relationship("User", back_populates="activities")
 
   def to_dict(self):
@@ -41,3 +41,18 @@ class Activity(db.Model):
             'user_id': self.user_id,
             "user": self.user.to_dict()
         }
+
+  def to_joined_dict(self):
+         return {
+             'id': self.id,
+         'title': self.title,
+         'description': self.description,
+         'distance': self.distance,
+         'time': self.time,
+         'gpx_file': self.gpx_file,
+         'createdAt': self.createdAt,
+         'user_id': self.user_id,
+         "user": self.user.to_dict(),
+         "comments": [comment.to_dict() for comment in self.comments],
+         "kudos": [kudos.to_dict() for kodos in kudoses]
+     }

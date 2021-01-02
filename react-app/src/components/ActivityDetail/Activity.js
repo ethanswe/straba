@@ -3,6 +3,12 @@ import { useParams } from "react-router-dom";
 import styled from 'styled-components'
 import './activity.css';
 import logo from '../activities-feed/strabalogo.png';
+import { CommentForm } from './CommentForm';
+import commentIcon from '../activities-feed/comment.png';
+import blankLike from '../activities-feed/like.png';
+import CircularProgress from '@material-ui/core/CircularProgress';
+
+
 
 const CenterContainer = styled.div`
 display: flex;
@@ -88,21 +94,75 @@ margin-bottom: 4px;
 export const Activity = ()=> {
     const [loaded, setLoaded] = useState(false);
     const [activities, setActivities] = useState({});
+    const [comments, setComments] = useState({});
+    const [kudos, setKudos] = useState(0);
+
+
     const { activityId }  = useParams();
 
+    //fetch the activity data
     useEffect(() => {
-      fetch(`/api/activities/${activityId}`).then(res =>
-        res.json().then(data => {
-            setActivities(data.activities)
-            
-            setLoaded(true);
-            console.log(data)
-        })
-        )
-    }, [])
-    if (!loaded) {
-        return null;
+      if(!activityId) {
+        return
+    }
+    (async () => { 
+      const response = await fetch(`/api/activities/${activityId}`)
+      const data = await response.json()
+      await setActivities(data.activities)
+        })()
+    }, [activityId])
+    //fetch the comments for the particular activity
+    useEffect(() => {
+      if(!activityId) {
+          return
       }
+      (async () => {
+          // console.log("Inside useEffect: " + activity_Id)
+      const response = await fetch(`/api/comments/activity/${activityId}`)
+      const data = await response.json() 
+      console.log(data)
+      await setComments(data.comments)
+      setLoaded(true)
+        
+      })()
+    }, [activityId])
+
+    //fetch the kudos for the particular activity
+    useEffect(() => {
+      if(!activityId) {
+          return
+      }
+      (async () => {
+          // console.log("Inside useEffect: " + activity_Id)
+      const response = await fetch(`/api/kudos/${activityId}`)
+      const data = await response.json() 
+      console.log(data)
+      await setKudos(data.kudos.length)
+
+      })()
+    }, [activityId])
+
+
+    if (!loaded ) {
+      return (
+        <>
+        <BackgroundPhoto/>
+           <CenterContainer>
+           <StyledDiv className='newsContainer'>
+        <main className="centered middled">
+          <div>
+            <b>Fetching activity data...</b>
+          <CircularProgress />
+          </div>
+          </main>
+          </StyledDiv>
+          </CenterContainer>
+        </>
+        )
+      }
+
+
+    
     return (
       <>
         <BackgroundPhoto/>
@@ -114,7 +174,16 @@ export const Activity = ()=> {
 
                     <KudosDiv className='social'>
                       
-                     # Kudos   # Comments
+                    Kudos: 
+                    <div>
+                      <img height='20px' width='20px' src={blankLike} alt='blanklike'></img>
+                      {kudos}
+                    </div>    
+                    Comments: 
+                    <div>
+                      <img height='20px' width='20px' src={commentIcon} alt='commentIcon'></img>
+                        {comments.length}
+                       </div>
                     </KudosDiv>
 
             <ActivityInfo className='avatarTitle'>
@@ -150,16 +219,28 @@ export const Activity = ()=> {
                         </div>
                     </div>
 
-                    <Map className='map'>
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d41533406.428697795!2d73.8664217!3d50.5528081!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2skr!4v1609370759819!5m2!1sen!2skr" width='100%' height='100%'></iframe>
-                    </Map>
-
-                    <div className='comments'>
-                        Comments:
+                    <div className='map'>
+                        <iframe src="https://www.google.com/maps/d/embed?mid=1_Nd9y4jr4qGFY1y3aKu_6eCxOjd3HAeq" width='100%' height='100%'></iframe>
                     </div>
 
+                    <div className='comments'>
+                        Comments: 
+                        {comments.map(comment =>
+                          <div  key={comment.id}>
+                            <div>
+                              {comment.user.first_name} {comment.user.last_name} - {comment.createdAt}
+                            </div>
+                            <div>{comment.text}</div>                           
+                          </div>
+                          )}
+                    </div>
+                        
+                   
+
             </StyledDiv>
+            
           </CenterContainer>
+          <CommentForm activities={activities} comments={comments} />
         </>
     
     )
