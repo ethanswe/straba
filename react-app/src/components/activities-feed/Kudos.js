@@ -9,6 +9,13 @@ export const KudosGet = ({activity})=> {
     // console.log(activity.id)
     const activity_Id  = activity.id
 
+
+    const onClick = async () => {
+        const response = await fetch(`/api/kudos/${activity_Id}`)
+        const data = await response.json() 
+        setKudos(1);
+    }
+
     useEffect(() => {
         if(!activity_Id) {
             return
@@ -22,6 +29,7 @@ export const KudosGet = ({activity})=> {
               
         setLoaded(true);
         
+            
           
           
         })()
@@ -32,7 +40,7 @@ export const KudosGet = ({activity})=> {
       }
     return (
         <div>
-            <img height='20px' width='20px' src={blankLike} alt='blanklike'></img>
+            <img height='20px' width='20px' src={blankLike} alt='blanklike' onClick={onClick}></img>
             {kudos}
         </div>
     )
