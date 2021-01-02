@@ -15,8 +15,8 @@ class User(db.Model, UserMixin):
   avatar = db.Column(db.String(255))
   
   activities = db.relationship('Activity', back_populates='user', lazy=True)
-  kudos = db.relationship('Kudos', backref='user', lazy=True)
-  comments = db.relationship('Comment', backref='user', lazy=True)
+  kudos = db.relationship('Kudos', back_populates='user', lazy=True)
+  comments = db.relationship('Comment', back_populates='user', lazy=True)
   following = db.relationship('Following', back_populates='user', lazy=True)
 
   @property

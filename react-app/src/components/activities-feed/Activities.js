@@ -4,6 +4,8 @@ import { List, Header } from 'semantic-ui-react'
 import './activities.css';
 import logo from './strabalogo.png';
 import styled from 'styled-components'
+import { KudosGet } from './Kudos';
+import AboutUs from '../about-us-feed/AboutUs';
 
 
 const BackgroundPhoto = styled.div`
@@ -58,6 +60,7 @@ justify-content: space-between;
 `
 
 
+
 const ActivityInfo = styled.div`
 display: flex;
 justify-content: space-between;
@@ -90,10 +93,39 @@ const ActivityDiv = styled.div`
 margin-bottom: 4px;
 `
 
+const Kudos = styled.div`
+background-color: white;
+max-width: 650px;
+margin: 0 auto;
+height: 30px;
+/* display: flex; */
+/* justify-content: center; */
+/* align-items: center; */
+`
+const KudosImg = styled.div`
+background-image: url('https://lh3.googleusercontent.com/proxy/OiqlUE1iAcPEccwy6Y5biS8eARro-Bh6BW-JCsTGs69HFjLU9ekoOGGn_auQFPKTb4GTYGBmT4oRmiCitC8gAf-O2hBBnDAs_EkY1FhWIcVbM9vA7a-JXThcMl2nLQ93ZNQIfHtWTYV3PHiwuh2ve_nz0DMe6vRjOawF');
+width: 30px;
+height: 30px;
+/* background-color: black; */
+background-size: cover;
+/* display: flex;
+align-items: center;
+justify-content: center; */
+
+`
+
+const AboutUsDiv = styled.div`
+margin-right: 0 auto;
+`
+
+const MapDiv = styled.div`
+border-radius: 25px;
+`
+
 export const ActivityFeed = () => {
     const [loaded, setLoaded] = useState(false);
-    const [activities, setActivities] = useState({});
-
+  const [activities, setActivities] = useState({});
+  
     useEffect(() => {
       fetch('/api/activities').then(res =>
         res.json().then(data => {
@@ -112,7 +144,8 @@ export const ActivityFeed = () => {
       <>
       <BackgroundPhoto/>
         {activities.map(activity => {
-              return (
+          return (
+                <>
                 <CenterContainer>
                 <StyledDiv className='newsContainer1'>
                     <UserDiv className='newsTitle1'>
@@ -124,7 +157,10 @@ export const ActivityFeed = () => {
 
                     <KudosDiv className='social1'>
                       
-                     # Kudos:   <br /> # Comments:
+                     
+                      <span> <KudosGet activity={activity}/> </span>
+                    
+                     # Kudos:  <br /> # Comments:
                     </KudosDiv>
 
                     <ActivityInfo className='avatarTitle1'>
@@ -157,12 +193,13 @@ export const ActivityFeed = () => {
             
 
                     <div className='map1'>
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d41533406.428697795!2d73.8664217!3d50.5528081!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2skr!4v1609370759819!5m2!1sen!2skr" width='100%' height='100%'></iframe>
+                        <iframe src="https://www.google.com/maps/d/embed?mid=1_Nd9y4jr4qGFY1y3aKu_6eCxOjd3HAeq" width='100%' height='100%'></iframe>
                     </div>
 
 
                   </StyledDiv> 
-                </CenterContainer>
+              </CenterContainer>
+              </>
               )
         })}
         </>
