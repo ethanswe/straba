@@ -1,7 +1,6 @@
 .followContainer {
-    background-color: green;
     display: flex;
-    height: 100vh;
+    height: 600px;
 }
 
 .followContainer li {
@@ -13,8 +12,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: indianred;
     width: 50%;
+    overflow: scroll;
 }
 
 .followContainer h3 {
@@ -27,8 +26,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: red;
     width: 50%;
+    overflow: scroll;
 }
 
 .message {
@@ -37,7 +36,7 @@
 }
 
 li {
-    font-size: 22px;
+    font-size: 18px;
     text-decoration: none;
     color: orange;
     cursor: pointer;

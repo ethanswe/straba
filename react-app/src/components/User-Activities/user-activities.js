@@ -11,7 +11,6 @@ function UserActivities() {
         (async () => {
             const response = await fetch(`/api/activities/users/${userId}`);
             const data = await response.json()
-            console.log(data)
             setActivities(data.activities)
         })();
     }, [userId])
@@ -22,12 +21,16 @@ function UserActivities() {
 
     return (
         <div className='overviewContainer'>
-            {activities.map(activity => <div key={activity.id} id={activity.id} onClick={handleClick} className='overviewC'>
+            {activities.length ? (
+               activities.map(activity => <div key={activity.id} id={activity.id} onClick={handleClick} className='overviewC'>
                 <h1 id={activity.id}>{activity.title}</h1>
                 <div id={activity.id}><strong>Description:</strong>   {activity.description}</div>
                 <div id={activity.id}><strong>Time:</strong> {activity.time} minutes <strong>Distance:</strong> {activity.distance} miles</div>
                 <h6 id={activity.id}>Created: {activity.createdAt.split(' ').filter((sec, i) => i < 4).join(' ')}</h6>
-                </div>)}
+                </div>)
+            ) : (
+                <div>No current activities</div>
+            )}
         </div>
     )
 }

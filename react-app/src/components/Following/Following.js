@@ -22,8 +22,8 @@ function FollowingComp() {
             } else {
                 setFollowers([{ message: 'You have no followers' }])
             }
-            if (data.following.length > 0) {
-                setFollowing(data.following)
+            if (data.following_users.length > 0) {
+                setFollowing(data.following_users)
             } else {
                 setFollowing([{ message: 'You are not following anyone' }])
             }
@@ -38,20 +38,20 @@ function FollowingComp() {
 
     return (
         <div className='followContainer'>
-            <div className='followersC'>
-                <h3>Followers:</h3>
-                {followers[0]["message"] ? (
-                <div className='message'>{followers[0].message}</div>
-                ) : (
-                <ul>{followers.map((person) => <li key={person.id} id={'2'} onClick={handleRedirect}>Try this{person.first_name} {person.last_name}</li>)}</ul>
-                )}
-            </div>
             <div className='followingC'>
                 <h3>Following:</h3>
                 {following[0]["message"] ? (
                 <div className='message'>{following[0].message}</div>
                 ) : (
-                <ul>{following.map((person) => <li key={person.id} id={'1'} onClick={handleRedirect}>This is{person.first_name} {person.last_name}</li>)}</ul>
+                <ul>{following.map((person) => <li key={person.id} id={person.id} onClick={handleRedirect}>{person.first_name} {person.last_name}</li>)}</ul>
+                )}
+            </div>
+            <div className='followersC'>
+                <h3>Followers:</h3>
+                {followers[0]["message"] ? (
+                <div className='message'>{followers[0].message}</div>
+                ) : (
+                <ul>{followers.map((person) => <li key={person.user.id} id={person.user.id} onClick={handleRedirect}>{person.user.first_name} {person.user.last_name}</li>)}</ul>
                 )}
             </div>
         </div>

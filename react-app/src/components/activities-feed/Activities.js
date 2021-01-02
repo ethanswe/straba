@@ -8,6 +8,7 @@ import { KudosGet } from './Kudos';
 import AboutUs from '../about-us-feed/AboutUs';
 import { CommentsGet } from './Comments';
 import profile from "../User/Profile.png";
+import MiniProfile from '../Mini-Profile/mini-profile';
 
 
 
@@ -154,6 +155,7 @@ export const ActivityFeed = () => {
 
     return (
       <>
+      <MiniProfile />
       <BackgroundPhoto/>
         {activities.map(activity => {
           return (

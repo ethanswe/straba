@@ -3,11 +3,12 @@ import { useParams } from "react-router-dom";
 import Following from '../Following/Following';
 import UserActivitiesCount from '../User-Activities-Count/user-activities-count';
 import UserActivities from '../User-Activities/user-activities';
+import UserMyStats from '../User-MyStats/user-my-stats';
 import profile from "./Profile.png";
 import './user.css';
 
 function User() {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState({})
   const [overview, setOverview] = useState(true);
   const [follows, setFollows] = useState(false);
   const [followers, setFollowers] = useState(false);
@@ -120,7 +121,6 @@ function User() {
       </div>
       <div className='activitiesContainer'>
         <div className='usersActivities'>
-          {/* Last 4 Weeks <strong>0</strong> <h6>Total Activities</h6> */}
           <UserActivitiesCount />
         </div>
         <div className='calendar'>
@@ -166,6 +166,7 @@ function User() {
           </div>
           <div className='myStats'>
             <h2>My Stats</h2>
+            <UserMyStats />
           </div>
         </div>
       </div> 
