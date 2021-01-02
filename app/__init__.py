@@ -11,6 +11,7 @@ from .api.auth_routes import auth_routes
 from .api.activity_routes import activity_routes
 from .api.following_routes import following_routes
 from .api.kudos_routes import kudos_routes
+from .api.comment_routes import comment_routes
 
 from .seeds import seed_commands
 
@@ -37,6 +38,10 @@ app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(activity_routes, url_prefix='/api/activities')
 app.register_blueprint(following_routes, url_prefix='/api/following')
 app.register_blueprint(kudos_routes, url_prefix='/api/kudos')
+<<<<<<< HEAD
+=======
+app.register_blueprint(comment_routes, url_prefix='/api/comments')
+>>>>>>> master
 db.init_app(app)
 Migrate(app, db)
 
