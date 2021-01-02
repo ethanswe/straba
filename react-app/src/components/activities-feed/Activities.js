@@ -7,6 +7,8 @@ import styled from 'styled-components'
 import { KudosGet } from './Kudos';
 import AboutUs from '../about-us-feed/AboutUs';
 import { CommentsGet } from './Comments';
+import profile from "../User/Profile.png";
+
 
 
 const BackgroundPhoto = styled.div`
@@ -84,6 +86,7 @@ margin: 5px;
 
 const ImgDiv = styled.div`
 margin-right: 50px;
+border-radius: 50%;
 `
 
 const DateDiv = styled.div`
@@ -168,7 +171,7 @@ export const ActivityFeed = () => {
                     </KudosDiv>
                     <ActivityInfo className='avatarTitle1'>
                       <ImgDiv>
-                        <img height='50px' width='50px' src={logo} alt='activity pic'></img>  
+                        <img className='avatar' height='50px' width='50px'  src={activity.user.avatar ? activity.user.avatar : profile} alt='avatar pic'></img>  
                       </ImgDiv>
                       <DateDiv>
                         {activity.createdAt} 
@@ -196,7 +199,9 @@ export const ActivityFeed = () => {
             
 
                     <div className='map1'>
-                        <iframe src="https://www.google.com/maps/d/embed?mid=1_Nd9y4jr4qGFY1y3aKu_6eCxOjd3HAeq" width='100%' height='100%'></iframe>
+                        {activity.gpx_file ? <iframe src={activity.gpx_file} width='100%' height='100%'></iframe> : 
+                        <iframe src="https://www.google.com/maps/d/embed?mid=1_Nd9y4jr4qGFY1y3aKu_6eCxOjd3HAeq" width='100%' height='100%'></iframe>}
+                        
                     </div>
 
 

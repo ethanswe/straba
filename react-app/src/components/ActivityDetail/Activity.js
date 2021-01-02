@@ -7,6 +7,8 @@ import { CommentForm } from './CommentForm';
 import commentIcon from '../activities-feed/comment.png';
 import blankLike from '../activities-feed/like.png';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import profile from "../User/Profile.png";
+
 
 
 
@@ -188,7 +190,7 @@ export const Activity = ()=> {
 
             <ActivityInfo className='avatarTitle'>
               <ImgDiv>
-                <img height='50px' width='50px' src={logo} alt='activity pic'></img>  
+                <img className='avatar-a' height='50px' width='50px' src={activities.user.avatar ? activities.user.avatar : profile} alt='activity pic'></img>  
               </ImgDiv>
               <DateDiv>
                 {activities.createdAt} 

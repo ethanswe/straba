@@ -85,3 +85,6 @@
     align-items: center;
   }
 
+  .avatar-a {
+    border-radius: 50%;
+  }
