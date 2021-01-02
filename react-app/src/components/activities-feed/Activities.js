@@ -6,10 +6,8 @@ import logo from './strabalogo.png';
 import styled from 'styled-components'
 import { KudosGet } from './Kudos';
 import AboutUs from '../about-us-feed/AboutUs';
-<<<<<<< HEAD
-=======
 import { CommentsGet } from './Comments';
->>>>>>> master
+import MiniProfile from '../Mini-Profile/mini-profile';
 
 
 const BackgroundPhoto = styled.div`
@@ -146,6 +144,7 @@ export const ActivityFeed = () => {
 
     return (
       <>
+      <MiniProfile />
       <BackgroundPhoto/>
         {activities.map(activity => {
           return (

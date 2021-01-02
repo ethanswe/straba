@@ -70,10 +70,10 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
 
 
   // const userId = localStorage.getItem('userId');
-  let user = localStorage.getItem('userId');
   useEffect(() => {
+    let user = localStorage.getItem('userId');
     setUserId(user);
-  }, [user])
+  }, [])
 
   console.log(userId)
   return (
