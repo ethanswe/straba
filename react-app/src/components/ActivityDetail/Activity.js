@@ -146,7 +146,7 @@ export const Activity = ()=> {
     if (!loaded ) {
       return (
         <>
-        {/* <BackgroundPhoto/>
+        <BackgroundPhoto/>
            <CenterContainer>
            <StyledDiv className='newsContainer'>
         <main className="centered middled">
@@ -156,7 +156,7 @@ export const Activity = ()=> {
           </div>
           </main>
           </StyledDiv>
-          </CenterContainer> */}
+          </CenterContainer>
         </>
         )
       }

@@ -3,10 +3,10 @@
     padding: 6px;
     display: grid;
     grid-template-columns:  50% 50% ;
-    grid-template-rows: 5% 15% 15% 45% auto;
+    grid-template-rows: 10% 10% auto auto auto;
     grid-gap: 5px;
     max-width: 600px;
-    /* min-height: 500px;  */
+    min-height: 800px; 
     height: auto;   
     position: relative;
     
