@@ -1,5 +1,9 @@
 .overviewContainer {
     display: flex;
+    flex-direction: column;
+    /* background-color: burlywood; */
+    height: 800px;
+    overflow: scroll;
 }
 
 .overviewC {

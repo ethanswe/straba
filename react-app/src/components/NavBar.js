@@ -65,9 +65,17 @@ display: flex;
 `
 const NavBar = ({ authenticated, setAuthenticated }) => {
   let location = useLocation();
+  const [userId, setUserId] = useState()
   const currentPage = location.pathname;
 
-  const userId = localStorage.getItem('userId');
+
+  // const userId = localStorage.getItem('userId');
+  useEffect(() => {
+    let user = localStorage.getItem('userId');
+    setUserId(user);
+  }, [])
+
+  console.log(userId)
   return (
     <Nav>
       <NavContainer>

@@ -7,6 +7,7 @@ import styled from 'styled-components'
 import { KudosGet } from './Kudos';
 import AboutUs from '../about-us-feed/AboutUs';
 import { CommentsGet } from './Comments';
+import MiniProfile from '../Mini-Profile/mini-profile';
 
 
 const BackgroundPhoto = styled.div`
@@ -151,6 +152,7 @@ export const ActivityFeed = () => {
 
     return (
       <>
+      <MiniProfile />
       <BackgroundPhoto/>
         {activities.map(activity => {
           return (

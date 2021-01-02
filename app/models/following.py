@@ -14,5 +14,6 @@ class Following(db.Model):
       return {
         'id': self.id,
         'user_id': self.user_id,
-        'followed_user_id': self.followed_user_id
+        'followed_user_id': self.followed_user_id,
+        'user': self.user.to_dict()
       }
