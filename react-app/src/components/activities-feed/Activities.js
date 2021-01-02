@@ -206,10 +206,6 @@ export const ActivityFeed = () => {
 
                   </StyledDiv> 
               </CenterContainer>
-              <Kudos>
-                <KudosImg onClick={onClick}>
-                </KudosImg>
-              </Kudos>
               </>
               )
         })}
