@@ -115,16 +115,19 @@ justify-content: center; */
 
 const AboutUsDiv = styled.div`
 margin-right: 0 auto;
+
 `
 
-const MapDiv = styled.div`
-border-radius: 25px;
-`
 
 export const ActivityFeed = () => {
     const [loaded, setLoaded] = useState(false);
-  const [activities, setActivities] = useState({});
-  
+    const [activities, setActivities] = useState({});
+    const [count, setCount] = useState(0);
+
+  const onClick = () => {
+    count += 1;
+    console.log(count)
+  }
     useEffect(() => {
       fetch('/api/activities').then(res =>
         res.json().then(data => {
@@ -156,7 +159,7 @@ export const ActivityFeed = () => {
 
                     <KudosDiv className='social1'>
                       
-                     # Kudos:  <br /> # Comments:
+                     # Kudos: {count}  <br /> # Comments:
                     </KudosDiv>
 
                     <ActivityInfo className='avatarTitle1'>
@@ -188,13 +191,17 @@ export const ActivityFeed = () => {
 
             
 
-                    <MapDiv className='map1'>
+                    <div className='map1'>
                         <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d41533406.428697795!2d73.8664217!3d50.5528081!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2skr!4v1609370759819!5m2!1sen!2skr" width='100%' height='100%'></iframe>
-                    </MapDiv>
+                    </div>
 
 
                   </StyledDiv> 
               </CenterContainer>
+              <Kudos>
+                <KudosImg onClick={onClick}>
+                </KudosImg>
+              </Kudos>
               </>
               )
         })}
