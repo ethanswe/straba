@@ -222,7 +222,8 @@ export const Activity = ()=> {
                     </div>
 
                     <div className='map'>
-                        <iframe src="https://www.google.com/maps/d/embed?mid=1_Nd9y4jr4qGFY1y3aKu_6eCxOjd3HAeq" width='100%' height='100%'></iframe>
+                    {activities.gpx_file ? <iframe src={activities.gpx_file} width='100%' height='100%'></iframe> : 
+                        <iframe src="https://www.google.com/maps/d/embed?mid=1_Nd9y4jr4qGFY1y3aKu_6eCxOjd3HAeq" width='100%' height='100%'></iframe>}
                     </div>
 
                     <div className='comments'>
@@ -230,6 +231,7 @@ export const Activity = ()=> {
                         {comments.map(comment =>
                           <div  key={comment.id}>
                             <div>
+                            <img className='avatar-a' height='50px' width='50px' src={comment.user.avatar ? comment.user.avatar : profile} alt='comment pic'></img>
                               {comment.user.first_name} {comment.user.last_name} - {comment.createdAt}
                             </div>
                             <div>{comment.text}</div>                           

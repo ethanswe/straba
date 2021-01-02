@@ -17,12 +17,12 @@ export const KudosGet = ({activity})=> {
         // const response = await fetch(`/api/kudos/${activity_Id}`)
         // const data = await response.json();
         // console.log(data)
-        setKudos(1);
+        setKudos(kudos + 1);
         if (liked === false) {
             setLiked(true)
         } else {
             setLiked(false);
-            setKudos(0)
+            setKudos(kudos-1)
         }
 
         
