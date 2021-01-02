@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from "react-router-dom";
 import blankLike from '../activities-feed/like.png';
-import liked from '../activities-feed/liked.png';
+import likedPhoto from '../activities-feed/liked.png';
+
+
 
 export const KudosGet = ({activity})=> {
     const [loaded, setLoaded] = useState(false);
@@ -54,7 +56,7 @@ export const KudosGet = ({activity})=> {
             {liked ?
                 <>
                     <div>
-                        <img height='20px' width='20px' src={liked} alt='liked' onClick={onClick}></img>
+                        <img height='20px' width='20px' src={likedPhoto} alt='likedPhoto' onClick={onClick}></img>
                         {kudos}
                     </div>
                 </>
