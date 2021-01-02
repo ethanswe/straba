@@ -49,7 +49,7 @@ def getActivityKudos(activity_id):
 
 
 # This route will return a boolean whether or not if a user kudos a post
-@kudos_routes.route('/<int:userId>/activity/<int:postId>', methods=['GET'])
+@kudos_routes.route('/<int:user_id>/activity/<int:activity_id>', methods=['GET'])
 def getUserKudos(user_id, activity_id):
     kudos = Kudos.query.filter(Kudos.activity_id == activity_id).filter(Kudos.user_id == user_id).count()
     if kudos > 0:

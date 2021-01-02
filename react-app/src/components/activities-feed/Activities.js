@@ -6,6 +6,7 @@ import logo from './strabalogo.png';
 import styled from 'styled-components'
 import { KudosGet } from './Kudos';
 import AboutUs from '../about-us-feed/AboutUs';
+import { CommentsGet } from './Comments';
 
 
 const BackgroundPhoto = styled.div`
@@ -158,11 +159,13 @@ export const ActivityFeed = () => {
                     <KudosDiv className='social1'>
                       
                      
-                      <span> <KudosGet activity={activity}/> </span>
+                      
                     
-                     # Kudos:  <br /> # Comments:
+                    Kudos: <KudosGet activity={activity}/> 
+                    Comments: <NavLink to={`/activities/${activity.id}`}>
+                      <CommentsGet activity={activity} />
+                      </NavLink>
                     </KudosDiv>
-
                     <ActivityInfo className='avatarTitle1'>
                       <ImgDiv>
                         <img height='50px' width='50px' src={logo} alt='activity pic'></img>  
