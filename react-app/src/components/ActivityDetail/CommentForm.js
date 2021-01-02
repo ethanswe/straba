@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import {createComment} from '../../services/createComment'
 import { Form, Input, TextArea, Button } from 'semantic-ui-react'
 import styled from 'styled-components'
+import { useHistory } from "react-router-dom";
+
 
 const SubmitButton = styled.button`
   background: #222;
@@ -56,10 +58,9 @@ height: 200px;
 
 export const CommentForm = ({activities})=> { 
     const [text, setText] = useState('')
-    const user_id = localStorage.getItem('userId')  
+    const user_id = localStorage.getItem('userId')     
+    const history = useHistory();
 
-   
-   
     return (
         <Container>
                 <Form>
@@ -77,11 +78,14 @@ export const CommentForm = ({activities})=> {
                                 let activity_id = activities.id
                         
                                 console.log('Comment' + text, activity_id, user_id)
-                                  await createComment(text, user_id, activity_id);
-                                  
+                                  createComment(text, user_id, activity_id);
                                   setText('')
+                                  window.location.reload(false);
+                                  // history.push(`/activities/${activity_id}`)
                                 }}>
                                 Submit
+                                
+
                             </SubmitButton>
                         </Form.Field>
                     </Form>

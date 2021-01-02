@@ -240,7 +240,7 @@ export const Activity = ()=> {
             </StyledDiv>
             
           </CenterContainer>
-          <CommentForm activities={activities} />
+          <CommentForm activities={activities} comments={comments} />
         </>
     
     )
