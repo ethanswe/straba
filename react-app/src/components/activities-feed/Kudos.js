@@ -14,9 +14,9 @@ export const KudosGet = ({activity})=> {
 
 
     const onClick = async () => {
-        const response = await fetch(`/api/kudos/${activity_Id}`)
-        const data = await response.json();
-        console.log(data)
+        // const response = await fetch(`/api/kudos/${activity_Id}`)
+        // const data = await response.json();
+        // console.log(data)
         setKudos(1);
         if (liked === false) {
             setLiked(true)
