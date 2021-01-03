@@ -4,154 +4,308 @@
     box-sizing: border-box;
 }
 
-.userContainer {
-    padding: 0px 450px 0 350px;
-    padding-top: 15px;
-}
-
-.userInfo {
-    /* background-color: aqua; */
-    padding-left: 20px;
-}
-
-.userInfo img {
-    width: 200px;
-    height: 200px;
-    background-color: white;
-    border-radius: 50%;
-    box-shadow: 0px 5px 3px 3px lightgray;
+@media screen and (min-width: 1501px) {
+    .userContainer {
+        padding: 0px 450px 0 350px;
+        padding-top: 15px;
+    }
     
+    .userInfo {
+        padding-left: 20px;
+    }
+    
+    .userInfo img {
+        width: 200px;
+        height: 200px;
+        background-color: white;
+        border-radius: 50%;
+        box-shadow: 0px 5px 3px 3px lightgray;
+        
+    }
+    
+    .usersName {
+        font-size: 2em;
+    }
+    
+    .activitiesContainer {
+        display: flex;
+        height: 150px;
+        justify-content: flex-end;
+    }
+    
+    .usersActivities {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        font-size: 15px;
+        color: gray;
+        margin-right: 70px;
+    }
+    
+    .usersActivities strong {
+        font-size: 5em;
+        color: black;
+    }
+    
+    .usersActivities h6 {
+        justify-items: flex-end;
+        justify-content: flex-end;
+        font-weight: thin;
+        font-size: large;
+    }
+    
+    .mainContainer {
+        display: flex;
+        flex-direction: row;
+        width: 100vw;
+        height: 50px;
+    }
+    
+    .mainContainer h3 {
+        padding: 8px 10px;
+        font-weight: 200;
+    }
+    
+    .tab {
+        margin-top: 5px;
+    }
+    
+    .tab:hover {
+        cursor: pointer;
+        transition-duration: 300ms;
+        background-color: rgba(240, 240, 240, 1);
+    }
+    
+    .activeTab {
+        z-index: 10;
+        border-left: solid thin lightgray;
+        border-top: solid thick orange;
+        border-right: solid thin lightgray;
+        border-bottom: solid thick white;
+        border-bottom-left-radius: 5%;
+        border-bottom-right-radius: 5%;
+    }
+    
+    .content {
+        z-index: -1;
+        position: absolute;
+        margin-top: 50px;
+        border-top: solid thin lightgray;
+        padding-top: 30px;
+        width: 40%;
+    }
+    
+    .lowerBody {
+        display: flex;
+        flex-direction: row;
+        align-content: space-between;
+        justify-content: space-between;
+        margin-top: 40px;
+        height: 50px;
+    }
+    
+    /* rightside for main */
+    
+    .socialStats {
+        margin-top: 46px;
+        width: 40vw;
+        margin-left: 40px;
+        border-top: solid thin lightgray;
+        padding: 20px 0 40px 0;
+    }
+    
+    .followingCounts {
+        display: flex;
+        padding: 25px 0;
+    }
+    
+    .followingCounts .a {
+        padding-left: 15px;
+    }
+    
+    .followingCounts h6 {
+        color: gray;
+        font-size: 15px;
+        font-weight: 100;
+    }
+    
+    .followingCounts h4 {
+        color: rgb(14, 139, 255);
+        font-size: 24px;
+        font-weight: 100;
+    }
+    
+    .followingCounts h4:hover {
+        cursor: pointer;
+    }
+    
+    .myStats {
+        /* background-color: lightgreen; */
+        margin-top: 30px;
+        border-top: solid thin lightgray
+    }
+    
+    .myStats h2 {
+        padding: 35px 0;
+    }
+
 }
 
-.usersName {
-    font-size: 2em;
-}
+@media screen and (max-width: 1500px) {
+    .userContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-top: 15px;
+    }
+    
+    .userInfo {
+        justify-content: center;
+        display: flex;
+        align-items: center;
+    }
+    
+    .userInfo img {
+        width: 150px;
+        height: 150px;
+        background-color: white;
+        border-radius: 50%;
+        box-shadow: 0px 5px 3px 3px lightgray;
+        
+    }
+    
+    .usersName {
+        font-size: 2em;
+        padding-left: 30px;
+    }
 
-.activitiesContainer {
-    display: flex;
-    height: 150px;
-    /* background-color: red; */
-    justify-content: flex-end;
-    /* margin-top: 10px; */
-}
+    .userInfo h4 {
+        position: absolute;
+        margin-top: 40px;
+    }
+    
+    .activitiesContainer {
+        display: flex;
+        height: 150px;
+        justify-content: center;
+        margin-left: 20px;
+    }
+    
+    .usersActivities {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        font-size: 15px;
+        color: gray;
+        margin-right: 70px;
+    }
+    
+    .usersActivities strong {
+        font-size: 5em;
+        color: black;
+    }
+    
+    .usersActivities h6 {
+        justify-items: flex-end;
+        justify-content: flex-end;
+        font-weight: thin;
+        font-size: large;
+    }
+    
+    .mainContainer {
+        display: flex;
+        flex-direction: row;
+        width: 100vw;
+        height: 50px;
+    }
+    
+    .mainContainer h3 {
+        padding: 8px 10px;
+        font-weight: 200;
+    }
+    
+    .tab {
+        margin-top: 5px;
+    }
+    
+    .tab:hover {
+        cursor: pointer;
+        transition-duration: 300ms;
+        background-color: rgba(240, 240, 240, 1);
+    }
+    
+    .activeTab {
+        z-index: 10;
+        border-left: solid thin lightgray;
+        border-top: solid thick orange;
+        border-right: solid thin lightgray;
+        border-bottom: solid thick white;
+        border-bottom-left-radius: 5%;
+        border-bottom-right-radius: 5%;
+    }
+    
+    .content {
+        z-index: -1;
+        position: absolute;
+        margin-top: 50px;
+        border-top: solid thin lightgray;
+        padding-top: 30px;
+        width: 100%;
+    }
+    
+    .lowerBody {
+        margin-top: 40px;
+        height: 50px;
+    }
+    
+    /* rightside for main */
+    
+    .socialStats {
+        margin-top: 800px;
+        width: 100vw;
+        border-top: solid thin lightgray;
+        padding: 20px 0 40px 0;
+    }
 
-.usersActivities {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    /* background-color: green; */
-    font-size: 15px;
-    color: gray;
-    margin-right: 70px;
-}
-
-.usersActivities strong {
-    font-size: 5em;
-    color: black;
-}
-
-.usersActivities h6 {
-    justify-items: flex-end;
-    justify-content: flex-end;
-    font-weight: thin;
-    font-size: large;
-    /* background-color: blue; */
-}
-
-.mainContainer {
-    /* background-color: burlywood; */
-    display: flex;
-    flex-direction: row;
-    width: 100vw;
-    height: 50px;
-}
-
-.mainContainer h3 {
-    /* background-color: blue; */
-    padding: 8px 10px;
-    font-weight: 200;
-}
-
-.tab {
-    margin-top: 5px;
-}
-
-.tab:hover {
-    cursor: pointer;
-    transition-duration: 300ms;
-    background-color: rgba(240, 240, 240, 1);
-}
-
-.activeTab {
-    z-index: 10;
-    border-left: solid thin lightgray;
-    border-top: solid thick orange;
-    border-right: solid thin lightgray;
-    border-bottom: solid thick white;
-    border-bottom-left-radius: 5%;
-    border-bottom-right-radius: 5%;
-}
-
-.content {
-    z-index: -1;
-    position: absolute;
-    margin-top: 50px;
-    border-top: solid thin lightgray;
-    padding-top: 30px;
-    width: 40%;
-}
-
-.lowerBody {
-    display: flex;
-    flex-direction: row;
-    align-content: space-between;
-    justify-content: space-between;
-    margin-top: 40px;
-    height: 50px;
-}
-
-/* rightside for main */
-
-.socialStats {
-    margin-top: 46px;
-    width: 40vw;
-    margin-left: 40px;
-    border-top: solid thin lightgray;
-    padding: 20px 0 40px 0;
-}
-
-.followingCounts {
-    display: flex;
-    padding: 25px 0;
-}
-
-.followingCounts .a {
-    padding-left: 15px;
-}
-
-.followingCounts h6 {
-    color: gray;
-    font-size: 15px;
-    font-weight: 100;
-}
-
-.followingCounts h4 {
-    color: rgb(14, 139, 255);
-    font-size: 24px;
-    font-weight: 100;
-}
-
-.followingCounts h4:hover {
-    cursor: pointer;
-}
-
-.myStats {
-    /* background-color: lightgreen; */
-    margin-top: 30px;
-    border-top: solid thin lightgray
-}
-
-.myStats h2 {
-    padding: 35px 0;
+    .socialStats h2 {
+        padding-left: 20px;
+    }
+    
+    .followingCounts {
+        display: flex;
+        padding: 25px 0;
+    }
+    
+    .followingCounts .a {
+        padding-left: 15px;
+    }
+    
+    .followingCounts h6 {
+        color: gray;
+        font-size: 15px;
+        font-weight: 100;
+        padding-left: 20px;
+    }
+    
+    .followingCounts h4 {
+        color: rgb(14, 139, 255);
+        font-size: 24px;
+        font-weight: 100;
+        padding-left: 20px;
+    }
+    
+    .followingCounts h4:hover {
+        cursor: pointer;
+    }
+    
+    .myStats {
+        margin-top: 30px;
+        border-top: solid thin lightgray
+    }
+    
+    .myStats h2 {
+        padding: 35px 0 35px 20px;
+    }
 }
