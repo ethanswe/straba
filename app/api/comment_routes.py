@@ -22,3 +22,11 @@ def createComment():
 def getComments(activity_id):
     comments = Comment.query.join(User).filter(Comment.activity_id == activity_id).order_by(Comment.createdAt.desc()).all()
     return {'comments': [comment.to_joined_dict() for comment in comments]}
+
+
+@comment_routes.route('/<int:id>', methods=['DELETE'])
+def deleteComment(id):
+    comment = Comment.query.get(id)
+    db.session.delete(comment)
+    db.session.commit()
+    return {'message': 'successfully deleted comment'}, 200

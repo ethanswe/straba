@@ -113,7 +113,7 @@ function User() {
   return (
     <div className='userContainer'>
       <div className='userInfo'>
-        <img src={profile} alt='stock profile'/>
+        <img src={user.avatar} alt='profile pic'/>
         <div className='usersName'>
           <strong>{user.first_name} {user.last_name}</strong>
         </div>

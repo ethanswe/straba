@@ -8,7 +8,35 @@ import commentIcon from '../activities-feed/comment.png';
 import blankLike from '../activities-feed/like.png';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import profile from "../User/Profile.png";
+import { deleteComment } from '../../services/comment';
 
+
+const SubmitButton = styled.button`
+  background: #222;
+  height: 25px;
+  min-width: 90px;
+  border: none;
+  border-radius: 10px;
+  color: #eee;
+  font-size: 15px;
+font-family: 'Fugaz One', cursive;
+  position: relative;
+  transition: 1s;
+  -webkit-tap-highlight-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-top: 3px;
+:hover{
+  background: transparent;
+  height: 30px;
+  min-width: 90px;
+  left: 0;
+  border-radius: 0;
+  border-bottom: 2px solid #eee;
+}
+`
 
 
 
@@ -98,6 +126,7 @@ export const Activity = ()=> {
     const [activities, setActivities] = useState({});
     const [comments, setComments] = useState({});
     const [kudos, setKudos] = useState(0);
+    const user_id = localStorage.getItem('userId')     
 
 
     const { activityId }  = useParams();
@@ -111,6 +140,7 @@ export const Activity = ()=> {
       const response = await fetch(`/api/activities/${activityId}`)
       const data = await response.json()
       await setActivities(data.activities)
+    
         })()
     }, [activityId])
     //fetch the comments for the particular activity
@@ -124,7 +154,7 @@ export const Activity = ()=> {
       const data = await response.json() 
       console.log(data)
       await setComments(data.comments)
-      setLoaded(true)
+      
         
       })()
     }, [activityId])
@@ -140,10 +170,9 @@ export const Activity = ()=> {
       const data = await response.json() 
       console.log(data)
       await setKudos(data.kudos.length)
-
+      setLoaded(true)
       })()
     }, [activityId])
-
 
     if (!loaded ) {
       return (
@@ -234,7 +263,14 @@ export const Activity = ()=> {
                             <img className='avatar-a' height='50px' width='50px' src={comment.user.avatar ? comment.user.avatar : profile} alt='comment pic'></img>
                               {comment.user.first_name} {comment.user.last_name} - {comment.createdAt}
                             </div>
-                            <div>{comment.text}</div>                           
+                            <div>{comment.text}</div> 
+                            {comment.user.id == user_id ?
+                            <SubmitButton onClick={async ()=> {
+                              deleteComment(comment.id) 
+                              window.location.reload(false);
+                              }}>Delete</SubmitButton> :
+                              '' 
+                            }                        
                           </div>
                           )}
                     </div>

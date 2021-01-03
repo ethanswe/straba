@@ -52,12 +52,14 @@ function App() {
       <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
         <User />
       </ProtectedRoute>
-      <ProtectedRoute path="/activities/:activityId" exact={true} authenticated={authenticated}>
-        <Activity />
-      </ProtectedRoute>
+      <Switch>
       <ProtectedRoute path="/activities/new" exact={true} authenticated={authenticated}>
         <CreateActivityForm />
       </ProtectedRoute>
+      <ProtectedRoute path="/activities/:activityId" exact={true} authenticated={authenticated}>
+        <Activity />
+      </ProtectedRoute>
+      </Switch>
       
       <Route path="/" exact={true}  >
         <HomePage setAuthenticated={setAuthenticated} authenticated={authenticated}/>
