@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { Form, Input, TextArea, Button } from 'semantic-ui-react'
+import { Form } from 'semantic-ui-react'
 import styled from 'styled-components'
-import { Redirect, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const BackgroundImg = styled.div`
 background-image: url('https://images.pexels.com/photos/2729899/pexels-photo-2729899.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'); 

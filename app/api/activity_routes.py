@@ -12,7 +12,6 @@ activity_routes = Blueprint('activities', __name__)
 def activities():
     try:
         activities = Activity.query.order_by(Activity.createdAt.desc()).all()
-        print(activities)
         activity_dicts = [activity.to_user_dict() for activity in activities]
         # filter by following and date descending max 15 (.all().order_by(Activity.created_date.desc()))
         activity_json = jsonify({'activities': activity_dicts})
@@ -57,7 +56,6 @@ def get_activity(activity_id):
 # @login_required
 def post_activity(user_id):
     data = request.json
-    print(data)
     activity = Activity(
         user_id=user_id,
         title=data['title'],
@@ -72,13 +70,10 @@ def post_activity(user_id):
 
 
 # DELETE an activity
-@activity_routes.route('/<int:activity_id>', methods=['DELETE'])
+@activity_routes.route('/activity/<int:activity_id>', methods=['DELETE'])
 # @login_required
 def activity(activity_id):
-    delete_activity = Activity.query.get(activity_id)
-    if delete_activity:
-        db.session.delete(delete_activity)
-        db.session.commit()
-        return {'message': 'Activity was successfully deleted'}
-    else:
-        return {'errors': [f'Activity Id: {activity_id} was not found']}, 404
+    activity = Activity.query.filter(Activity.id == activity_id).first()
+    db.session.delete(activity)
+    db.session.commit()
+    return {'message': 'Activity was successfully deleted'}, 200

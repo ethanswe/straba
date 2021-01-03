@@ -75,7 +75,6 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
     setUserId(user);
   }, [])
 
-  console.log(userId)
   return (
     <Nav>
       <NavContainer>

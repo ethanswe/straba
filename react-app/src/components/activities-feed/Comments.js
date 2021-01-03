@@ -17,7 +17,6 @@ export const CommentsGet = ({activity})=> {
             // console.log("Inside useEffect: " + activity_Id)
         const response = await fetch(`/api/comments/activity/${activity_Id}`)
         const data = await response.json() 
-        console.log(data)
         setComments(data.comments.length)
               
         setLoaded(true);

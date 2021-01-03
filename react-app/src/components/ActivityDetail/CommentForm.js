@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import {createComment} from '../../services/comment'
-import { Form, Input, TextArea, Button } from 'semantic-ui-react'
+import { Form } from 'semantic-ui-react'
 import styled from 'styled-components'
 
 

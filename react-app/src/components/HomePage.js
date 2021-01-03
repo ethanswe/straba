@@ -1,6 +1,5 @@
 import React from 'react';
-import { NavLink, useLocation, Redirect } from 'react-router-dom';
-import LogoutButton from './auth/LogoutButton';
+import { Redirect } from 'react-router-dom';
 import styled from 'styled-components'
 import '../stylesheets/homepage.css';
 
