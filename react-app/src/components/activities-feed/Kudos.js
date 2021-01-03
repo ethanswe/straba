@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from "react-router-dom";
 import blankLike from '../activities-feed/like.png';
 import likedPhoto from '../activities-feed/liked.png';
 
@@ -37,7 +36,6 @@ export const KudosGet = ({activity})=> {
             // console.log("Inside useEffect: " + activity_Id)
         const response = await fetch(`/api/kudos/${activity_Id}`)
         const data = await response.json() 
-        console.log(data)
         setKudos(data.kudos.length)
               
         setLoaded(true);

@@ -3,8 +3,6 @@
 **Description**
 * Straba is a web aplication that allows users to upload their GPX activity data and share their exercises with other users on the site.  Users can follow, comment, and give kudos to other users.  They can upload their unique avatars as well. Straba features an activity feed, activity detail page, as well as a dynamic user profile page with followers, user activity history, and followers.
 
-
-
 **MVP**
 * User profile and authentication 
 * Allow users to create an activity 
@@ -33,7 +31,7 @@
  - HTML/CSS
  - Google Maps
 
-  ## Feature List
+## Feature List
  ### User CRUD
   - Signup/login/logout
   - User profile (User's profile page, displays all a User's activities and followers, User's profile picture)
@@ -54,5 +52,5 @@
  ### Followers
   - Users will have the ability to follow other users to recieve updates on a User's feed.
 
-### Database Schema
+## Database Schema
   ![STRABA Database Schema](/assets/StrabaDBSchema.png)

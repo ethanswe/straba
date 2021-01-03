@@ -7,7 +7,6 @@ following_routes = Blueprint('following', __name__)
 
 
 def fetchingUser(person):
-    print(person)
     id = person["followed_user_id"]
     user = User.query.get(id)
     return user.to_dict()
@@ -21,7 +20,6 @@ def check_following(user_id, curr_user):
             Following.user_id == curr_user,
             Following.followed_user_id == user_id
         ).first()
-        print(follows)
         if follows:
             return {'follows': True}
         return {'follows':False}

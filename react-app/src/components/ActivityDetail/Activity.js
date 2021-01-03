@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import styled from 'styled-components'
 import './activity.css';
-import logo from '../activities-feed/strabalogo.png';
 import { CommentForm } from './CommentForm';
 import commentIcon from '../activities-feed/comment.png';
 import blankLike from '../activities-feed/like.png';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import profile from "../User/Profile.png";
 import { deleteComment } from '../../services/comment';
+import { deleteActivity } from '../../services/activity';
 
 
 const SubmitButton = styled.button`
@@ -103,9 +103,7 @@ margin-left: 10px;
 margin: 5px;
 `
 
-const Map = styled.div`
 
-`
 const ActivityStatsDiv = styled.div`
 margin: 5px;
 `
@@ -127,6 +125,7 @@ export const Activity = ()=> {
     const [activities, setActivities] = useState({});
     const [comments, setComments] = useState({});
     const [kudos, setKudos] = useState(0);
+
     const user_id = localStorage.getItem('userId')     
 
 
@@ -153,7 +152,6 @@ export const Activity = ()=> {
           // console.log("Inside useEffect: " + activity_Id)
       const response = await fetch(`/api/comments/activity/${activityId}`)
       const data = await response.json() 
-      console.log(data)
       await setComments(data.comments)
       
         
@@ -169,7 +167,6 @@ export const Activity = ()=> {
           // console.log("Inside useEffect: " + activity_Id)
       const response = await fetch(`/api/kudos/${activityId}`)
       const data = await response.json() 
-      console.log(data)
       await setKudos(data.kudos.length)
       
       setTimeout(function(){ setLoaded(true); }, 500);
@@ -202,7 +199,7 @@ export const Activity = ()=> {
            <CenterContainer>
                 <StyledDiv className='newsContainer'>
                     <UserDiv className='newsTitle'>
-                {activities.user.first_name} {activities.user.last_name}
+                {activities.user.first_name} {activities.user.last_name} {activities.id}
                 </UserDiv>
 
                     <KudosDiv className='social'>
@@ -256,6 +253,14 @@ export const Activity = ()=> {
                     {activities.gpx_file ? <iframe src={activities.gpx_file} width='100%' height='100%'></iframe> : 
                         <iframe src="https://www.google.com/maps/d/embed?mid=1_Nd9y4jr4qGFY1y3aKu_6eCxOjd3HAeq" width='100%' height='100%'></iframe>}
                     </div>
+                    {activities.user.id == user_id ?
+                            <SubmitButton onClick={async ()=> {
+                              deleteActivity(activities.id) 
+                              console.log(activities.id)
+                              window.location.replace('/feed')
+                              }}>Delete Activity</SubmitButton> :
+                              '' 
+                            } 
 
                     <div className='comments'>
                         Comments: 
@@ -269,6 +274,7 @@ export const Activity = ()=> {
                             {comment.user.id == user_id ?
                             <SubmitButton onClick={async ()=> {
                               deleteComment(comment.id) 
+                              // history.push(`/feed/${activities.id}`)
                               window.location.reload(false);
                               }}>Delete</SubmitButton> :
                               '' 

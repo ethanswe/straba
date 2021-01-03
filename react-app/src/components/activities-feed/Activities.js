@@ -128,14 +128,12 @@ margin-right: 0 auto;
 export const ActivityFeed = () => {
     const [loaded, setLoaded] = useState(false);
     const [activities, setActivities] = useState({});
-    const [count, setCount] = useState(0);
 
   const { activityId } = useParams();
   
   const onClick = () => {
     fetch(`/api/kudos/activity/${activityId}`).then(res => {
       res.json().then(data => {
-        console.log(data)
       })
     })
   }
@@ -145,7 +143,6 @@ export const ActivityFeed = () => {
             setActivities(data.activities)
             
             setLoaded(true);
-            console.log(data)
         })
         )
     }, [])
@@ -159,8 +156,8 @@ export const ActivityFeed = () => {
       <BackgroundPhoto/>
         {activities.map(activity => {
           return (
-                <>
-                <CenterContainer>
+                <div key={activity.id}>
+                <CenterContainer >
                 <StyledDiv className='newsContainer1'>
                     <UserDiv className='newsTitle1'>
                       
@@ -213,7 +210,7 @@ export const ActivityFeed = () => {
 
                   </StyledDiv> 
               </CenterContainer>
-              </>
+              </div>
               )
         })}
         </>
