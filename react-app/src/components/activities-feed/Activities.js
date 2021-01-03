@@ -152,8 +152,8 @@ export const ActivityFeed = () => {
 
     return (
       <>
-      <MiniProfile />
       <BackgroundPhoto/>
+      <MiniProfile />
         {activities.map(activity => {
           return (
                 <div key={activity.id}>
