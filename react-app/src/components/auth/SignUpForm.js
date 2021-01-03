@@ -9,7 +9,7 @@ justify-content: center;
 align-items: center;
 border-radius: 25px;
 width: 280px;
-height: 235px;
+height: 300px;
 color: white;
 flex-direction: row;
 background-color: black;
@@ -43,6 +43,7 @@ const StyledForm = styled.form`
 
 const SignUpInput = styled.input`
 width: 200px;
+margin-left: 14%;
 :focus{
   box-shadow: 0 0 5px rgba(81, 203, 238, 1);
   background-color: black;
@@ -89,6 +90,7 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
+  const [avatar, setAvatar] = useState("");
 
   const onSignUp = async (e) => {
     e.preventDefault();
@@ -127,6 +129,10 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
 
   const updateRepeatPassword = (e) => {
     setRepeatPassword(e.target.value);
+  };
+
+  const updateAvatar = (e) => {
+    setAvatar(e.target.value);
   };
 
   if (authenticated) {
@@ -201,6 +207,13 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
                 value={repeatPassword}
                 placeholder={"Confirm Password"}
                 required={true}
+              ></SignUpInput>
+              <SignUpInput
+                type="avatar"
+                name="avatar"
+                onChange={updateAvatar}
+                value={avatar}
+                placeholder={"Optional Avatar"}
               ></SignUpInput>
             </div>
             <SignUpButton type="submit">Sign Up</SignUpButton>

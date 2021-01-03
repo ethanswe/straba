@@ -1,98 +1,58 @@
-# Flask React Project
+**STRABA (Strava Clone)**
 
-This is the backend for the Flask React project.
+**Description**
+* Straba is a web aplication that allows users to upload their GPX activity data and share their exercises with other users on the site.  Users can follow, comment, and give kudos to other users.  They can upload their unique avatars as well. Straba features an activity feed, activity detail page, as well as a dynamic user profile page with followers, user activity history, and followers.
 
-## Getting started
 
-1. Clone this repository (only this branch)
 
-   ```bash
-   git clone https://github.com/appacademy-starters/python-project-starter.git
-   ```
+**MVP**
+* User profile and authentication 
+* Allow users to create an activity 
+* Allow users to like/comment on a post 
+* Main activity feed
+* Activity detail
+* Allow users to follow other users 
+* User profile page with the user's activity feed and followers
 
-2. Install dependencies
+**Stretch Goals**
+* Automated GPX parsing of activity data
+* Comment editing
+* Activity deletion
+* Activity historical data graph
 
-      ```bash
-      pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
-      ```
+## Technologies
+ - JavaScript
+ - Python 3
+ - PostgreSQL
+ - Psycopg2
+ - Flask
+ - FlaskForms
+ - SQLAlchemy
+ - Alembic
+ - React
+ - HTML/CSS
+ - Google Maps
 
-3. Create a **.env** file based on the example with proper settings for your
-   development environment
-4. Setup your PostgreSQL user, password and database and make sure it matches your **.env** file
+  ## Feature List
+ ### User CRUD
+  - Signup/login/logout
+  - User profile (User's profile page, displays all a User's activities and followers, User's profile picture)
 
-5. Get into your pipenv, migrate your database, seed your database, and run your flask app
+ ### Post CRUD
+  - Users can create an activity
+  - Activity includes a title, description, mileage, pace, distance, a map, as well as the date, user name, and avatar
+  - An Activity will have kudos(likes) associated with them.
+  - An Activity will also have comments associated with them.
 
-   ```bash
-   pipenv shell
-   ```
+ ### Comments CRUD
+  - Users will have the ability to leave comments on activities
+  - Comments can be deleted by user who owns them.
 
-   ```bash
-   flask db upgrade
-   ```
+ ### Kudos
+  - Users will have the ability to give kudos on an activity, this will be reflected on the activity.
 
-   ```bash
-   flask seed all
-   ```
+ ### Followers
+  - Users will have the ability to follow other users to recieve updates on a User's feed.
 
-   ```bash
-   flask run
-   ```
-
-6. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
-
-***
-*IMPORTANT!*
-   If you add any python dependencies to your pipfiles, you'll need to regenerate your requirements.txt before deployment.
-   You can do this by running:
-
-   ```bash
-   pipenv lock -r > requirements.txt
-   ```
-
-*ALSO IMPORTANT!*
-   psycopg2-binary MUST remain a dev dependency because you can't install it on apline-linux.
-   There is a layer in the Dockerfile that will install psycopg2 (not binary) for us.
-***
-
-## Deploy to Heroku
-
-1. Create a new project on Heroku
-2. Under Resources click "Find more add-ons" and add the add on called "Heroku Postgres"
-3. Install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line)
-4. Run
-
-   ```bash
-   heroku login
-   ```
-
-5. Login to the heroku container registry
-
-   ```bash
-   heroku container:login
-   ```
-
-6. Update the `REACT_APP_BASE_URL` variable in the Dockerfile.
-   This should be the full URL of your Heroku app: i.e. "https://flask-react-aa.herokuapp.com"
-7. Push your docker container to heroku from the root directory of your project.
-   This will build the dockerfile and push the image to your heroku container registry
-
-   ```bash
-   heroku container:push web -a {NAME_OF_HEROKU_APP}
-   ```
-
-8. Release your docker container to heroku
-
-   ```bash
-   heroku container:release web -a {NAME_OF_HEROKU_APP}
-   ```
-
-9. set up your database:
-
-   ```bash
-   heroku run -a {NAME_OF_HEROKU_APP} flask db upgrade
-   heroku run -a {NAME_OF_HEROKU_APP} flask seed all
-   ```
-
-10. Under Settings find "Config Vars" and add any additional/secret .env variables.
-
-11. profit
+### Database Schema
+  ![STRABA Database Schema](/assets/StrabaDBSchema.png)

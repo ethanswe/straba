@@ -100,25 +100,27 @@ export const CreateActivityForm = () => {
                         </Form.Field>
                         <Form.Field>
                             <TestInput
+                            type='number'
                             label={{ basic: true, content: 'miles' }}
                             labelPosition='right'
-                            placeholder='Distance'
+                            placeholder='Distance (miles)'
                             value={distance_string}
                             onChange={(e)=> setDistance(e.target.value)}
                             />
                         </Form.Field>
                         <Form.Field>
                             <TestInput
+                            type='number'
                             label={{ basic: true, content: 'minutes' }}
                             labelPosition='right'
-                            placeholder='Time'
+                            placeholder='Time (minutes)'
                             value={time_string}
                             onChange={(e)=> setTime(e.target.value)}
                             />
                         </Form.Field>
                         <Form.Field>
                             <TestInput 
-                            placeholder="GPX File" 
+                            placeholder="Google Map SRC" 
                             value={gpx_file} 
                             onChange={e => setGPX_file(e.target.value)}
                             />
