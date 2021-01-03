@@ -78,8 +78,8 @@ width: 200px;
 
 const LoginForm = ({ authenticated, setAuthenticated }) => {
   const [errors, setErrors] = useState([]);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("demo@aa.io");
+  const [password, setPassword] = useState("password");
 
   const onLogin = async (e) => {
     e.preventDefault();
