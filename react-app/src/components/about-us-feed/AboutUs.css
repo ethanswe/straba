@@ -1,0 +1,76 @@
+.miniProfile1 {
+    background-color: white;
+    position: absolute;
+    width: 350px;
+    height: 1000px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    top: 100px;
+    right: 10px;
+    border-radius: 10px;
+    
+
+}
+
+.miniProfile1 .logo {
+    width: 150px;
+    height: 150px;
+    padding: 10px;
+    margin: 10px;
+    background-color: white;
+    box-shadow: 0px 5px 3px 3px lightgray;
+}
+
+.miniProfile1 h2 {
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.miniInfo1 {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.miniInfo1 div {
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+}
+
+.miniInfo1 h4 {
+    align-self: center;
+}
+
+.miniInfo1 h6 {
+    font-size: 12px;
+}
+.about-us-text {
+    padding: 10px;
+    margin: 10px;
+}
+
+@media screen and (max-width: 1000px) {
+    .miniProfile1 {
+        display: none;
+    }
+  
+  }
+  a {
+    color: inherit; /* blue colors for links too */
+    text-decoration: inherit; /* no underline */
+  
+  }
+
+  a:hover {
+    color: #3A70A6;
+  }
+
+  .miniProfile1 li {
+    color: #3A70A6;
+ } 
+
+ .miniProfile1 p {
+    margin-bottom: 10px;
+ } 

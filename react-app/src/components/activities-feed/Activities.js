@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { NavLink, useParams } from 'react-router-dom';
 import { List, Header } from 'semantic-ui-react'
 import './activities.css';
-import logo from './strabalogo.png';
 import styled from 'styled-components'
 import { KudosGet } from './Kudos';
 import AboutUs from '../about-us-feed/AboutUs';
@@ -153,6 +152,7 @@ export const ActivityFeed = () => {
     return (
       <>
       <BackgroundPhoto/>
+      <AboutUs />
       <MiniProfile />
         {activities.map(activity => {
           return (

@@ -3,13 +3,14 @@
     .miniProfile {
         background-color: white;
         position: absolute;
-        width: 300px;
+        width: 350px;
         height: 200px;
         display: flex;
         align-items: center;
         justify-content: flex-end;
         flex-direction: column;
-        margin: 100px 0 0 200px;
+        top: 200px;
+        left: 10px;
         border-radius: 10px;
     }
     
