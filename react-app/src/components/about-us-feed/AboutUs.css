@@ -66,3 +66,11 @@
   a:hover {
     color: #3A70A6;
   }
+
+  .miniProfile1 li {
+    color: #3A70A6;
+ } 
+
+ .miniProfile1 p {
+    margin-bottom: 10px;
+ } 

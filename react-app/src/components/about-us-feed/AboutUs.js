@@ -34,7 +34,10 @@ const AboutUs = () => {
             <div className='about-us-text'>
             <h2>About STRABA</h2>
             <p>
-            Straba is a web application that allows users to upload their GPX activity data and share their exercises with other users on the site.  Users can follow, comment, and give kudos to other users.  They can upload their unique avatars as well. Straba features an activity feed, activity detail page, as well as a dynamic user profile page with followers, user activity history, and followers.
+            Straba is a web application that allows users to upload their GPX activity data and share their exercises with other users on the site.  Users can follow, comment, and give kudos to other users.  They can upload their unique avatars as well.
+            </p>
+            <p>
+            Straba features an activity feed, activity detail page, as well as a dynamic user profile page with stats, user activity history, and followers.
             </p>
             
             <div>

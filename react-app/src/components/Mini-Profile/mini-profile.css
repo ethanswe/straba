@@ -1,45 +1,96 @@
-.miniProfile {
-    background-color: white;
-    position: absolute;
-    width: 300px;
-    height: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    flex-direction: column;
-    margin: 100px 0 0 200px;
-    border-radius: 10px;
+@media screen and (min-width: 601px) {
 
+    .miniProfile {
+        background-color: white;
+        position: absolute;
+        width: 350px;
+        height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        flex-direction: column;
+        top: 200px;
+        left: 10px;
+        border-radius: 10px;
+    }
+    
+    .miniProfile img {
+        width: 150px;
+        height: 150px;
+        background-color: white;
+        border-radius: 50%;
+        box-shadow: 0px 5px 3px 3px lightgray;
+    }
+    
+    .miniProfile h2 {
+        cursor: pointer;
+        margin-top: 10px;
+    }
+    
+    .miniInfo {
+        display: flex;
+        margin-bottom: 10px;
+    }
+    
+    .miniInfo div {
+        display: flex;
+        flex-direction: column;
+        margin: 5px;
+    }
+    
+    .miniInfo h4 {
+        align-self: center;
+    }
+    
+    .miniInfo h6 {
+        font-size: 12px;
+    }
 }
 
-.miniProfile img {
-    width: 150px;
-    height: 150px;
-    background-color: white;
-    border-radius: 50%;
-    box-shadow: 0px 5px 3px 3px lightgray;
-}
+/* different screen size */
 
-.miniProfile h2 {
-    cursor: pointer;
-    margin-top: 10px;
-}
-
-.miniInfo {
-    display: flex;
-    margin-bottom: 10px;
-}
-
-.miniInfo div {
-    display: flex;
-    flex-direction: column;
-    margin: 5px;
-}
-
-.miniInfo h4 {
-    align-self: center;
-}
-
-.miniInfo h6 {
-    font-size: 12px;
+@media screen and (max-width: 600px) {
+    .miniProfile {
+        background-color: white;
+        width: 300px;
+        height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        flex-direction: column;
+        margin: 40px 0 20px 125px;
+        border-radius: 10px;
+       
+    }
+    .miniProfile img {
+        width: 100px;
+        height: 100px;
+        background-color: white;
+        border-radius: 50%;
+        box-shadow: 0px 5px 3px 3px lightgray;
+    }
+    
+    .miniProfile h2 {
+        cursor: pointer;
+        margin-top: 10px;
+    }
+    
+    .miniInfo {
+        display: flex;
+        margin-bottom: 10px;
+    }
+    
+    .miniInfo div {
+        display: flex;
+        flex-direction: column;
+        margin: 5px;
+    }
+    
+    .miniInfo h4 {
+        align-self: center;
+    }
+    
+    .miniInfo h6 {
+        font-size: 12px;
+    } 
 }
