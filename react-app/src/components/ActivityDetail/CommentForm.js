@@ -41,6 +41,8 @@ z-index: 10;
 background-color: white;
 border-radius:25px;
 margin-top: 10px;
+box-shadow: 0px 5px 3px 3px lightgray;
+
 `
 
 const Header = styled.h3`

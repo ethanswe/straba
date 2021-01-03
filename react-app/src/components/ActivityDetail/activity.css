@@ -81,8 +81,8 @@
     align-items: center;
   }
 
-  .middled {
-    align-items: center;
+  .centered {
+    justify-content: center;
   }
 
   .avatar-a {

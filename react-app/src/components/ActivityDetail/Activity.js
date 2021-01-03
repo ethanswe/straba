@@ -50,6 +50,7 @@ z-index: 10;
 background-color: white;
 border-radius:25px;
 margin-top: 50px;
+box-shadow: 0px 5px 3px 3px lightgray;
 `
 
 const BackgroundPhoto = styled.div`
@@ -140,7 +141,7 @@ export const Activity = ()=> {
       const response = await fetch(`/api/activities/${activityId}`)
       const data = await response.json()
       await setActivities(data.activities)
-    
+      
         })()
     }, [activityId])
     //fetch the comments for the particular activity
@@ -170,7 +171,8 @@ export const Activity = ()=> {
       const data = await response.json() 
       console.log(data)
       await setKudos(data.kudos.length)
-      setLoaded(true)
+      
+      setTimeout(function(){ setLoaded(true); }, 500);
       })()
     }, [activityId])
 
@@ -181,10 +183,10 @@ export const Activity = ()=> {
            <CenterContainer>
            <StyledDiv className='newsContainer'>
         <main className="centered middled">
-          <div>
-            <b>Fetching activity data...</b>
+          <div><b>Fetching activity data...</b></div>
+            
           <CircularProgress />
-          </div>
+          
           </main>
           </StyledDiv>
           </CenterContainer>
