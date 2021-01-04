@@ -45,7 +45,8 @@ const AboutUs = () => {
             <ol >
 	            <li>Upload your GPX file  from your GPS device to your computer.</li>
 	            <li>Make a new map in your Google Drive.</li>
-	            <li>Copy the src url from the embed code into the STRABA New Activity Form.</li>
+                <li>Upload your GPX file as a new layer in the map.</li>
+	            <li>Copy the src url from the embed code into the STRABA New Activity Form with your running data.</li>
                 </ol>
             </div>
             </div>

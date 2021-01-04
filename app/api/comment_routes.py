@@ -29,3 +29,4 @@ def deleteComment(id):
     db.session.delete(comment)
     db.session.commit()
     return {'message': 'successfully deleted comment'}, 200
+
