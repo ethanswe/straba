@@ -9,7 +9,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import profile from "../User/Profile.png";
 import { deleteComment } from '../../services/comment';
 import { deleteActivity } from '../../services/activity';
-
+import {KudosGet} from '../activities-feed/Kudos'
 
 const SubmitButton = styled.button`
   background: #222;
@@ -165,7 +165,7 @@ export const Activity = ()=> {
       }
       (async () => {
           // console.log("Inside useEffect: " + activity_Id)
-      const response = await fetch(`/api/kudos/${activityId}`)
+      const response = await fetch(`/api/kudos/activity/${activityId}`)
       const data = await response.json() 
       await setKudos(data.kudos.length)
       
@@ -199,16 +199,13 @@ export const Activity = ()=> {
            <CenterContainer>
                 <StyledDiv className='newsContainer'>
                     <UserDiv className='newsTitle'>
-                {activities.user.first_name} {activities.user.last_name} {activities.id}
+                {activities.user.first_name} {activities.user.last_name}
                 </UserDiv>
 
                     <KudosDiv className='social'>
                       
                     Kudos: 
-                    <div>
-                      <img height='20px' width='20px' src={blankLike} alt='blanklike'></img>
-                      {kudos}
-                    </div>    
+                    <KudosGet activity={activities}/>  
                     Comments: 
                     <div>
                       <img height='20px' width='20px' src={commentIcon} alt='commentIcon'></img>

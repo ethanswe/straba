@@ -128,14 +128,7 @@ export const ActivityFeed = () => {
     const [loaded, setLoaded] = useState(false);
     const [activities, setActivities] = useState({});
 
-  const { activityId } = useParams();
   
-  const onClick = () => {
-    fetch(`/api/kudos/activity/${activityId}`).then(res => {
-      res.json().then(data => {
-      })
-    })
-  }
     useEffect(() => {
       fetch('/api/activities').then(res =>
         res.json().then(data => {
