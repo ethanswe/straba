@@ -25,17 +25,17 @@ def createKudos():
         return {'errors': 'User already kudos'}, 404
 
 
-@kudos_routes.route('/delete', methods=['DELETE'])
-def deleteKudos():
-    req_data = request.get_json()
-    activity_id = req_data['activity_id']
-    user_id = req_data['user_id']
+# @kudos_routes.route('/delete', methods=['DELETE'])
+# def deleteKudos():
+#     req_data = request.get_json()
+#     activity_id = req_data['activity_id']
+#     user_id = req_data['user_id']
 
-    kudos = Kudos.query.filter(Kudos.activity_id == activity_id).filter(Kudos.user_id == user_id).one()
+#     kudos = Kudos.query.filter(Kudos.activity_id == activity_id).filter(Kudos.user_id == user_id).one()
 
-    db.session.delete(kudos)
-    db.session.commit()
-    return {'message': 'successfully deleted'}, 200
+#     db.session.delete(kudos)
+#     db.session.commit()
+#     return {'message': 'successfully deleted'}, 200
 
 
 # This route will return the number of kudos for a user
@@ -56,3 +56,19 @@ def getUserKudos(user_id, activity_id):
         return {'kudos': True}
     else:
         return {'kudos': False}
+
+
+# @kudos_routes.route('/activity/<int:activity_id>/user/int:user_id>', methods=['DELETE'])
+# def deleteKudos(activity_id, user_id):
+#     kudos = Kudos.query.filter(Kudos.activity_id == activity_id).filter(Kudos.user_id == user_id).one()
+#     db.session.delete(kudos)
+#     db.session.commit()
+#     return {'message': 'successfully deleted comment'}, 200
+
+
+@kudos_routes.route('/<int:id>', methods=['DELETE'])
+def deleteKudos(id):
+    kudos = Kudos.query.get(id)
+    db.session.delete(kudos)
+    db.session.commit()
+    return {'message': 'successfully deleted comment'}, 200
