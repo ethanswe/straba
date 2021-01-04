@@ -1,23 +1,27 @@
 import React, { useState, useEffect } from 'react'
 import blankLike from '../activities-feed/like.png';
 import likedPhoto from '../activities-feed/liked.png';
+import {createKudos} from '../../services/kudos'
 
 
-
-export const KudosGet = ({activity})=> {
+export const KudosGet = ({activity, activities})=> {
     const [loaded, setLoaded] = useState(false);
     const [kudos, setKudos] = useState(0);
     const [liked, setLiked] = useState(false);
     // console.log(activity.id)
     const activity_Id  = activity.id
-
+    const user_id = localStorage.getItem('userId') 
 
     const onClick = async () => {
         // const response = await fetch(`/api/kudos/${activity_Id}`)
         // const data = await response.json();
         // console.log(data)
+
         setKudos(kudos + 1);
         if (liked === false) {
+            let activity_id = activity.id; 
+            console.log(activity_id);
+            createKudos(activity_id, user_id);
             setLiked(true)
         } else {
             setLiked(false);
