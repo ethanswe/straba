@@ -167,7 +167,9 @@ export const ActivityFeed = () => {
                     </KudosDiv>
                     <ActivityInfo className='avatarTitle1'>
                       <ImgDiv>
-                        <img className='avatar' height='50px' width='50px'  src={activity.user.avatar ? activity.user.avatar : profile} alt='avatar pic'></img>  
+                        <NavLink to={`/users/${activity.user.id}`}>
+                          <img className='avatar' height='50px' width='50px'  src={activity.user.avatar ? activity.user.avatar : profile} alt='avatar pic'></img>  
+                        </NavLink>
                       </ImgDiv>
                       <DateDiv>
                         {activity.createdAt} 

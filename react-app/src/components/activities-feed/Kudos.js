@@ -18,7 +18,6 @@ export const KudosGet = ({activity, activities})=> {
         
         if (liked === false) {
             let activity_id = activity.id; 
-            console.log(activity_id);
             createKudos(activity_id, user_id);
             setLiked(true)
             setKudos(kudos);
@@ -56,10 +55,10 @@ export const KudosGet = ({activity, activities})=> {
       //if a user gave kudos it should save the kudos
         useEffect(() => {
         (async () => {
-            console.log('Activity:' + activity.id + 'User:' + user_id)
+            // console.log('Activity:' + activity.id + 'User:' + user_id)
             const likesResponse = await userLikesPost(activity.id, user_id)
             setLiked(likesResponse.kudos)
-            console.log('Liked?' + likesResponse.kudos)
+            // console.log('Liked?' + likesResponse.kudos)
         })()
     }, [liked, activity.id])
 
