@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import blankLike from '../activities-feed/like.png';
 import likedPhoto from '../activities-feed/liked.png';
-import {createKudos} from '../../services/kudos'
+import {createKudos, deleteKudos} from '../../services/kudos'
 
 
 export const KudosGet = ({activity, activities})=> {
@@ -24,8 +24,10 @@ export const KudosGet = ({activity, activities})=> {
             createKudos(activity_id, user_id);
             setLiked(true)
         } else {
-            setLiked(false);
+            let activity_id = activity.id; 
+            deleteKudos(activity_id, user_id);
             setKudos(kudos-1)
+            setLiked(false);
         }
 
         
@@ -39,7 +41,7 @@ export const KudosGet = ({activity, activities})=> {
         (async () => {
             // console.log("Inside useEffect: " + activity_Id)
         const response = await fetch(`/api/kudos/${activity_Id}`)
-        const data = await response.json() 
+            const data = await response.json() 
         setKudos(data.kudos.length)
               
         setLoaded(true);
