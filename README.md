@@ -3,6 +3,9 @@
 **Description**
 * Straba is a web application that allows users to upload their GPX activity data and share their exercises with other users on the site.  Users can follow, comment, and give kudos to other users.  They can upload their unique avatars as well. Straba features an activity feed, activity detail page, as well as a dynamic user profile page with stats, user activity history, and followers.
 
+**Live Demonstration**
+* http://straba.herokuapp.com/login
+
 **MVP**
 * User profile and authentication 
 * Allow users to create an activity 
