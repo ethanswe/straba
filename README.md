@@ -7,7 +7,7 @@
 * https://straba.herokuapp.com/login
 
 **MVP**
-* User profile and authentication 
+* User sign up, sign on, and authentication 
 * Allow users to create an activity 
 * Allow users to like/comment on a post 
 * Main activity feed
