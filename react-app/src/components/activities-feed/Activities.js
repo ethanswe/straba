@@ -130,7 +130,7 @@ export const ActivityFeed = () => {
 
   
     useEffect(() => {
-      fetch('/api/activities').then(res =>
+      fetch('/api/activities/').then(res =>
         res.json().then(data => {
             setActivities(data.activities)
             

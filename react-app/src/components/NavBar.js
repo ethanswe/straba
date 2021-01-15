@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { NavLink, useLocation, Redirect } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import styled from 'styled-components'
-import { CreateActivityForm } from './create-activity/CreateActivityForm';
+import logo from '../strabalogo.png'
 
 const Nav = styled.nav`
 max-height: 80px;
@@ -56,7 +56,7 @@ const Buttons = styled.button`
 
 
 const Logo = styled.img.attrs({
-    src: '../../strabalogo.png'
+    src: logo
 })`
 width: 80px;
 height: 80px;
