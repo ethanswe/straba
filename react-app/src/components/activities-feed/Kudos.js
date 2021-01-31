@@ -9,6 +9,7 @@ export const KudosGet = ({activity, activities})=> {
     const [kudos, setKudos] = useState({});
     const [liked, setLiked] = useState(false);
     const user_id = localStorage.getItem('userId') 
+    const [kudosData, setKudosData] = useState([]);
 
     const onClick = async () => {
         // const response = await fetch(`/api/kudos/${activity_Id}`)
@@ -42,7 +43,15 @@ export const KudosGet = ({activity, activities})=> {
         const response = await fetch(`/api/kudos/activity/${activity.id}`)
         const data = await response.json() 
         await setKudos(data.kudos.length)
-    
+        await setKudosData(data.kudos)
+            // for (let kudo in kudos){
+            //     if (kudo.user.id === user_id){
+            //         setLiked(true)
+            //     }
+            // }
+            
+            
+        
 
               
         setTimeout(function(){ setLoaded(true); }, 500);
@@ -65,6 +74,7 @@ export const KudosGet = ({activity, activities})=> {
       if (!loaded) {
         return null;
       }
+      console.log(kudosData)
   
     return (
         <>

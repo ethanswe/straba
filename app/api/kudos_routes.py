@@ -20,7 +20,7 @@ def createKudos():
 
         db.session.add(kudos)
         db.session.commit()
-        return {'kudos': kudos.to_dict()}
+        return kudos.to_joined_dict(), 200
     except IntegrityError:
         return {'errors': 'User already kudos'}, 404
 

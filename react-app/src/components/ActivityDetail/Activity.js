@@ -10,6 +10,7 @@ import profile from "../User/Profile.png";
 import { deleteComment } from '../../services/comment';
 import { deleteActivity } from '../../services/activity';
 import {KudosGet} from '../activities-feed/Kudos'
+import { DeleteComment } from './DeleteComment';
 
 const SubmitButton = styled.button`
   background: #222;
@@ -51,6 +52,7 @@ background-color: white;
 border-radius:25px;
 margin-top: 50px;
 box-shadow: 0px 5px 3px 3px lightgray;
+overflow-y: auto;
 `
 
 const BackgroundPhoto = styled.div`
@@ -123,7 +125,7 @@ margin-bottom: 4px;
 export const Activity = ()=> {
     const [loaded, setLoaded] = useState(false);
     const [activities, setActivities] = useState({});
-    const [comments, setComments] = useState({});
+    const [comments, setComments] = useState([]);
     const [kudos, setKudos] = useState(0);
 
     const user_id = localStorage.getItem('userId')     
@@ -262,20 +264,17 @@ export const Activity = ()=> {
                     <div className='comments'>
                         Comments: 
                         {comments.map(comment =>
-                          <div  key={comment.id}>
+                          <div  className="comment" key={comment.id}>
                             <div>
                             <img className='avatar-a' height='50px' width='50px' src={comment.user.avatar ? comment.user.avatar : profile} alt='comment pic'></img>
+                            <span className='comment-user-info'> 
                               {comment.user.first_name} {comment.user.last_name} - {comment.createdAt}
+                              </span>
                             </div>
                             <div>{comment.text}</div> 
-                            {comment.user.id == user_id ?
-                            <SubmitButton onClick={async ()=> {
-                              deleteComment(comment.id) 
-                              // history.push(`/feed/${activities.id}`)
-                              window.location.reload(false);
-                              }}>Delete</SubmitButton> :
-                              '' 
-                            }                        
+                            <div className='delete-button'>
+                                  <DeleteComment comment={comment} comments={comments} setComments={setComments} activityId={activityId}/>               
+                            </div>
                           </div>
                           )}
                     </div>
@@ -285,7 +284,7 @@ export const Activity = ()=> {
             </StyledDiv>
             
           </CenterContainer>
-          <CommentForm activities={activities} comments={comments} />
+          <CommentForm activities={activities} comments={comments} setComments={setComments} activityId={activityId}/>
         </>
     
     )

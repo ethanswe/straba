@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {createComment} from '../../services/comment'
+import {createComment, getComments} from '../../services/comment'
 import { Form } from 'semantic-ui-react'
 import styled from 'styled-components'
 
@@ -57,37 +57,41 @@ height: 200px;
 `
 
 
-export const CommentForm = ({activities})=> { 
+export const CommentForm = ({comments, setComments, activityId})=> { 
     const [text, setText] = useState('')
-    const user_id = localStorage.getItem('userId')     
-
+    const user_id = localStorage.getItem('userId')   
+    
+    const onAddComment = async (e) => {
+      e.preventDefault()
+      setText('')
+      const newComment = await createComment(text, user_id, activityId);
+    
+        
+        
+        // await getComments(activityId)
+      await setComments([newComment, ...comments])
+    }
+   
     return (
         <Container>
-                <Form>
-                    <Header>Make a Comment:</Header>
-                       
+           
+                <Form onSubmit = {onAddComment}>
+                   
+                <Header>Make a Comment:</Header>
                         <Form.Field>
                             <StyledTextArea 
                             placeholder="Post a nice comment." 
                             value={text}
                             onChange={(e)=> setText(e.target.value)}
                             />
-                        </Form.Field>
-                        <Form.Field>
-                            <SubmitButton onClick = {async () => {
-                                let activity_id = activities.id
-                        
-                                console.log('Comment' + text, activity_id, user_id)
-                                  createComment(text, user_id, activity_id);
-                                  setText('')
-                                  window.location.reload(false);
-                                  // history.push(`/activities/${activity_id}`)
-                                }}>
+                     </Form.Field>
+                     <Form.Field>
+                            <SubmitButton >
                                 Submit
                                 
 
                             </SubmitButton>
-                        </Form.Field>
+                            </Form.Field>
                     </Form>
             </Container>
     )
