@@ -20,12 +20,12 @@ def createKudos():
 
         db.session.add(kudos)
         db.session.commit()
-        return {'kudos': kudos.to_dict()}
+        return kudos.to_joined_dict(), 200
     except IntegrityError:
         return {'errors': 'User already kudos'}, 404
 
 
-@kudos_routes.route('/delete', methods=['DELETE'])
+@kudos_routes.route('/delete/<int:user_id>/activity/<int:activity_id>', methods=['DELETE'])
 def deleteKudos(activity_id, user_id):
    
 
@@ -45,7 +45,7 @@ def getActivityKudos(activity_id):
     # else:
     #     return {'kudos': []}
     kudos = Kudos.query.join(User).filter(Kudos.activity_id == activity_id).all()
-    return {'kudos': [kudo.to_joined_dict() for kudo in kudos]}
+    return {'kudos': [kudo.to_dict() for kudo in kudos]}
 
 
 # This route will return a boolean whether or not if a user kudos a post

@@ -14,7 +14,7 @@ def createComment():
         activity_id=data['activity_id'])
     db.session.add(comment)
     db.session.commit()
-    return 'Done', 201
+    return comment.to_joined_dict(), 200
 
 
 @comment_routes.route('/activity/<int:activity_id>', methods=['GET'])

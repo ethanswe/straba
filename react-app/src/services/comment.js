@@ -23,9 +23,9 @@ export const createComment = async (text, user_id, activity_id) => {
     return await response.json();
   }
 
-  // export const getComments = async (activityId) => {
-  //   // console.log("Inside useEffect: " + activity_Id)
-  //   const response = await fetch(`/api/comments/activity/${activityId}`)
-  //   const data = await response.json() 
-  //   return data    
-  // } 
+  export const getComments = async (activityId) => {
+    // console.log("Inside useEffect: " + activity_Id)
+    const response = await fetch(`/api/comments/activity/${activityId}`)
+    const data = await response.json() 
+    return data    
+  } 

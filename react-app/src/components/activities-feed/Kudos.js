@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import blankLike from '../activities-feed/like.png';
 import likedPhoto from '../activities-feed/liked.png';
-import {createKudos, deleteKudos, userLikesPost} from '../../services/kudos'
+import {createKudos, getUserKudos, deleteKudos, userLikesPost} from '../../services/kudos'
 
 
 export const KudosGet = ({activity, activities})=> {
@@ -9,29 +9,9 @@ export const KudosGet = ({activity, activities})=> {
     const [kudos, setKudos] = useState({});
     const [liked, setLiked] = useState(false);
     const user_id = localStorage.getItem('userId') 
+    const [kudosData, setKudosData] = useState([]);
 
-    const onClick = async () => {
-        // const response = await fetch(`/api/kudos/${activity_Id}`)
-        // const data = await response.json();
-        // console.log(data)
 
-        
-        if (liked === false) {
-            let activity_id = activity.id; 
-            createKudos(activity_id, user_id);
-            setLiked(true)
-            setKudos(kudos);
-        } else {
-            // let activity_id = activity.id; 
-            // deleteKudos(activity_id, user_id);
-            
-            // setLiked(false);
-            setKudos(kudos)
-        }
-
-        
-
-    }
 //gets the length of the kudos for count
     useEffect(() => {
         if(!activity.id) {
@@ -42,36 +22,65 @@ export const KudosGet = ({activity, activities})=> {
         const response = await fetch(`/api/kudos/activity/${activity.id}`)
         const data = await response.json() 
         await setKudos(data.kudos.length)
-    
+        await setKudosData(data.kudos)
+        
+            
+            
+        
 
               
-        setTimeout(function(){ setLoaded(true); }, 500);
+     
+       
         
-        setLoaded(true)
-   
+       
+        
+        console.log(liked)
         })()
       }, [liked, activity.id])
 
       //if a user gave kudos it should save the kudos
         useEffect(() => {
         (async () => {
-            // console.log('Activity:' + activity.id + 'User:' + user_id)
-            const likesResponse = await userLikesPost(activity.id, user_id)
-            setLiked(likesResponse.kudos)
-            // console.log('Liked?' + likesResponse.kudos)
+           const kudosBoolean = await getUserKudos(user_id, activity.id)
+           console.log(kudosBoolean.kudos)
+            setLiked(kudosBoolean.kudos)
+
+            setTimeout(function(){ setLoaded(true); }, 250);
         })()
     }, [liked, activity.id])
 
       if (!loaded) {
-        return null;
+        return '';
       }
-  
+
+ 
+
+
+    const onClick = async () => {
+            let activity_id = activity.id; 
+            createKudos(activity_id, user_id);
+            setLiked(true)
+            setKudos(kudos);
+    }
+
+    const deleteClick = async () => {
+        let activity_id = activity.id; 
+        await deleteKudos(activity_id, user_id);
+        setLiked(false)
+        setKudos(kudos);
+}
+
+    if (loaded){ 
+       
+          
+           
+        
     return (
         <>
             {liked ?
                 <>
                     <div>
-                        <img height='20px' width='20px' src={likedPhoto} alt='likedPhoto' onClick={onClick}></img>
+                        <img height='20px' width='20px' src={likedPhoto} alt='likedPhoto' onClick={deleteClick}></img>
                         {kudos}
                     </div>
                 </>
@@ -85,4 +94,5 @@ export const KudosGet = ({activity, activities})=> {
             }
         </>
     )
+        }
 }

@@ -15,7 +15,9 @@ class Kudos(db.Model):
 
   def to_dict(self):
       return {
-          "id": self.id
+          "id": self.id,
+          "user_id": self.user_id,
+          "activity_id": self.activity_id
       }  
   def to_joined_dict(self):
       return {

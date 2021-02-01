@@ -13,8 +13,8 @@ export const createKudos = async (activity_id, user_id) => {
 }
 
 
-  export const deleteKudos = async (id) => {
-    const response = await fetch(`/api/kudos/${id}`, {
+  export const deleteKudos = async (activity_id, user_id) => {
+    const response = await fetch(`/api/kudos/delete/${user_id}/activity/${activity_id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -43,3 +43,11 @@ export const dislikePost = async (activity_id, user_id) => {
   })
   return await response.json()
 }
+
+
+export const getUserKudos = async (userId, activityId) => {
+  // console.log("Inside useEffect: " + activity_Id)
+  const response = await fetch(`/api/kudos/${userId}/activity/${activityId}`)
+  const data = await response.json() 
+  return data    
+} 
