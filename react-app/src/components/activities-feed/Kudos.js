@@ -57,21 +57,18 @@ export const KudosGet = ({activity, activities})=> {
 
 
     const onClick = async () => {
-        // const response = await fetch(`/api/kudos/${activity_Id}`)
-        // const data = await response.json();
-        // console.log(data)
-
-        
-       
             let activity_id = activity.id; 
             createKudos(activity_id, user_id);
             setLiked(true)
             setKudos(kudos);
-        
-
-        
-
     }
+
+    const deleteClick = async () => {
+        let activity_id = activity.id; 
+        await deleteKudos(activity_id, user_id);
+        setLiked(false)
+        setKudos(kudos);
+}
 
     if (loaded){ 
        
@@ -83,7 +80,7 @@ export const KudosGet = ({activity, activities})=> {
             {liked ?
                 <>
                     <div>
-                        <img height='20px' width='20px' src={likedPhoto} alt='likedPhoto' ></img>
+                        <img height='20px' width='20px' src={likedPhoto} alt='likedPhoto' onClick={deleteClick}></img>
                         {kudos}
                     </div>
                 </>

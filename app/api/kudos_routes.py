@@ -25,7 +25,7 @@ def createKudos():
         return {'errors': 'User already kudos'}, 404
 
 
-@kudos_routes.route('/delete', methods=['DELETE'])
+@kudos_routes.route('/delete/<int:user_id>/activity/<int:activity_id>', methods=['DELETE'])
 def deleteKudos(activity_id, user_id):
    
 
