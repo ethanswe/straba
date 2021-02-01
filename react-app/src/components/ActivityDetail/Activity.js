@@ -180,7 +180,7 @@ export const Activity = ()=> {
         <>
         <BackgroundPhoto/>
            <CenterContainer>
-           <StyledDiv className='newsContainer'>
+           <StyledDiv className='loadContainer'>
         <main className="centered middled">
           <div><b>Fetching activity data...</b></div>
             
@@ -220,7 +220,8 @@ export const Activity = ()=> {
                 <img className='avatar-a' height='50px' width='50px' src={activities.user.avatar ? activities.user.avatar : profile} alt='activity pic'></img>  
               </ImgDiv>
               <DateDiv>
-                {activities.createdAt} 
+                {activities.createdAt.length > 21 ? activities.createdAt.substring(0, 26) :
+               activities.createdAt} 
               </DateDiv>
               <ActivityDiv>
                 {activities.title} 
@@ -268,7 +269,8 @@ export const Activity = ()=> {
                             <div>
                             <img className='avatar-a' height='50px' width='50px' src={comment.user.avatar ? comment.user.avatar : profile} alt='comment pic'></img>
                             <span className='comment-user-info'> 
-                              {comment.user.first_name} {comment.user.last_name} - {comment.createdAt}
+                              {comment.user.first_name} {comment.user.last_name} - {comment.createdAt.length > 21 ? comment.createdAt.substring(0, 26) :
+                        comment.createdAt} 
                               </span>
                             </div>
                             <div>{comment.text}</div> 

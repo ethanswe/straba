@@ -12,6 +12,12 @@
     
   }
 
+  .loadContainer{
+    min-height: 800px;
+    display: flex;
+    padding: 50%;
+  }
+
   .newsTitle{
     /* border: 2px solid red; */
     font-weight: bold;
@@ -85,10 +91,12 @@
 
   .comment-user-info {
     margin-left: 15px;
+    margin-bottom: 30px;
   }
   .delete-button {
     display: flex;
     justify-content: flex-end;
+    position: relative;
   }
   .middled {
     align-items: center;

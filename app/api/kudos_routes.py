@@ -45,7 +45,7 @@ def getActivityKudos(activity_id):
     # else:
     #     return {'kudos': []}
     kudos = Kudos.query.join(User).filter(Kudos.activity_id == activity_id).all()
-    return {'kudos': [kudo.to_joined_dict() for kudo in kudos]}
+    return {'kudos': [kudo.to_dict() for kudo in kudos]}
 
 
 # This route will return a boolean whether or not if a user kudos a post

@@ -43,3 +43,11 @@ export const dislikePost = async (activity_id, user_id) => {
   })
   return await response.json()
 }
+
+
+export const getUserKudos = async (userId, activityId) => {
+  // console.log("Inside useEffect: " + activity_Id)
+  const response = await fetch(`/api/kudos/${userId}/activity/${activityId}`)
+  const data = await response.json() 
+  return data    
+} 

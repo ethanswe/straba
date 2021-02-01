@@ -172,7 +172,8 @@ export const ActivityFeed = () => {
                         </NavLink>
                       </ImgDiv>
                       <DateDiv>
-                        {activity.createdAt} 
+                        {activity.createdAt.length > 21 ? activity.createdAt.substring(0, 26) :
+                        activity.createdAt} 
                       </DateDiv>
                       <ActivityDiv>
                         <NavLink to={`/activities/${activity.id}`}>
