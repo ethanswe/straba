@@ -4,6 +4,9 @@ import './AboutUs.css'
 import logo from './strabalogo.png';
 import google from "./google.png";
 import github from "./github.png";
+import john from "./john.jpeg";
+import ethan from "./ethan.jpeg"
+import ivan from "./ivan.jpeg"
 
 
 
@@ -18,6 +21,7 @@ const AboutUs = () => {
           
             
             <div className='miniInfo1'>
+                
                 <div>
                 <a href="https://github.com/ethanswe/straba" target="_blank"> 
                     <h6>GitHub</h6>
@@ -39,7 +43,27 @@ const AboutUs = () => {
             <p>
             Straba features an activity feed, activity detail page, as well as a dynamic user profile page with stats, user activity history, and followers.
             </p>
-            
+            <h2>Creators</h2> 
+            <div className="creators">
+            <div>
+                <a href="https://github.com/johnegus" target="_blank"> 
+                    <h6>John</h6>
+                    <img className='icons' height='50px' width='50px' src={john} alt='john' />
+                    </a>
+                </div>
+                <div>
+                <a href="https://github.com/ethanswe" target="_blank"> 
+                    <h6>Ethan</h6>
+                    <img className='icons' height='50px' width='50px' src={ethan} alt='ethan' />
+                    </a>
+                </div>
+                <div>
+                <a href="https://github.com/IvanGent" target="_blank"> 
+                    <h6>Ivan</h6>
+                    <img className='icons' height='50px' width='50px' src={ivan} alt='ivan' />
+                    </a>
+                </div>
+                </div>
             <div>
             <h2>How to use STRABA</h2>
             <ol >

@@ -6,6 +6,12 @@
     overflow: scroll;
 }
 
+.user-activity-map {
+    position: absolute;
+    left: 500px;
+    
+}
+
 .overviewC {
     /* background-color: orange; */
     height: 180px;
@@ -34,5 +40,6 @@
     font-size: 12px;
     width: 100%;
     padding-right: 30px;
+    padding-top: 10px;
     /* background-color: blue; */
 }

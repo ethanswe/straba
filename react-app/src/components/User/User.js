@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import Copyright from "../Copyright";
 import Following from '../Following/Following';
 import UserActivitiesCount from '../User-Activities-Count/user-activities-count';
 import UserActivities from '../User-Activities/user-activities';
@@ -111,6 +112,7 @@ function User() {
   followButton()
 
   return (
+    <>
     <div className='userContainer'>
       <div className='userInfo'>
         <img src={user.avatar  ? user.avatar : profile} alt='profile pic'/>
@@ -167,10 +169,13 @@ function User() {
           <div className='myStats'>
             <h2>My Stats</h2>
             <UserMyStats />
+            <Copyright />
           </div>
         </div>
       </div> 
     </div>
+    
+    </>
   );
 }
 export default User;

@@ -11,6 +11,7 @@ import { deleteComment } from '../../services/comment';
 import { deleteActivity } from '../../services/activity';
 import {KudosGet} from '../activities-feed/Kudos'
 import { DeleteComment } from './DeleteComment';
+import Copyright from '../Copyright';
 
 const SubmitButton = styled.button`
   background: #222;
@@ -287,6 +288,7 @@ export const Activity = ()=> {
             
           </CenterContainer>
           <CommentForm activities={activities} comments={comments} setComments={setComments} activityId={activityId}/>
+          <Copyright />
         </>
     
     )
