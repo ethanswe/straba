@@ -28,12 +28,6 @@ const AboutUs = () => {
                     <img className='icons' height='50px' width='50px' src={github} alt='github' />
                     </a>
                 </div>
-                <div>
-                <a href="https://drive.google.com/drive/my-drive" target="_blank"> 
-                    <h6>Google</h6>
-                    <img className='icons' height='50px' width='50px' src={google} alt='google' />
-                    </a>
-                </div>
             </div>
             <div className='about-us-text'>
             <h2>About STRABA</h2>
@@ -73,6 +67,12 @@ const AboutUs = () => {
 	            <li>Copy the src url from the embed code into the STRABA New Activity Form with your running data.</li>
                 </ol>
             </div>
+            <div className="creators">
+                <a href="https://drive.google.com/drive/my-drive" target="_blank"> 
+                    <h6>Google</h6>
+                    <img className='icons' height='50px' width='50px' src={google} alt='google' />
+                    </a>
+                </div>
             </div>
         </div>
     
