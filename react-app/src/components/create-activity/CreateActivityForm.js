@@ -8,7 +8,7 @@ import { createActivity } from '../../services/activity';
 const BackgroundImg = styled.div`
 background-image: url('https://images.pexels.com/photos/2729899/pexels-photo-2729899.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'); 
 width: 100vw;
-height: 91vh;
+height: 800px;
 background-size: cover;
 position: absolute;
 `
@@ -53,7 +53,7 @@ flex-direction: row;
 background-color: black;
 opacity: 85%;
 z-index: 1;
-margin-top: 100px;
+margin-top: 20px;
 padding: 10px;
 `
 
@@ -66,7 +66,7 @@ font-family: 'Fugaz One', cursive;
 const StyledTextArea = styled.textarea`
 width: 250px;
 height: 200px;
-margin: 5px;
+margin-left: 5px;
 `
 const TestInput = styled.input`
 width: 250px;
@@ -132,6 +132,7 @@ export const CreateActivityForm = () => {
                 <Form>
                     <Header>Create A New Activity:</Header>
                         <Form.Field>
+                            Title
                             <TestInput 
                             placeholder="Title" 
                             value={title} 
@@ -140,6 +141,7 @@ export const CreateActivityForm = () => {
                             />
                         </Form.Field>
                         <Form.Field>
+                            Description
                             <StyledTextArea 
                             placeholder="Describe your activity." 
                             value={description}
@@ -147,6 +149,7 @@ export const CreateActivityForm = () => {
                             />
                         </Form.Field>
                         <Form.Field>
+                            Distance (miles)
                             <TestInput
                             type='number'
                             label={{ basic: true, content: 'miles' }}
@@ -158,6 +161,7 @@ export const CreateActivityForm = () => {
                             />
                         </Form.Field>
                         <Form.Field>
+                            Time (minutes)
                             <TestInput
                             type='number'
                             label={{ basic: true, content: 'minutes' }}
@@ -169,6 +173,7 @@ export const CreateActivityForm = () => {
                             />
                         </Form.Field>
                         <Form.Field>
+                            Google Map SRC
                             <TestInput 
                             placeholder="Google Map SRC" 
                             value={gpx_file} 

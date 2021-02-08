@@ -6,19 +6,28 @@
     overflow: scroll;
 }
 
-.user-activity-map {
+/* .user-activity-map {
     position: absolute;
     left: 500px;
     
+} */
+.user-activity-title {
+    width: 30%;
 }
 
+.user-activity-createdAt{
+    display: flex;
+    align-items: flex-end;
+}
 .overviewC {
     /* background-color: orange; */
-    height: 180px;
+    height: 200px;
     width: 100%;
     cursor: pointer;
     /* transition-duration: 500ms; */
     border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .overviewC:hover {
@@ -42,4 +51,21 @@
     padding-right: 30px;
     padding-top: 10px;
     /* background-color: blue; */
+}
+
+@media screen and (max-width: 1000px) {
+    .overviewC {
+        /* background-color: orange; */
+        height: 200px;
+        width: 100%;
+        cursor: pointer;
+        /* transition-duration: 500ms; */
+        border-radius: 5px;
+        display: contents;
+        
+    }
+
+    .user-activity-title {
+        width: 100%;
+    }
 }
