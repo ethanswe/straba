@@ -8,6 +8,7 @@ import AboutUs from '../about-us-feed/AboutUs';
 import { CommentsGet } from './Comments';
 import profile from "../User/Profile.png";
 import MiniProfile from '../Mini-Profile/mini-profile';
+import Copyright from '../Copyright';
 
 
 
@@ -76,7 +77,6 @@ const ActivityStats = styled.div`
 display: flex;
 justify-content: space-between;
 align-items: flex-end;
-margin-left: 10px;
 margin: 5px;
 `
 
@@ -94,7 +94,7 @@ margin-bottom: 2px;
 `
 
 const ActivityDiv = styled.div`
-margin-bottom: 4px;
+margin: 4px;
 `
 
 const Kudos = styled.div`
@@ -184,14 +184,19 @@ export const ActivityFeed = () => {
 
                     <ActivityStats className='runstats-container1'>
                         <ActivityStatsDiv>
-                          Distance: {activity.distance} miles
+                          Distance: 
+                          <div>{activity.distance} miles</div>
                         </ActivityStatsDiv>
                         <ActivityStatsDiv>
                           Time: 
-                          {activity.time > 60 ? (activity.time / 60).toFixed(2) + ' hours': activity.time + ' minutes'} 
+                          <div>{activity.time > 60 ? (activity.time / 60).toFixed(2) + ' hours': activity.time + ' minutes'} </div>
+                          
                         </ActivityStatsDiv>
                         <ActivityStatsDiv>
-                          Pace: {parseFloat(activity.time / activity.distance).toFixed(2)} minutes/mile
+                        Pace:
+                          <div>
+                          {parseFloat(activity.time / activity.distance).toFixed(2)} minutes/mile
+                          </div>
                         </ActivityStatsDiv>
                     </ActivityStats>
 
@@ -209,6 +214,7 @@ export const ActivityFeed = () => {
               </div>
               )
         })}
+        <Copyright />
         </>
     
     )

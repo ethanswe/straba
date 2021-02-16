@@ -42,7 +42,7 @@ background-color: white;
 border-radius:25px;
 margin-top: 10px;
 box-shadow: 0px 5px 3px 3px lightgray;
-
+padding: 10px;
 `
 
 const Header = styled.h3`

@@ -11,6 +11,9 @@ import { CreateActivityForm } from "./components/create-activity/CreateActivityF
 import HomePage from "./components/HomePage";
 import { Activity } from "./components/ActivityDetail/Activity";
 import { ActivityFeed } from "./components/activities-feed/Activities";
+import { MapBox } from "./components/mapbox/MapBox";
+import { GoogleAPI } from "./components/mapbox/GoogleAPI";
+import { Leaflet } from "./components/mapbox/Leaflet";
 
 
 function App() {
@@ -48,6 +51,12 @@ function App() {
       </ProtectedRoute>
       <ProtectedRoute path="/feed" exact={true} authenticated={authenticated}>
         <ActivityFeed/>
+      </ProtectedRoute>
+      <ProtectedRoute path="/mapbox" exact={true} authenticated={authenticated}>
+        <MapBox/>
+      </ProtectedRoute>
+      <ProtectedRoute path="/leaflet" exact={true} authenticated={authenticated}>
+        <Leaflet/>
       </ProtectedRoute>
       <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
         <User />

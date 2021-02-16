@@ -70,3 +70,35 @@ body {
 .avatar {
   border-radius: 50%;
 }
+
+@media screen and (max-width: 600px) {
+  .newsContainer1 {
+      background-color: white;
+      width: auto;
+      height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      margin: 10px;
+      border-radius: 10px;
+     
+  }
+  .social1{
+    /* border: 2px solid black; */
+    font-weight: bold;
+    display: flex;
+    justify-content: space-around;
+    width: 300px;
+    padding: 10px;
+  }
+
+
+
+  .avatarTitle1 {
+    /* border: 2px solid black; */
+    font-weight: bold;
+    grid-column: 1/2;
+    grid-row: 1/2;
+  }
+}

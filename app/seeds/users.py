@@ -1,5 +1,5 @@
 from werkzeug.security import generate_password_hash
-from app.models import db, User, Activity, Kudos, Comment
+from app.models import db, User, Activity, Kudos, Comment, Following
 
 # Adds a demo user, you can add other users here if you want
 def seed_users():
@@ -58,6 +58,25 @@ def seed_activities():
             distance=5.1, time=56.3,
             user_id=1,
             gpx_file='https://www.google.com/maps/d/embed?mid=1h7p1CpCc43ClTdEIH61VpAr3Mbfh-9Ly'),
+        Activity(title='Running downtown', 
+            description='Tough run, the concrete was hard.',
+            distance=2.1, time=20,
+            user_id=1,
+            gpx_file='https://www.google.com/maps/d/embed?mid=1gP16ZGuGQMG3UGCivwtXsdrWGXi2m-pE'),
+            Activity(title='Beach run', 
+            description='It was HOT',
+            distance=4.5, time=55,
+            user_id=1,
+            gpx_file='https://www.google.com/maps/d/embed?mid=1M9l3uERqL7DnB8ID89bVfPnQZAgC6vRN'),
+        Activity(title='Running on the sidewalk.', 
+            description='I ran fast today.',
+            distance=1, time=20,
+            user_id=4),
+        Activity(title='Berlin Marathon', 
+            description='Not bad for my first marathon',
+            distance=26.4, time=243,
+            user_id=1,
+            gpx_file='https://www.google.com/maps/d/embed?mid=1e5LgIAckPl9KcTMT2Z-8BL64NEryO6k-'),
         Activity(title='Running along the river.', 
             description='I ran along the river, my feet hurt, but it was good.',
             distance=10.1, time=70.3,
@@ -146,6 +165,35 @@ def seed_comments():
 
     db.session.commit()
 
+def seed_follows():
+
+    follow = [
+        Following(user_id=1, followed_user_id=1), 
+        Following(user_id=1, followed_user_id=2), 
+        Following(user_id=1, followed_user_id=3), 
+        Following(user_id=1, followed_user_id=4), 
+        Following(user_id=1, followed_user_id=5),
+        Following(user_id=2, followed_user_id=1), 
+        Following(user_id=2, followed_user_id=2), 
+        Following(user_id=2, followed_user_id=3), 
+        Following(user_id=2, followed_user_id=4),  
+        Following(user_id=5, followed_user_id=3), 
+        Following(user_id=5, followed_user_id=4), 
+        Following(user_id=5, followed_user_id=5), 
+        Following(user_id=4, followed_user_id=3), 
+        Following(user_id=4, followed_user_id=4), 
+        Following(user_id=4, followed_user_id=5), 
+        Following(user_id=3, followed_user_id=1), 
+        Following(user_id=3, followed_user_id=2), 
+        Following(user_id=3, followed_user_id=3), 
+        Following(user_id=3, followed_user_id=4),
+        Following(user_id=5, followed_user_id=1),
+    ]
+
+    db.session.add_all(follow)
+
+    db.session.commit()
+
 # Uses a raw SQL query to TRUNCATE the users table.
 # SQLAlchemy doesn't have a built in function to do this
 # TRUNCATE Removes all the data from the table, and resets
@@ -164,4 +212,8 @@ def undo_kudos():
 
 def undo_comments():
     db.session.execute('TRUNCATE comments;')
+    db.session.commit()
+
+def undo_follows():
+    db.session.execute('TRUNCATE follows;')
     db.session.commit()

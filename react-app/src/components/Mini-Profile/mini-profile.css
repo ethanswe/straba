@@ -3,13 +3,13 @@
     .miniProfile {
         background-color: white;
         position: absolute;
-        width: 350px;
-        height: 200px;
+        width: 370px;
+        min-height: fit-content;
         display: flex;
         align-items: center;
         justify-content: flex-end;
         flex-direction: column;
-        top: 200px;
+        top: 100px;
         left: 10px;
         border-radius: 10px;
     }
@@ -52,13 +52,13 @@
 @media screen and (max-width: 600px) {
     .miniProfile {
         background-color: white;
-        width: 300px;
+        width: auto;
         height: 200px;
         display: flex;
         align-items: center;
-        justify-content: flex-end;
+        justify-content: center;
         flex-direction: column;
-        margin: 40px 0 20px 125px;
+        margin: 10px;
         border-radius: 10px;
        
     }

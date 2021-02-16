@@ -40,7 +40,7 @@ function UserMyStats() {
     return (
         <div className='my-stats'>
             <h4>All-Time:</h4>
-            <div>Distance: {distance} miles</div>
+            <div>Distance: {distance.toFixed(2)} miles</div>
             <div>Time: {time.hr} hr. {time.min} min.</div>
         </div>
     )

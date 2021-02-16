@@ -6,13 +6,28 @@
     overflow: scroll;
 }
 
+/* .user-activity-map {
+    position: absolute;
+    left: 500px;
+    
+} */
+.user-activity-title {
+    width: 30%;
+}
+
+.user-activity-createdAt{
+    display: flex;
+    align-items: flex-end;
+}
 .overviewC {
     /* background-color: orange; */
-    height: 180px;
+    height: 200px;
     width: 100%;
     cursor: pointer;
     /* transition-duration: 500ms; */
     border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .overviewC:hover {
@@ -34,5 +49,55 @@
     font-size: 12px;
     width: 100%;
     padding-right: 30px;
+    padding-top: 10px;
     /* background-color: blue; */
+}
+
+@media screen and (max-width: 1000px) {
+    .overviewC {
+        /* background-color: orange; */
+        height: 200px;
+        width: 100%;
+        cursor: pointer;
+        /* transition-duration: 500ms; */
+        border-radius: 5px;
+        display: contents;
+        
+    }
+
+    .user-activity-title {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 1501px) {
+    .overviewC {
+        /* background-color: orange; */
+        height: 400px;
+        width: 100%;
+        cursor: pointer;
+        /* transition-duration: 500ms; */
+        border-radius: 5px;
+        display: grid;
+        grid-template-columns:  50% 50% ;
+        grid-template-rows: 80% 20%;
+        
+    }
+    .user-activity-title{
+        width: 100%;
+        grid-column: 1/2;
+        grid-row: 1/2;
+    }
+   
+    .user-activity-map {
+        grid-column: 2/3;
+        grid-row: 1/2;
+    
+}
+.user-activity-createdAt{
+    grid-column: 1/3;
+    grid-row: 2/3;
+    display: flex;
+    align-items: flex-end;
+}
 }
