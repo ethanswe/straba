@@ -34,7 +34,6 @@ export const KudosGet = ({activity, activities})=> {
         
        
         
-        console.log(liked)
         })()
       }, [liked, activity.id])
 
@@ -42,7 +41,6 @@ export const KudosGet = ({activity, activities})=> {
         useEffect(() => {
         (async () => {
            const kudosBoolean = await getUserKudos(user_id, activity.id)
-           console.log(kudosBoolean.kudos)
             setLiked(kudosBoolean.kudos)
 
             setTimeout(function(){ setLoaded(true); }, 250);

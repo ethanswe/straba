@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { NavLink, useParams } from 'react-router-dom';
-import { List, Header } from 'semantic-ui-react'
+import { NavLink } from 'react-router-dom';
 import './activities.css';
 import styled from 'styled-components'
 import { KudosGet } from './Kudos';

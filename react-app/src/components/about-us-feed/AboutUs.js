@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react'
-import styled from 'styled-components'
+import React from 'react'
 import './AboutUs.css'
 import logo from './strabalogo.png';
 import google from "./google.png";
@@ -40,19 +39,19 @@ const AboutUs = () => {
             <h2>Creators</h2> 
             <div className="creators">
             <div>
-                <a href="https://github.com/johnegus" target="_blank"> 
+                <a href="https://github.com/johnegus" target="_blank" rel="noreferrer"> 
                     <h6>John</h6>
                     <img className='icons' height='50px' width='50px' src={john} alt='john' />
                     </a>
                 </div>
                 <div>
-                <a href="https://github.com/ethanswe" target="_blank"> 
+                <a href="https://github.com/ethanswe" target="_blank" rel="noreferrer"> 
                     <h6>Ethan</h6>
                     <img className='icons' height='50px' width='50px' src={ethan} alt='ethan' />
                     </a>
                 </div>
                 <div>
-                <a href="https://github.com/IvanGent" target="_blank"> 
+                <a href="https://github.com/IvanGent" target="_blank" rel="noreferrer"> 
                     <h6>Ivan</h6>
                     <img className='icons' height='50px' width='50px' src={ivan} alt='ivan' />
                     </a>
@@ -68,7 +67,7 @@ const AboutUs = () => {
                 </ol>
             </div>
             <div className="creators">
-                <a href="https://drive.google.com/drive/my-drive" target="_blank"> 
+                <a href="https://drive.google.com/drive/my-drive" target="_blank" rel="noreferrer"> 
                     <h6>Google</h6>
                     <img className='icons' height='50px' width='50px' src={google} alt='google' />
                     </a>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {createComment, getComments} from '../../services/comment'
+import {createComment } from '../../services/comment'
 import { Form } from 'semantic-ui-react'
 import styled from 'styled-components'
 

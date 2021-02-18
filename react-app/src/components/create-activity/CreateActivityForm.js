@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Form } from 'semantic-ui-react'
 import styled from 'styled-components'
 import { useHistory } from "react-router-dom";
-import axios from 'axios'
-import { createActivity } from '../../services/activity';
+
 
 const BackgroundImg = styled.div`
 background-image: url('https://images.pexels.com/photos/2729899/pexels-photo-2729899.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'); 
@@ -91,7 +90,6 @@ export const CreateActivityForm = () => {
 
     useEffect(() => {
     // await setActivityExample(event.target.value);
-    console.log(activityExample)
    
     if(activityExample === 'Berlin'){
         setTitle('Berlin Marathon')
@@ -195,11 +193,9 @@ export const CreateActivityForm = () => {
                                
                                 const time = parseFloat(time_string).toFixed(2)
                                 const distance = parseFloat(distance_string).toFixed(2)
-                                
-                                console.log(time)
-                                console.log(distance)
+                              
                                 let activity = {title, description, distance, time, gpx_file, user_id};
-                                console.log(activity)
+                             
                                 if (!time || !distance || !title || time === "NaN" || distance === "NaN"){
                                     alert('Please provide an activity title, time, and distance');
                                     return;

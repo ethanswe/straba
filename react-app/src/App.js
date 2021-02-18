@@ -12,7 +12,6 @@ import HomePage from "./components/HomePage";
 import { Activity } from "./components/ActivityDetail/Activity";
 import { ActivityFeed } from "./components/activities-feed/Activities";
 import { MapBox } from "./components/mapbox/MapBox";
-import { GoogleAPI } from "./components/mapbox/GoogleAPI";
 import { Leaflet } from "./components/mapbox/Leaflet";
 
 
